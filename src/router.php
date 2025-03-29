@@ -9,5 +9,4 @@ if (file_exists($path)) {
 } else {
     require_once 'src/pages/404.php';
 }
-include_once 'src/components/Header.php';
 ?>

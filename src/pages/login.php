@@ -1,5 +1,7 @@
 <?php
-$title = 'Login'; ?>
+$title = 'Login';
+include_once 'src/components/Header.php';
+?>
 
 <body>
     <form method="POST" class="flex flex-col items-center justify-center h-screen gap-y-1" action="/api/login">
