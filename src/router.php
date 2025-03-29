@@ -1,17 +1,13 @@
 <?php
-switch (parse_url($_SERVER['REQUEST_URI'])['path']) {
-    case '/':
-        require_once 'pages/index.php';
-        break;
-    case '/login':
-        require_once 'pages/login.php';
-        break;
-    case 'api/login':
-        require_once 'pages/api/login.php';
-        break;
-    default:
-        require_once 'pages/404.php';
-        break;
+$file = trim(parse_url($_SERVER['REQUEST_URI'])['path'], '/');
+if ($file == '') {
+    $file = 'index';
 }
-include_once 'components/Header.php';
+$path = sprintf('src/pages/%s.php', $file);
+if (file_exists($path)) {
+    require_once $path;
+} else {
+    require_once 'src/pages/404.php';
+}
+include_once 'src/components/Header.php';
 ?>

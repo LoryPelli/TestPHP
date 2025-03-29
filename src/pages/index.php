@@ -1,3 +1,4 @@
 <?php
-$title = 'Home';
-?>
+$title = 'Home'; ?>
+
+<body></body>
