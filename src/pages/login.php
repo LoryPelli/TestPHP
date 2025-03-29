@@ -1,6 +1,5 @@
 <?php
-$title = 'Login';
-?>
+$title = 'Login'; ?>
 
 <form method="POST" class="flex flex-col gap-y-1 items-center justify-center h-screen" action="/api/login">
     <span>Username:</span>

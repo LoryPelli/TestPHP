@@ -1,3 +1,3 @@
 <?php
-$title = 'Home'
+$title = 'Home';
 ?>
