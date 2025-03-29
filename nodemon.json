@@ -1,4 +1,0 @@
-{
-    "exec": "php -c \"./php.ini\" -S localhost:63342 -t . ./src/router.php",
-    "ext": "php"
-}
