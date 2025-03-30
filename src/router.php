@@ -19,6 +19,6 @@ $description = $page['description'];
 include_once 'src/components/Header.php';
 ?>
 
-<body>
+<body class="flex flex-col items-center justify-center h-screen">
     <?php require_once $path; ?>
 </body>
