@@ -12,5 +12,9 @@ return [
         'title' => 'Login',
         'description' => 'Login with username and password',
     ],
+    'register' => [
+        'title' => 'Register',
+        'description' => 'Create an account',
+    ],
 ];
 ?>
