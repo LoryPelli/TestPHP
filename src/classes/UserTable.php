@@ -14,7 +14,7 @@ class UserTable extends BaseTable
         );"
         );
     }
-    public function new(string $email, string $password)
+    public function new(string $email, string $password): bool
     {
         $res = pg_query_params(
             $this->conn,
@@ -25,6 +25,16 @@ class UserTable extends BaseTable
             return false;
         }
         return true;
+    }
+    public function check(string $email): bool
+    {
+        $res = pg_query_params(
+            $this->conn,
+            "SELECT COUNT(*) FROM users WHERE email = $1",
+            [$email]
+        );
+        $row = pg_fetch_assoc($res);
+        return $row['count'] > 0;
     }
 }
 ?>
