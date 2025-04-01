@@ -1,6 +1,7 @@
 <?php
 $file = trim(parse_url($_SERVER['REQUEST_URI'])['path'], '/') ?: 'index';
-if (str_starts_with($file, 'api') && $_SERVER['REQUEST_METHOD'] != 'POST') {
+$isAPI = str_starts_with($file, 'api');
+if ($isAPI && $_SERVER['REQUEST_METHOD'] != 'POST') {
     http_response_code(405);
     header('Content-Type: application/json');
     echo 'Method Not Allowed!';
@@ -12,6 +13,11 @@ if (!file_exists($path)) {
     $file = '404';
     $path = 'src/pages/404.php';
 }
+$content = require_once $path;
+if ($isAPI) {
+    $content;
+    exit(0);
+}
 $config = require_once 'src/config/index.php';
 $page = $config[$file];
 $title = $page['title'];
@@ -20,5 +26,5 @@ include_once 'src/components/Header.php';
 ?>
 
 <body class="flex flex-col items-center justify-center h-screen">
-    <?php require_once $path; ?>
+    <?php $content; ?>
 </body>

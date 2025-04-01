@@ -1,14 +1,10 @@
 <?php
-require_once 'src/classes/Base.php';
-class User extends Base
+require_once 'src/classes/BaseTable.php';
+class UserTable extends BaseTable
 {
-    private $email;
-    private $password;
-    public function __construct($email, $password)
+    public function __construct()
     {
         parent::__construct();
-        $this->email = $email;
-        $this->password = $password;
         pg_query(
             $this->conn,
             "CREATE TABLE IF NOT EXISTS users (
@@ -17,11 +13,18 @@ class User extends Base
             password TEXT NOT NULL
         );"
         );
-        pg_query_params(
+    }
+    public function new(string $email, string $password)
+    {
+        $res = pg_query_params(
             $this->conn,
             "INSERT INTO users (email, password) VALUES ($1, $2);",
-            [$this->email, $this->password]
+            [$email, $password]
         );
+        if (!$res) {
+            return false;
+        }
+        return true;
     }
 }
 ?>

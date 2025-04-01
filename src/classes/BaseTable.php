@@ -1,7 +1,7 @@
 <?php
 require_once 'vendor/autoload.php';
 Dotenv\Dotenv::createImmutable($_SERVER['DOCUMENT_ROOT'])->load();
-abstract class Base
+abstract class BaseTable
 {
     protected $conn;
     public function __construct()

@@ -10,4 +10,9 @@ $isLogin = $type == Type::Login;
     <button type="submit" class="p-1 border-2 border-black rounded-md"><?= $isLogin
         ? 'Login!'
         : 'Register!' ?></button>
+    <?php if (!$isLogin): ?>
+        <span>Already have an account? You can <a href="/login" class="text-blue-600 hover:underline">Login here</a>!</span>
+    <?php else: ?>
+        <span>Don't have an account? You can <a href="/register" class="text-blue-600 hover:underline">Register here</a>!</span>
+    <?php endif; ?>
 </form>
