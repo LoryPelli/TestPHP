@@ -20,7 +20,7 @@ class User extends Base
         pg_query_params(
             $this->conn,
             "INSERT INTO users (email, password) VALUES ($1, $2);",
-            [$this->email, password_hash($this->password, PASSWORD_BCRYPT)]
+            [$this->email, $this->password]
         );
     }
 }

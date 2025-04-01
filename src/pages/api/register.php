@@ -1,4 +1,6 @@
 <?php
 require_once 'src/classes/User.php';
-new User($_POST['email'], $_POST['password']);
+$email = $_POST['email'];
+$password = password_hash($_POST['password'], PASSWORD_BCRYPT);
+new User($email, $password);
 ?>
