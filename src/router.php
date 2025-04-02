@@ -1,30 +1,26 @@
 <?php
+require_once 'src/enums/ServerError.php';
+include_once 'src/components/Header.php';
 $file = trim(parse_url($_SERVER['REQUEST_URI'])['path'], '/') ?: 'index';
 $isAPI = str_starts_with($file, 'api');
 if ($isAPI && $_SERVER['REQUEST_METHOD'] != 'POST') {
-    http_response_code(405);
-    header('Content-Type: application/json');
-    echo 'Method Not Allowed!';
+    ServerError::METHOD_NOT_ALLOWED->send();
     exit(1);
 }
 $path = sprintf('src/pages/%s.php', $file);
-if (!file_exists($path)) {
-    http_response_code(404);
-    $file = '404';
-    $path = 'src/pages/404.php';
+$exists = file_exists($path);
+if (!$exists) {
+    ServerError::NOT_FOUND->send();
+    exit(1);
 }
-$content = require_once $path;
-if ($isAPI) {
-    $content;
-    exit(0);
+if (!$isAPI) {
+    $config = require_once 'src/config/index.php';
+    $page = $config[$file];
+    $title = $page['title'];
+    $description = $page['description'];
 }
-$config = require_once 'src/config/index.php';
-$page = $config[$file];
-$title = $page['title'];
-$description = $page['description'];
-include_once 'src/components/Header.php';
 ?>
 
 <body class="flex flex-col items-center justify-center h-screen">
-    <?php $content; ?>
+    <?php require_once $path; ?>
 </body>

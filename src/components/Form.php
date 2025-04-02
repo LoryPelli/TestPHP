@@ -11,7 +11,7 @@ $error = $_GET['error'] ?? '';
 ) ?>">
     <?php if (isset($messages[$error])): ?>
         <div class="p-2 font-bold text-white bg-red-500 rounded-md">
-            <span><?= $messages[$error] ?></span>
+            <span><?= $messages[$error] ?>!</span>
         </div>
     <?php endif; ?>
     <?php include_once 'src/components/Fields.php'; ?>
