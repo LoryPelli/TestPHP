@@ -14,17 +14,13 @@ class UserTable extends BaseTable
         );"
         );
     }
-    public function new(string $email, string $password): bool
+    public function new(string $email, string $password)
     {
-        $res = pg_query_params(
+        pg_query_params(
             $this->conn,
-            "INSERT INTO users (email, password) VALUES ($1, $2);",
+            "INSERT INTO users (email, password) VALUES ($1, $2)",
             [$email, $password]
         );
-        if (!$res) {
-            return false;
-        }
-        return true;
     }
     public function check(string $email): bool
     {

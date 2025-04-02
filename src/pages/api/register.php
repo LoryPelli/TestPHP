@@ -7,9 +7,6 @@ if ($users->check($email)) {
     header('Location: /register?error=already_exists');
     exit(1);
 }
-if ($users->new($email, $password)) {
-    header('Location: /login');
-} else {
-    header('Location: /register');
-}
+$users->new($email, $password);
+header('Location: /login');
 ?>
