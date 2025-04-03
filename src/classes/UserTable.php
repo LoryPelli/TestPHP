@@ -22,7 +22,17 @@ class UserTable extends BaseTable
             [$email, $password]
         );
     }
-    public function check(string $email): bool
+    public function check(string $email, string $password): bool
+    {
+        $res = pg_query_params(
+            $this->conn,
+            "SELECT password FROM users WHERE email = $1",
+            [$email]
+        );
+        $row = pg_fetch_assoc($res);
+        return password_verify($password, $row['password']);
+    }
+    public function check_email(string $email): bool
     {
         $res = pg_query_params(
             $this->conn,
