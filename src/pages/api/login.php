@@ -12,4 +12,3 @@ if (!$users->check($email, $password)) {
     exit(1);
 }
 header('Location: /');
-?>

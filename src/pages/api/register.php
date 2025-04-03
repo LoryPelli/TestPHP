@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once 'src/classes/UserTable.php';
 $email = $_POST['email'];
 $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
@@ -7,6 +8,7 @@ if ($users->check_email($email)) {
     header('Location: /register?error=already_exists');
     exit(1);
 }
-$users->new($email, $password);
-header('Location: /login');
-?>
+$_SESSION['email'] = $email;
+$_SESSION['password'] = $password;
+$_SESSION['code'] = mt_rand(100000, 999999);
+header('Location: /verify');

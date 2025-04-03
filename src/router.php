@@ -10,21 +10,24 @@ if (!$isAPI) {
 }
 $path = sprintf('src/pages/%s.php', $file);
 $exists = file_exists($path);
-$content = require_once $path;
-include_once 'src/components/Header.php';
 if ($isAPI && $_SERVER['REQUEST_METHOD'] != 'POST') {
     ServerError::METHOD_NOT_ALLOWED->send();
     exit(1);
-} else {
-    $content;
-    exit(0);
 }
 if (!$exists) {
     ServerError::NOT_FOUND->send();
     exit(1);
 }
+if ($isAPI) {
+    require_once $path;
+    exit(0);
+}
 ?>
 
-<body class="flex flex-col items-center justify-center h-screen">
-    <?php $content; ?>
-</body>
+<!DOCTYPE html>
+<html lang="en">
+    <?php include_once 'src/components/Header.php'; ?>
+    <body class="flex flex-col items-center justify-center h-screen">
+        <?php require_once $path; ?>
+    </body>
+</html>

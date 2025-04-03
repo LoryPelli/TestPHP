@@ -16,5 +16,8 @@ return [
         'title' => 'Register',
         'description' => 'Create an account',
     ],
+    'verify' => [
+        'title' => 'Verify',
+        'description' => 'Verify your email',
+    ],
 ];
-?>
