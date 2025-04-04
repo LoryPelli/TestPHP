@@ -1,6 +1,11 @@
 <?php
 require_once 'src/enums/ServerError.php';
+require_once 'src/utils/redirect.php';
 $file = trim(parse_url($_SERVER['REQUEST_URI'])['path'], '/') ?: 'index';
+if ($file == 'verify' && $_SERVER['REQUEST_METHOD'] != 'POST') {
+    redirect('/');
+    exit(1);
+}
 $isAPI = str_starts_with($file, 'api');
 if (!$isAPI) {
     $config = require_once 'src/config/index.php';
