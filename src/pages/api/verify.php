@@ -1,5 +1,6 @@
 <?php
 session_start();
+require_once 'src/utils/redirect.php';
 $email = $_SESSION['email'];
 $password = $_SESSION['password'];
 $code = $_POST['digit'];
@@ -9,8 +10,8 @@ if ($userCode == $serverCode) {
     require_once 'src/classes/UserTable.php';
     $users = new UserTable();
     $users->new($email, $password);
-    header('Location: /');
+    redirect('/');
     exit(1);
 }
 session_destroy();
-header('Location /verify?error=wrong_code');
+redirect('/verify?error=wrong_code');
