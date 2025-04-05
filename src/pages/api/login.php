@@ -12,4 +12,10 @@ if (!$users->check($email, $password)) {
     redirect('/login?error=incorrect_password');
     exit(1);
 }
+$user = $users->get($email, $password);
+if ($user) {
+    require_once 'src/cookies/index.php';
+    $cookies->set('email', $user->getEmail());
+    $cookies->set('password', $user->getPassword());
+}
 redirect('/');

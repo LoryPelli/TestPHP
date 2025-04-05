@@ -1,5 +1,6 @@
 <?php
 require_once 'src/classes/BaseTable.php';
+require_once 'src/classes/User.php';
 class UserTable extends BaseTable
 {
     public function __construct()
@@ -37,5 +38,15 @@ class UserTable extends BaseTable
         $res->execute([$email]);
         $row = $res->fetch(PDO::FETCH_ASSOC);
         return $row['count'] > 0;
+    }
+    public function get(string $email, string $password): User|null
+    {
+        $res = $this->conn->prepare('SELECT * FROM users WHERE email = ?');
+        $res->execute([$email]);
+        $row = $res->fetch(PDO::FETCH_ASSOC);
+        if (password_verify($password, $row['password'])) {
+            return new User($row['email'], $row['password']);
+        }
+        return null;
     }
 }

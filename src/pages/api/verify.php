@@ -18,4 +18,4 @@ require_once 'src/classes/UserTable.php';
 $users = new UserTable();
 $users->new($email, $password);
 session_destroy();
-redirect('/');
+redirect('/login');
