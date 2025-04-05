@@ -17,4 +17,3 @@ enum ServerError: int
         require_once 'src/errors/index.php';
     }
 }
-?>

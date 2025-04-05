@@ -1,18 +1,13 @@
 <?php
 require_once 'src/enums/ServerError.php';
 require_once 'src/utils/redirect.php';
-$file = trim(parse_url($_SERVER['REQUEST_URI'])['path'], '/') ?: 'index';
+$url_path = parse_url($_SERVER['REQUEST_URI'])['path'];
+$file = trim($url_path, '/') ?: 'index';
 if ($file == 'verify' && $_SERVER['REQUEST_METHOD'] != 'POST') {
     redirect('/');
     exit(1);
 }
 $isAPI = str_starts_with($file, 'api');
-if (!$isAPI) {
-    $config = require_once 'src/config/index.php';
-    $page = $config[$file];
-    $title = $page['title'];
-    $description = $page['description'];
-}
 $path = sprintf('src/pages/%s.php', $file);
 $exists = file_exists($path);
 if ($isAPI && $_SERVER['REQUEST_METHOD'] != 'POST') {
@@ -23,16 +18,20 @@ if (!$exists) {
     ServerError::NOT_FOUND->send();
     exit(1);
 }
-if ($isAPI) {
+if (!$isAPI) {
+    $config = require_once 'src/config/index.php';
+    $page = $config[$file];
+    $title = $page['title'];
+    $description = $page['description'];
+} else {
     require_once $path;
     exit(0);
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
     <?php include_once 'src/components/Header.php'; ?>
-    <body class="flex flex-col items-center justify-center h-screen">
-        <?php require_once $path; ?>
-    </body>
+<body class="flex flex-col h-screen">
+    <?php require_once $path; ?>
+</body>
 </html>

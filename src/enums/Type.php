@@ -4,4 +4,3 @@ enum Type
     case Login;
     case Register;
 }
-?>

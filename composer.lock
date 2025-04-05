@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3d764973f4e0c5f6ee6843915c8793ed",
+    "content-hash": "d0607386ed6a99c9afba7ae9a237c6ad",
     "packages": [
         {
             "name": "graham-campbell/result-type",
@@ -392,6 +392,70 @@
                 }
             ],
             "time": "2025-03-27T12:30:47+00:00"
+        },
+        {
+            "name": "josantonius/cookie",
+            "version": "v2.0.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/josantonius/php-cookie.git",
+                "reference": "f6751dcfdd47a8ed54a77c77760eded24676b8cf"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/josantonius/php-cookie/zipball/f6751dcfdd47a8ed54a77c77760eded24676b8cf",
+                "reference": "f6751dcfdd47a8ed54a77c77760eded24676b8cf",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^8.1"
+            },
+            "require-dev": {
+                "guzzlehttp/guzzle": "^7.4",
+                "phpmd/phpmd": "^2.6",
+                "phpunit/phpunit": "^9.5",
+                "squizlabs/php_codesniffer": "^3.7"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Josantonius\\Cookie\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Josantonius",
+                    "email": "hello@josantonius.dev",
+                    "homepage": "https://josantonius.dev",
+                    "role": "Developer"
+                }
+            ],
+            "description": "PHP library for handling cookies.",
+            "keywords": [
+                "cookies",
+                "php"
+            ],
+            "support": {
+                "discussions": "https://github.com/josantonius/php-cookie/discussions",
+                "issues": "https://github.com/josantonius/php-cookie/issues",
+                "source": "https://github.com/josantonius/php-cookie"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/Josantonius",
+                    "type": "github"
+                }
+            ],
+            "time": "2024-09-11T14:15:04+00:00"
         },
         {
             "name": "phpoption/phpoption",

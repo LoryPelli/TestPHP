@@ -43,4 +43,3 @@ class UserTable extends BaseTable
         return $row['count'] > 0;
     }
 }
-?>
