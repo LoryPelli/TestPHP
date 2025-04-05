@@ -15,6 +15,13 @@ if ($isAPI && $_SERVER['REQUEST_METHOD'] != 'POST') {
     exit(1);
 }
 if (!$exists) {
+    $file = sprintf('%s/public/%s', $_SERVER['DOCUMENT_ROOT'], $url_path);
+    if (is_file($file)) {
+        $type = mime_content_type($file);
+        header(sprintf('Content-Type: %s', $type));
+        readfile($file);
+        exit(0);
+    }
     ServerError::NOT_FOUND->send();
     exit(1);
 }
