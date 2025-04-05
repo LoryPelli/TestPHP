@@ -1,7 +1,6 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" href="/favicon.ico" />
     <?php if (isset($title)): ?>
     <title>TestPHP - <?= $title ?></title>
     <meta name="og:title" content="TestPHP - <?= $title ?>" />
