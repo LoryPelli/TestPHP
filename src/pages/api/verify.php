@@ -1,6 +1,10 @@
 <?php
 session_start();
 require_once 'src/utils/redirect.php';
+if (!isset($_SESSION['email']) || !isset($_SESSION['password'])) {
+    redirect('/verify?error=expired', 308);
+    exit(1);
+}
 $email = $_SESSION['email'];
 $password = $_SESSION['password'];
 $code = $_POST['digit'];
