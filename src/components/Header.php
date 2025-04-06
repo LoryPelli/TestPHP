@@ -1,7 +1,8 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/assets/favicon.ico" />
+    <link rel="stylesheet" href="/assets/global.css" />
     <?php if (isset($title)): ?>
     <title>TestPHP - <?= $title ?></title>
     <meta name="og:title" content="TestPHP - <?= $title ?>" />
@@ -12,5 +13,4 @@
     <meta name="description" content="<?= $description ?>" />
     <meta name="og:description" content="<?= $description ?>" />
     <?php endif; ?>
-    <script src="https://cdn.tailwindcss.com/"></script>
 </head>

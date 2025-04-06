@@ -13,7 +13,7 @@ require_once 'src/cookies/index.php'; ?>
             <button class="p-1 border-2 border-black rounded-md">Register!</button>
         </a>
         <?php else: ?>
-        <img src="/user.png" class="cursor-pointer size-10" />
+        <img src="/assets/user.png" class="cursor-pointer size-10" />
         <?php endif; ?>
     </div>
 </nav>    

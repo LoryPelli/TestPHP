@@ -3,6 +3,9 @@ require_once 'src/enums/ServerError.php';
 require_once 'src/utils/redirect.php';
 $url_path = parse_url($_SERVER['REQUEST_URI'])['path'];
 $file = trim($url_path, '/') ?: 'index';
+if (str_starts_with($file, 'assets')) {
+    return false;
+}
 if ($file == 'verify' && $_SERVER['REQUEST_METHOD'] != 'POST') {
     redirect('/');
     exit(1);
@@ -15,13 +18,6 @@ if ($isAPI && $_SERVER['REQUEST_METHOD'] != 'POST') {
     exit(1);
 }
 if (!$exists) {
-    $file = sprintf('%s/public/%s', $_SERVER['DOCUMENT_ROOT'], $url_path);
-    if (is_file($file)) {
-        $type = mime_content_type($file);
-        header(sprintf('Content-Type: %s', $type));
-        readfile($file);
-        exit(0);
-    }
     ServerError::NOT_FOUND->send();
     exit(1);
 }
