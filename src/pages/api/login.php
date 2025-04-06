@@ -13,7 +13,7 @@ if (!$users->check($email, $password)) {
 }
 $user = $users->get($email, $password);
 if ($user) {
-    $cookies->set('email', $user->getEmail());
-    $cookies->set('password', $user->getPassword());
+    $cookies->set('email', $user->get_email());
+    $cookies->set('password', $user->get_password());
 }
 redirect('/');

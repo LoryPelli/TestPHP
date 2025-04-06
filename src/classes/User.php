@@ -8,11 +8,11 @@ class User
         $this->email = $email;
         $this->password = $password;
     }
-    public function getEmail(): string
+    public function get_email(): string
     {
         return $this->email;
     }
-    public function getPassword(): string
+    public function get_password(): string
     {
         return $this->password;
     }
