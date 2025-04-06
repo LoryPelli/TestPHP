@@ -10,16 +10,17 @@ class UserTable extends BaseTable
             "CREATE TABLE IF NOT EXISTS users (
             id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
             email TEXT NOT NULL UNIQUE,
-            password TEXT NOT NULL
-        );"
+            password TEXT NOT NULL,
+            username TEXT NOT NULL
+        )"
         );
     }
-    public function new(string $email, string $password)
+    public function new(string $email, string $password, string $username)
     {
         $res = $this->conn->prepare(
-            'INSERT INTO users (email, password) VALUES (?, ?)'
+            'INSERT INTO users (email, password, username) VALUES (?, ?, ?)'
         );
-        $res->execute([$email, $password]);
+        $res->execute([$email, $password, $username]);
     }
     public function check(string $email, string $password): bool
     {
@@ -48,5 +49,14 @@ class UserTable extends BaseTable
             return new User($row['email'], $row['password']);
         }
         return null;
+    }
+    public function get_username(string $email): string
+    {
+        $res = $this->conn->prepare(
+            'SELECT username FROM users WHERE email = ?'
+        );
+        $res->execute([$email]);
+        $row = $res->fetch(PDO::FETCH_ASSOC);
+        return $row['username'];
     }
 }

@@ -24,4 +24,8 @@ return [
         'title' => 'Logout',
         'description' => 'Are you sure you want to logout?',
     ],
+    'settings' => [
+        'title' => 'Settings',
+        'description' => 'Manage your account settings',
+    ],
 ];

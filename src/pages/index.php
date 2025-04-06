@@ -12,6 +12,9 @@
         </a>
         <?php else: ?>
         <img src="/assets/user.png" class="size-10" />
+        <a href="/settings">
+            <button class="p-1 border-2 rounded-md cursor-pointer">Settings!</button>
+        </a>
         <a href="/logout">
             <button class="p-1 border-2 rounded-md cursor-pointer">Logout!</button>
         </a>

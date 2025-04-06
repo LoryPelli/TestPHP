@@ -3,6 +3,7 @@ session_start();
 require_once 'src/classes/UserTable.php';
 $email = $_POST['email'];
 $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
+$username = $_POST['username'];
 $users = new UserTable();
 if ($users->check_email($email)) {
     redirect('/register?error=already_exists');
@@ -11,6 +12,7 @@ if ($users->check_email($email)) {
 $code = mt_rand(100000, 999999);
 $_SESSION['email'] = $email;
 $_SESSION['password'] = $password;
+$_SESSION['username'] = $username;
 $_SESSION['code'] = $code;
 require_once 'vendor/autoload.php';
 Dotenv\Dotenv::createImmutable($_SERVER['DOCUMENT_ROOT'])->load();
