@@ -1,16 +1,12 @@
 <?php
 session_start();
-if (
-    !isset($_SESSION['email']) ||
-    !isset($_SESSION['password']) ||
-    !isset($_SESSION['username'])
-) {
+$email = $_SESSION['email'] ?? '';
+$password = $_SESSION['password'] ?? '';
+$username = $_SESSION['username'] ?? '';
+if (!$email || !$password || !$username) {
     redirect('/verify?error=expired', 308);
     exit(1);
 }
-$email = $_SESSION['email'];
-$password = $_SESSION['password'];
-$username = $_SESSION['username'];
 $code = $_POST['digit'];
 $userCode = implode('', $code);
 $serverCode = $_SESSION['code'];

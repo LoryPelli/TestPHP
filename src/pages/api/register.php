@@ -2,6 +2,10 @@
 session_start();
 require_once 'src/classes/UserTable.php';
 $email = $_POST['email'];
+if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    redirect('/register?error=invalid_email');
+    exit(1);
+}
 $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
 $username = $_POST['username'];
 $users = new UserTable();
