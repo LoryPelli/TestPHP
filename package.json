@@ -2,7 +2,7 @@
     "scripts": {
         "dev": "pnpm '/dev:.*/'",
         "dev:server": "make",
-        "dev:css": "pnpx @tailwindcss/cli -i ./src/styles/global.css -o ./public/global.css -w",
+        "dev:css": "pnpm tailwindcss -i ./src/styles/global.css -o ./assets/global.css -w",
         "format": "prettier --write ."
     },
     "devDependencies": {
