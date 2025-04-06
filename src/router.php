@@ -1,10 +1,18 @@
 <?php
 require_once 'src/enums/ServerError.php';
+require_once 'src/cookies/index.php';
 require_once 'src/utils/redirect.php';
 $url_path = parse_url($_SERVER['REQUEST_URI'])['path'];
 $file = trim($url_path, '/') ?: 'index';
 if (str_starts_with($file, 'assets')) {
     return false;
+}
+if (
+    in_array($file, ['index', 'logout']) &&
+    (!$cookies->get('email') || !$cookies->get('password'))
+) {
+    redirect('/login');
+    exit(1);
 }
 if ($file == 'verify' && $_SERVER['REQUEST_METHOD'] != 'POST') {
     redirect('/');

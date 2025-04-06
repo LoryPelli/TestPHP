@@ -14,7 +14,7 @@ $error = $_GET['error'] ?? '';
     </div>
     <?php endif; ?>
     <?php include_once 'src/components/Fields.php'; ?>
-    <button type="submit" class="p-1 border-2 border-black rounded-md"><?= $isLogin
+    <button type="submit" class="p-1 border-2 rounded-md cursor-pointer"><?= $isLogin
         ? 'Login!'
         : 'Register!' ?></button>
     <?php if (!$isLogin): ?>

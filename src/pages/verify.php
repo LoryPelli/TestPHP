@@ -13,9 +13,9 @@ $error = $_GET['error'] ?? '';
     <div class="flex gap-x-1">
         <?php foreach (range(0, 5) as $_): ?>
             <input name="digit[]" autocomplete="off" type="number" min="0" max="9" required
-                class="w-12 p-1 text-center border-2 border-black rounded-md " />
+                class="w-12 p-1 text-center border-2 rounded-md " />
         <?php endforeach; ?>
     </div>
-    <button type="submit" class="p-1 border-2 border-black rounded-md">Verify</button>
+    <button type="submit" class="p-1 border-2 rounded-md cursor-pointer">Verify!</button>
     <script src="/assets/input.js"></script>
 </form>

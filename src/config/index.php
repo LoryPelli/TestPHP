@@ -20,4 +20,8 @@ return [
         'title' => 'Verify',
         'description' => 'Verify your email',
     ],
+    'logout' => [
+        'title' => 'Logout',
+        'description' => 'Are you sure you want to logout?',
+    ],
 ];

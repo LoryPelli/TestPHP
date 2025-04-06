@@ -1,7 +1,6 @@
 <?php
 session_start();
 require_once 'src/classes/UserTable.php';
-require_once 'src/utils/redirect.php';
 $email = $_POST['email'];
 $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
 $users = new UserTable();
