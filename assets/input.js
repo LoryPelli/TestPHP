@@ -1,13 +1,18 @@
 const inputs = document.querySelectorAll('input');
 inputs.forEach((input, i) => {
     input.addEventListener('input', () => {
-        if (input.value.length == 1 && i < inputs.length - 1) {
-            inputs[i + 1].focus();
+        input.value = (input.value[0] || '').replace(/[^0-9]/, '');
+        if (input.value.length == 1) {
+            inputs[i + 1]?.focus();
         }
     });
     input.addEventListener('keydown', (e) => {
-        if (e.key == 'Backspace' && input.value.length == 0 && i > 0) {
-            inputs[i - 1].focus();
+        if (e.key == 'Backspace' && input.value.length == 0) {
+            inputs[i - 1]?.focus();
+        } else if (e.key == 'ArrowLeft') {
+            inputs[i - 1]?.focus();
+        } else if (e.key == 'ArrowRight') {
+            inputs[i + 1]?.focus();
         }
     });
     input.addEventListener('paste', (e) => {
@@ -19,7 +24,7 @@ inputs.forEach((input, i) => {
                 inputs[i + j].value = chars[j];
             }
         }
-        const nextIndex = Math.min(i + chars.length, inputs.length - 1);
-        inputs[nextIndex].focus();
+        const next = Math.min(i + chars.length, inputs.length - 1);
+        inputs[next].focus();
     });
 });
