@@ -15,7 +15,7 @@ class UserTable extends BaseTable
         )"
         );
     }
-    public function new(string $email, string $password, string $username)
+    public function new(string $email, string $password, string $username): void
     {
         $res = $this->conn->prepare(
             'INSERT INTO users (email, password, username) VALUES (?, ?, ?)'

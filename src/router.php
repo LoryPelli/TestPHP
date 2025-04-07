@@ -8,7 +8,7 @@ if (str_starts_with($file, 'assets')) {
     return false;
 }
 if (
-    in_array($file, ['index', 'logout']) &&
+    in_array($file, ['index', 'settings', 'logout']) &&
     (!$cookies->get('email') || !$cookies->get('password'))
 ) {
     redirect('/login');
