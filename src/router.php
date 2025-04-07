@@ -7,9 +7,11 @@ $file = trim($url_path, '/') ?: 'index';
 if (str_starts_with($file, 'assets')) {
     return false;
 }
+$email = $cookies->get('email');
+$password = $cookies->get('password');
 if (
     in_array($file, ['index', 'settings', 'logout']) &&
-    (!$cookies->get('email') || !$cookies->get('password'))
+    (!$email || !$password)
 ) {
     redirect('/login');
     exit(1);
