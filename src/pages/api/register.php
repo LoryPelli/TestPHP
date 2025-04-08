@@ -6,7 +6,13 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     redirect('/register?error=invalid_email');
     exit(1);
 }
-$password = password_hash($_POST['password'], PASSWORD_BCRYPT);
+$password = $_POST['password'];
+$repeat_password = $_POST['repeat_password'];
+if ($password != $repeat_password) {
+    redirect('/register?error=password_match');
+    exit(1);
+}
+$hash = password_hash($_POST['password'], PASSWORD_BCRYPT);
 $username = $_POST['username'];
 $users = new UserTable();
 if ($users->check_email($email)) {
@@ -15,7 +21,7 @@ if ($users->check_email($email)) {
 }
 $code = mt_rand(100000, 999999);
 $_SESSION['email'] = $email;
-$_SESSION['password'] = $password;
+$_SESSION['password'] = $hash;
 $_SESSION['username'] = $username;
 $_SESSION['code'] = $code;
 require_once 'vendor/autoload.php';
