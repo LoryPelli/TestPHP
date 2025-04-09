@@ -9,7 +9,7 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 $password = $_POST['password'];
 $repeat_password = $_POST['repeat_password'];
 if ($password != $repeat_password) {
-    redirect('/register?error=password_match');
+    redirect('/register?error=passwords_not_match');
     exit(1);
 }
 $hash = password_hash($_POST['password'], PASSWORD_BCRYPT);
