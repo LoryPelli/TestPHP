@@ -18,4 +18,8 @@ $isLogin = $type == Type::Login;
 <span>Username:</span>
 <input name="username" autocomplete="off" required class="p-1 border-2 rounded-md" />
 <?php endif; ?>
+<script>
+    const show = `<?= file_get_contents('svg/show.php') ?>`;
+    const hide = `<?= file_get_contents('svg/hide.php') ?>`;
+</script>
 <script src="/assets/toggle.js"></script>
