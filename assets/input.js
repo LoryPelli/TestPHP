@@ -1,17 +1,25 @@
 const inputs = document.querySelectorAll('input');
 inputs.forEach((input, i) => {
+    if (i != 0 && input.value.length == 0) {
+        input.disabled = true;
+    }
     input.addEventListener('input', () => {
         input.value = (input.value[0] || '').replace(/[^0-9]/, '');
         if (input.value.length == 1) {
+            (inputs[i + 1] || {}).disabled = false;
             inputs[i + 1]?.focus();
         }
     });
     input.addEventListener('keydown', (e) => {
-        if (e.key == 'Backspace' && input.value.length == 0) {
+        if (i != 0 && e.key == 'Backspace' && input.value.length == 0) {
+            input.disabled = true;
+            (inputs[i - 1] || {}).disabled = false;
             inputs[i - 1]?.focus();
         } else if (e.key == 'ArrowLeft') {
+            (inputs[i - 1] || {}).disabled = false;
             inputs[i - 1]?.focus();
         } else if (e.key == 'ArrowRight') {
+            (inputs[i + 1] || {}).disabled = false;
             inputs[i + 1]?.focus();
         }
     });
@@ -21,10 +29,9 @@ inputs.forEach((input, i) => {
         const chars = data.trim().split('');
         for (let j = 0; j < chars.length; j++) {
             if (i + j < inputs.length) {
+                inputs[i + j].disabled = false;
                 inputs[i + j].value = chars[j];
             }
         }
-        const next = Math.min(i + chars.length, inputs.length - 1);
-        inputs[next].focus();
     });
 });
