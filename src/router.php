@@ -43,8 +43,10 @@ if (!$isAPI) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
-    <?php include_once 'src/components/Header.php'; ?>
+<?php include_once 'src/components/Header.php'; ?>
+
 <body class="flex flex-col h-screen">
     <?php require_once $path; ?>
 </body>
+
 </html>

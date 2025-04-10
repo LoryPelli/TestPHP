@@ -3,7 +3,7 @@
     <div class="flex gap-x-1">
         <button type="submit" class="p-1 border-2 rounded-md cursor-pointer">Yes!</button>
         <a href="/">
-            <button type="button" class="p-1 border-2 rounded-md cursor-pointer">No!</button>            
+            <button type="button" class="p-1 border-2 rounded-md cursor-pointer">No!</button>
         </a>
     </div>
 </form>

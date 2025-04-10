@@ -9,17 +9,18 @@ $error = $_GET['error'] ?? '';
     $isLogin ? 'login' : 'register'
 ) ?>">
     <?php if (isset($messages[$error])): ?>
-    <div class="p-2 font-bold text-white bg-red-500 rounded-md">
-        <span><?= $messages[$error] ?>!</span>
-    </div>
+        <div class="p-2 font-bold text-white bg-red-500 rounded-md">
+            <span><?= $messages[$error] ?>!</span>
+        </div>
     <?php endif; ?>
     <?php include_once 'src/components/Fields.php'; ?>
     <button type="submit" class="p-1 border-2 rounded-md cursor-pointer"><?= $isLogin
         ? 'Login!'
         : 'Register!' ?></button>
     <?php if (!$isLogin): ?>
-    <span>Already have an account? You can <a href="/login" class="text-blue-600 hover:underline">Login here</a>!</span>
+        <span>Already have an account? You can <a href="/login" class="text-blue-600 hover:underline">Login here</a>!</span>
     <?php else: ?>
-    <span>Don't have an account? You can <a href="/register" class="text-blue-600 hover:underline">Register here</a>!</span>
+        <span>Don't have an account? You can <a href="/register" class="text-blue-600 hover:underline">Register
+                here</a>!</span>
     <?php endif; ?>
 </form>
