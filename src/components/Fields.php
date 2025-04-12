@@ -7,13 +7,13 @@ $isLogin = $type == Type::Login;
 <span>Password:</span>
 <div class="flex flex-row-reverse">
     <input name="password" autocomplete="off" type="password" required class="p-1 pr-8 border-2 rounded-md w-60" />
-    <button type="button" class="absolute p-1.5 cursor-pointer"></button>
+    <button type="button" tabindex="-1" class="absolute p-1.5 cursor-pointer"></button>
 </div>
 <?php if (!$isLogin): ?>
     <span>Repeat Password:</span>
     <div class="flex flex-row-reverse">
         <input name="repeat_password" autocomplete="off" type="password" class="p-1 pr-8 border-2 rounded-md w-60" />
-        <button type="button" class="absolute p-1.5 cursor-pointer"></button>
+        <button type="button" tabindex="-1" class="absolute p-1.5 cursor-pointer"></button>
     </div>
     <span>Username:</span>
     <input name="username" autocomplete="off" required class="p-1 border-2 rounded-md w-60" />
