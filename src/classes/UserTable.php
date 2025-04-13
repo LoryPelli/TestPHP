@@ -42,7 +42,7 @@ class UserTable extends BaseTable
     }
     public function get(string $email, string $password): User|null
     {
-        $res = $this->conn->prepare('SELECT * FROM users WHERE email = ?');
+        $res = $this->conn->prepare('SELECT email, password FROM users WHERE email = ?');
         $res->execute([$email]);
         $row = $res->fetch(PDO::FETCH_ASSOC);
         if (password_verify($password, $row['password'])) {
