@@ -11,7 +11,8 @@ class UserTable extends BaseTable
             id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
             email TEXT NOT NULL UNIQUE,
             password TEXT NOT NULL,
-            username TEXT NOT NULL
+            username TEXT NOT NULL,
+            avatar TEXT NOT NULL DEFAULT ''
         )"
         );
     }
@@ -42,7 +43,9 @@ class UserTable extends BaseTable
     }
     public function get(string $email, string $password): User|null
     {
-        $res = $this->conn->prepare('SELECT email, password FROM users WHERE email = ?');
+        $res = $this->conn->prepare(
+            'SELECT email, password FROM users WHERE email = ?'
+        );
         $res->execute([$email]);
         $row = $res->fetch(PDO::FETCH_ASSOC);
         if (password_verify($password, $row['password'])) {
@@ -58,5 +61,26 @@ class UserTable extends BaseTable
         $res->execute([$email]);
         $row = $res->fetch(PDO::FETCH_ASSOC);
         return $row['username'];
+    }
+    public function get_avatar(string $email): string
+    {
+        $res = $this->conn->prepare('SELECT avatar FROM users WHERE email = ?');
+        $res->execute([$email]);
+        $row = $res->fetch(PDO::FETCH_ASSOC);
+        return $row['avatar'];
+    }
+    public function set_username(string $email, string $username): void
+    {
+        $res = $this->conn->prepare(
+            'UPDATE users SET username = ? WHERE email = ?'
+        );
+        $res->execute([$username, $email]);
+    }
+    public function set_avatar(string $email, string $avatar): void
+    {
+        $res = $this->conn->prepare(
+            'UPDATE users SET avatar = ? WHERE email = ?'
+        );
+        $res->execute([$avatar, $email]);
     }
 }

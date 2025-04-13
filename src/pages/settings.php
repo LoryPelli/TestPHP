@@ -9,6 +9,8 @@ $email = $cookies->get('email');
         $email
     ) ?>" class="p-1 border-2 rounded-md" />
     <span>Avatar URL</span>
-    <input name="avatar" autocomplete="off" type="url" class="p-1 border-2 rounded-md" />
+    <input name="avatar" autocomplete="off" type="url" value="<?= $users->get_avatar(
+        $email
+    ) ?>" class="p-1 border-2 rounded-md" />
     <button type="submit" class="p-1 border-2 rounded-md cursor-pointer">Save!</button>
 </form>
