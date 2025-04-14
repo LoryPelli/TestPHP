@@ -1,19 +1,24 @@
 <?php
 require_once 'src/classes/BaseTable.php';
 require_once 'src/classes/User.php';
+$constants = require_once 'src/utils/constants.php';
 class UserTable extends BaseTable
 {
     public function __construct()
     {
+        global $constants;
         parent::__construct();
         $this->conn->query(
-            "CREATE TABLE IF NOT EXISTS users (
+            sprintf(
+                "CREATE TABLE IF NOT EXISTS users (
             id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
             email TEXT NOT NULL UNIQUE,
             password TEXT NOT NULL,
-            username TEXT NOT NULL,
+            username VARCHAR(%d) NOT NULL,
             avatar TEXT NOT NULL DEFAULT ''
-        )"
+        )",
+                $constants['USERNAME_MAX_LENGTH']
+            )
         );
     }
     public function new(string $email, string $password, string $username): void

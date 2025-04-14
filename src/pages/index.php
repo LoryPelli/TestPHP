@@ -18,7 +18,7 @@ $password = $cookies->get('password');
             </a>
         <?php else: ?>
             <img src="<?= $users->get_avatar($email) ?:
-                '/assets/user.png' ?>" class="size-10" />
+                '/assets/user.png' ?>" class="rounded-full size-10" />
             <span><?= $users->get_username($email) ?></span>
             <a href="/settings">
                 <button class="p-1 border-2 rounded-md cursor-pointer">Settings!</button>

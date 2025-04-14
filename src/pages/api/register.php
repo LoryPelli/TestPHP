@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once 'src/classes/UserTable.php';
+$constants = require_once 'src/utils/constants.php';
 $email = $_POST['email'];
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     redirect('/register?error=invalid_email');
@@ -14,6 +15,10 @@ if ($password != $repeat_password) {
 }
 $hash = password_hash($_POST['password'], PASSWORD_BCRYPT);
 $username = $_POST['username'];
+if (strlen($username) > $constants['USERNAME_MAX_LENGTH']) {
+    redirect('/register?error=too_long');
+    exit(1);
+}
 $users = new UserTable();
 if ($users->check_email($email)) {
     redirect('/register?error=already_exists');

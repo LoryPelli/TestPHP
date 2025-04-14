@@ -1,6 +1,7 @@
 <?php
 require_once 'src/classes/UserTable.php';
 require_once 'src/enums/UserError.php';
+$constants = require_once 'src/utils/constants.php';
 $users = new UserTable();
 $email = $cookies->get('email');
 $error = $_GET['error'] ?? '';
@@ -12,9 +13,11 @@ $error = $_GET['error'] ?? '';
         </div>
     <?php endif; ?>
     <span>Username:</span>
-    <input name="username" autocomplete="off" value="<?= $users->get_username(
-        $email
-    ) ?>" class="p-1 border-2 rounded-md" />
+    <input name="username" autocomplete="off" maxlength="<?= $constants[
+        'USERNAME_MAX_LENGTH'
+    ] ?>" value="<?= $users->get_username(
+    $email
+) ?>" class="p-1 border-2 rounded-md" />
     <span>Avatar URL</span>
     <input name="avatar" autocomplete="off" type="url" value="<?= $users->get_avatar(
         $email
