@@ -1,9 +1,5 @@
 <?php
-require_once 'src/classes/UserTable.php';
 require_once 'src/enums/UserError.php';
-$constants = require_once 'src/utils/constants.php';
-$users = new UserTable();
-$email = $cookies->get('email');
 $error = $_GET['error'] ?? '';
 ?>
 <form method="POST" class="flex flex-col items-center justify-center h-screen gap-y-1" action="/api/settings">

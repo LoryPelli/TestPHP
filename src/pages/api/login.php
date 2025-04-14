@@ -6,7 +6,6 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     exit(1);
 }
 $password = $_POST['password'];
-$users = new UserTable();
 if (!$users->check_email($email)) {
     redirect('/login?error=not_found');
     exit(1);
