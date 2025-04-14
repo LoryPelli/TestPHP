@@ -5,16 +5,10 @@ $isLogin = $type == Type::Login;
 <span>Email:</span>
 <input name="email" autocomplete="off" type="email" required class="p-1 border-2 rounded-md w-60" />
 <span>Password:</span>
-<div class="flex flex-row-reverse">
-    <input name="password" autocomplete="off" type="password" required class="p-1 pr-8 border-2 rounded-md w-60" />
-    <button type="button" tabindex="-1" class="absolute p-1.5 cursor-pointer"></button>
-</div>
+<?php include_once 'src/components/Toggle.php'; ?>
 <?php if (!$isLogin): ?>
     <span>Repeat Password:</span>
-    <div class="flex flex-row-reverse">
-        <input name="repeat_password" autocomplete="off" type="password" class="p-1 pr-8 border-2 rounded-md w-60" />
-        <button type="button" tabindex="-1" class="absolute p-1.5 cursor-pointer"></button>
-    </div>
+    <?php include_once 'src/components/Toggle.php'; ?>
     <span>Username:</span>
     <input name="username" autocomplete="off" required class="p-1 border-2 rounded-md w-60" />
 <?php endif; ?>

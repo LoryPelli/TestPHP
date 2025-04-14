@@ -8,6 +8,7 @@ enum UserError: string
     case PASSWORDS_NOT_MATCH = 'Passwords do not match';
     case WRONG_CODE = 'Your verification code is not valid';
     case EXPIRED = 'Verification code expired';
+    case INVALID_URL = 'The URL is not valid';
 }
 $messages = [
     'already_exists' => UserError::ALREADY_EXISTS->value,
@@ -17,4 +18,5 @@ $messages = [
     'passwords_not_match' => UserError::PASSWORDS_NOT_MATCH->value,
     'wrong_code' => UserError::WRONG_CODE->value,
     'expired' => UserError::EXPIRED->value,
+    'invalid_url' => UserError::INVALID_URL->value,
 ];

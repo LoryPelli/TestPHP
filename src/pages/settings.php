@@ -1,9 +1,16 @@
 <?php
 require_once 'src/classes/UserTable.php';
+require_once 'src/enums/UserError.php';
 $users = new UserTable();
 $email = $cookies->get('email');
+$error = $_GET['error'] ?? '';
 ?>
 <form method="POST" class="flex flex-col items-center justify-center h-screen gap-y-1" action="/api/settings">
+    <?php if (isset($messages[$error])): ?>
+        <div class="p-2 font-bold text-white bg-red-500 rounded-md">
+            <span><?= $messages[$error] ?>!</span>
+        </div>
+    <?php endif; ?>
     <span>Username:</span>
     <input name="username" autocomplete="off" value="<?= $users->get_username(
         $email
