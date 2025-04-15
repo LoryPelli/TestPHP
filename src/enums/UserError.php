@@ -11,7 +11,7 @@ enum UserError: string
     case INVALID_URL = 'The URL is not valid';
     case TOO_LONG = 'Username too long';
 }
-$messages = [
+return [
     'already_exists' => UserError::ALREADY_EXISTS->value,
     'not_found' => UserError::NOT_FOUND->value,
     'invalid_email' => UserError::INVALID_EMAIL->value,

@@ -14,7 +14,6 @@ if ($userCode != $serverCode) {
     redirect('/verify?error=wrong_code', 308);
     exit(1);
 }
-require_once 'src/classes/UserTable.php';
 $users->new($email, $password, $username);
 session_destroy();
 redirect('/login');

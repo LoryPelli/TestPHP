@@ -1,5 +1,5 @@
 <?php
-require_once 'src/enums/UserError.php';
+$messages = require_once 'src/enums/UserError.php';
 $error = $_GET['error'] ?? '';
 ?>
 <form method="POST" class="flex flex-col items-center justify-center h-screen gap-y-1" action="/api/verify">

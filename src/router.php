@@ -1,8 +1,10 @@
 <?php
 require_once 'src/enums/ServerError.php';
-require_once 'src/cookies/index.php';
+$cookies = require_once 'src/cookies/index.php';
 require_once 'src/utils/redirect.php';
 require_once 'src/classes/UserTable.php';
+Dotenv\Dotenv::createImmutable($_SERVER['DOCUMENT_ROOT'])->load();
+$resend = Resend::client($_ENV['APIKEY']);
 $url_path = parse_url($_SERVER['REQUEST_URI'])['path'];
 $file = trim($url_path, '/') ?: 'index';
 if (str_starts_with($file, 'assets')) {

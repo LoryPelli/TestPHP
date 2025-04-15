@@ -1,6 +1,6 @@
 <?php
 require_once 'src/enums/Type.php';
-require_once 'src/enums/UserError.php';
+$messages = require_once 'src/enums/UserError.php';
 $isLogin = $type == Type::Login;
 $error = $_GET['error'] ?? '';
 ?>

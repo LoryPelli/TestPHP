@@ -26,9 +26,6 @@ $_SESSION['email'] = $email;
 $_SESSION['password'] = $hash;
 $_SESSION['username'] = $username;
 $_SESSION['code'] = $code;
-require_once 'vendor/autoload.php';
-Dotenv\Dotenv::createImmutable($_SERVER['DOCUMENT_ROOT'])->load();
-$resend = Resend::client($_ENV['APIKEY']);
 $resend->emails->send([
     'from' => $_ENV['EMAIL'],
     'to' => $email,

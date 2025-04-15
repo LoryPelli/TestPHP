@@ -1,5 +1,4 @@
 <?php
-require_once 'src/classes/UserTable.php';
 $email = $_POST['email'];
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     redirect('/login?error=invalid_email');
