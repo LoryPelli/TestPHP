@@ -28,4 +28,12 @@ return [
         'title' => 'Settings',
         'description' => 'Manage your account settings',
     ],
+    'reset' => [
+        'title' => 'Reset Password',
+        'description' => 'Reset your password',
+    ],
+    'new' => [
+        'title' => 'New Password',
+        'description' => 'Choose your new your password',
+    ],
 ];

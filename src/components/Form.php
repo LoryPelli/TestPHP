@@ -23,4 +23,5 @@ $error = $_GET['error'] ?? '';
         <span>Don't have an account? You can <a href="/register" class="text-blue-600 hover:underline">Register
                 here</a>!</span>
     <?php endif; ?>
+    <span>Forgot password? No problem, you can <a href="/reset" class="text-blue-600 hover:underline">Reset here</a>!</span>
 </form>

@@ -88,4 +88,11 @@ class UserTable extends BaseTable
         );
         $res->execute([$avatar, $email]);
     }
+    public function set_password(string $email, string $password): void
+    {
+        $res = $this->conn->prepare(
+            'UPDATE users SET password = ? WHERE email = ?'
+        );
+        $res->execute([$password, $email]);
+    }
 }

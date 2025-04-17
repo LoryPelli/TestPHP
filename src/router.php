@@ -22,7 +22,10 @@ if (
     redirect('/');
     exit(1);
 }
-if ($file == 'verify' && $_SERVER['REQUEST_METHOD'] != 'POST') {
+if (
+    ($file == 'verify' || $file == 'new') &&
+    $_SERVER['REQUEST_METHOD'] != 'POST'
+) {
     redirect('/');
     exit(1);
 }

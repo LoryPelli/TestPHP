@@ -26,6 +26,7 @@ $_SESSION['email'] = $email;
 $_SESSION['password'] = $hash;
 $_SESSION['username'] = $username;
 $_SESSION['code'] = $code;
+$_SESSION['type'] = 'register';
 $resend->emails->send([
     'from' => $_ENV['EMAIL'],
     'to' => $email,
