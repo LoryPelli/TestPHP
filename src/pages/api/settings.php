@@ -13,4 +13,5 @@ if ($avatar != '' && !filter_var($avatar, FILTER_VALIDATE_URL)) {
 }
 $users->set_username($email, $username);
 $users->set_avatar($email, $avatar);
+session_destroy();
 redirect('/');

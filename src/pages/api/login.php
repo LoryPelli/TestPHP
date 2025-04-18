@@ -21,4 +21,5 @@ if ($user) {
     $cookies->set('email', $user->get_email());
     $cookies->set('password', $user->get_password());
 }
+session_destroy();
 redirect('/');
