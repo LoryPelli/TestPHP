@@ -13,7 +13,7 @@ if (!$users->check_email($email)) {
 }
 if (!$users->check($email, $password)) {
     $_SESSION['error'] = 'incorrect_password';
-    redirect('/login?error=incorrect_password');
+    redirect('/login');
     exit(1);
 }
 $user = $users->get($email, $password);

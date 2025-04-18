@@ -8,7 +8,7 @@ if (strlen($username) > $constants['USERNAME_MAX_LENGTH']) {
 $avatar = $_POST['avatar'];
 if ($avatar != '' && !filter_var($avatar, FILTER_VALIDATE_URL)) {
     $_SESSION['error'] = 'invalid_url';
-    redirect('/settings?error=invalid_url');
+    redirect('/settings');
     exit(1);
 }
 $users->set_username($email, $username);
