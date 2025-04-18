@@ -7,14 +7,16 @@ if ($type == 'register') {
     $username = $_SESSION['username'] ?? '';
 }
 if (!$email || ($type == 'register' && (!$password || !$username))) {
-    redirect('/verify?error=expired', 308);
+    $_SESSION['error'] = 'expired';
+    redirect('/verify', 308);
     exit(1);
 }
 $code = $_POST['digit'];
 $userCode = implode('', $code);
 $serverCode = $_SESSION['code'] ?? '';
 if ($userCode != $serverCode) {
-    redirect('/verify?error=wrong_code', 308);
+    $_SESSION['error'] = 'wrong_code';
+    redirect('/verify', 308);
     exit(1);
 }
 switch ($type) {

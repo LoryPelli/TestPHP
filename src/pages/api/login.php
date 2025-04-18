@@ -1,15 +1,18 @@
 <?php
 $email = $_POST['email'];
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-    redirect('/login?error=invalid_email');
+    $_SESSION['error'] = 'invalid_email';
+    redirect('/login');
     exit(1);
 }
 $password = $_POST['password'];
 if (!$users->check_email($email)) {
-    redirect('/login?error=not_found');
+    $_SESSION['error'] = 'not_found';
+    redirect('/login');
     exit(1);
 }
 if (!$users->check($email, $password)) {
+    $_SESSION['error'] = 'incorrect_password';
     redirect('/login?error=incorrect_password');
     exit(1);
 }

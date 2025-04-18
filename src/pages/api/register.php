@@ -2,23 +2,27 @@
 session_start();
 $email = $_POST['email'];
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-    redirect('/register?error=invalid_email');
+    $_SESSION['error'] = 'invalid_email';
+    redirect('/register');
     exit(1);
 }
 $password = $_POST['password'];
 $repeat_password = $_POST['repeat_password'];
 if ($password != $repeat_password) {
-    redirect('/register?error=passwords_not_match');
+    $_SESSION['error'] = 'passwords_not_match';
+    redirect('/register');
     exit(1);
 }
 $hash = password_hash($_POST['password'], PASSWORD_BCRYPT);
 $username = $_POST['username'];
 if (strlen($username) > $constants['USERNAME_MAX_LENGTH']) {
-    redirect('/register?error=too_long');
+    $_SESSION['error'] = 'username_too_long';
+    redirect('/register');
     exit(1);
 }
 if ($users->check_email($email)) {
-    redirect('/register?error=already_exists');
+    $_SESSION['error'] = 'already_exists';
+    redirect('/register');
     exit(1);
 }
 $code = mt_rand(100000, 999999);

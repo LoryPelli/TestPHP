@@ -9,7 +9,7 @@ enum UserError: string
     case WRONG_CODE = 'Your verification code is not valid';
     case EXPIRED = 'Verification code expired';
     case INVALID_URL = 'The URL is not valid';
-    case TOO_LONG = 'Username too long';
+    case USERNAME_TOO_LONG = 'Username too long';
 }
 return [
     'already_exists' => UserError::ALREADY_EXISTS->value,
@@ -20,5 +20,5 @@ return [
     'wrong_code' => UserError::WRONG_CODE->value,
     'expired' => UserError::EXPIRED->value,
     'invalid_url' => UserError::INVALID_URL->value,
-    'too_long' => UserError::TOO_LONG->value,
+    'username_too_long' => UserError::USERNAME_TOO_LONG->value,
 ];
