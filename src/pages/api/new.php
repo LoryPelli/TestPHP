@@ -1,5 +1,4 @@
 <?php
-session_start();
 $email = $_SESSION['email'] ?? '';
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     $_SESSION['error'] = 'invalid_email';

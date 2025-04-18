@@ -1,5 +1,4 @@
 <?php
-session_start();
 $email = $_POST['email'];
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     $_SESSION['error'] = 'invalid_email';
@@ -15,10 +14,16 @@ $code = mt_rand(100000, 999999);
 $_SESSION['email'] = $email;
 $_SESSION['code'] = $code;
 $_SESSION['type'] = 'reset';
-$resend->emails->send([
-    'from' => $_ENV['EMAIL'],
-    'to' => $email,
-    'subject' => 'Verification Code',
-    'text' => sprintf('Your verification code is: %s', $code),
-]);
+try {
+    $resend->emails->send([
+        'from' => $_ENV['EMAIL'],
+        'to' => $email,
+        'subject' => 'Verification Code',
+        'text' => sprintf('Your verification code is: %s', $code),
+    ]);
+} catch (Exception $_) {
+    $_SESSION['error'] = 'invalid_email';
+    redirect('/reset');
+    exit(1);
+}
 redirect('/verify', 308);

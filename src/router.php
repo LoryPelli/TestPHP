@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once 'src/enums/ServerError.php';
 $cookies = require_once 'src/cookies/index.php';
 require_once 'src/utils/redirect.php';
@@ -59,3 +60,4 @@ if (!$isAPI) {
 </body>
 
 </html>
+<?php unset($_SESSION['error']); ?>

@@ -3,13 +3,13 @@ enum UserError: string
 {
     case ALREADY_EXISTS = 'This email already exists in the database';
     case NOT_FOUND = 'User not found';
-    case INVALID_EMAIL = 'The email is not in a valid format';
+    case INVALID_EMAIL = 'The email is not valid';
     case INCORRECT_PASSWORD = 'The user exists but the password is not correct';
     case PASSWORDS_NOT_MATCH = 'Passwords do not match';
     case WRONG_CODE = 'Your verification code is not valid';
     case EXPIRED = 'Verification code expired';
     case INVALID_URL = 'The URL is not valid';
-    case USERNAME_TOO_LONG = 'Username too long';
+    case USERNAME_TOO_LONG = 'The username is too long';
 }
 return [
     'already_exists' => UserError::ALREADY_EXISTS->value,

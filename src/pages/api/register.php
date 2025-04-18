@@ -1,5 +1,4 @@
 <?php
-session_start();
 $email = $_POST['email'];
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     $_SESSION['error'] = 'invalid_email';
@@ -31,10 +30,16 @@ $_SESSION['password'] = $hash;
 $_SESSION['username'] = $username;
 $_SESSION['code'] = $code;
 $_SESSION['type'] = 'register';
-$resend->emails->send([
-    'from' => $_ENV['EMAIL'],
-    'to' => $email,
-    'subject' => 'Verification Code',
-    'text' => sprintf('Your verification code is: %s', $code),
-]);
+try {
+    $resend->emails->send([
+        'from' => $_ENV['EMAIL'],
+        'to' => $email,
+        'subject' => 'Verification Code',
+        'text' => sprintf('Your verification code is: %s', $code),
+    ]);
+} catch (Exception $_) {
+    $_SESSION['error'] = 'invalid_email';
+    redirect('/register');
+    exit(1);
+}
 redirect('/verify', 308);

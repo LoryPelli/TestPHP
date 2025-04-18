@@ -1,10 +1,8 @@
 <?php
-session_start();
 require_once 'src/enums/Type.php';
 $messages = require_once 'src/enums/UserError.php';
 $isLogin = $type == Type::Login;
 $error = $_SESSION['error'] ?? '';
-session_destroy();
 ?>
 <form method="POST" class="flex flex-col items-center justify-center h-screen gap-y-1" action="<?= sprintf(
     '/api/%s',
