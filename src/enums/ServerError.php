@@ -14,6 +14,7 @@ enum ServerError: int
     {
         $error = $this->value;
         $message = $this->message();
+        http_response_code($error);
         require_once 'src/errors/index.php';
     }
 }
