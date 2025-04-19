@@ -16,6 +16,9 @@ inputs.forEach((input, i) => {
             (inputs[i - 1] || {}).disabled = false;
             inputs[i - 1]?.focus();
         } else if (e.key == 'ArrowLeft') {
+            if (input.value.length == 0) {
+                input.disabled = true;
+            }
             (inputs[i - 1] || {}).disabled = false;
             inputs[i - 1]?.focus();
         } else if (e.key == 'ArrowRight') {
