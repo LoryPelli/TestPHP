@@ -18,10 +18,10 @@ $error = $_SESSION['error'] ?? '';
         ? 'Login!'
         : 'Register!' ?></button>
     <?php if (!$isLogin): ?>
-        <span>Already have an account? You can <a href="/login" class="text-blue-600 hover:underline">Login here</a>!</span>
+        <span>Already have an account? You can <a href="/login" class="text-blue-600 hover:underline">login here</a>!</span>
     <?php else: ?>
-        <span>Don't have an account? You can <a href="/register" class="text-blue-600 hover:underline">Register
+        <span>Don't have an account? You can <a href="/register" class="text-blue-600 hover:underline">register
                 here</a>!</span>
     <?php endif; ?>
-    <span>Forgot password? No problem, you can <a href="/reset" class="text-blue-600 hover:underline">Reset here</a>!</span>
+    <span>Forgot password? No problem, you can <a href="/reset" class="text-blue-600 hover:underline">reset here</a>!</span>
 </form>

@@ -36,4 +36,8 @@ return [
         'title' => 'New Password',
         'description' => 'Choose your new your password',
     ],
+    'delete' => [
+        'title' => 'Delete your Account',
+        'description' => 'Are you sure you want to delete your account?',
+    ],
 ];
