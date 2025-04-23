@@ -9,9 +9,7 @@ $error = $_SESSION['error'] ?? '';
     $isLogin ? 'login' : 'register'
 ) ?>">
     <?php if (isset($messages[$error])): ?>
-        <div class="p-2 font-bold text-white bg-red-500 rounded-md">
-            <span><?= $messages[$error] ?>!</span>
-        </div>
+        <?php include_once 'src/components/Error.php'; ?>
     <?php endif; ?>
     <?php include_once 'src/components/Fields.php'; ?>
     <button type="submit" class="p-1 border-2 rounded-md cursor-pointer"><?= $isLogin
