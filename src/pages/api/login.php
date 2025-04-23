@@ -5,12 +5,12 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     redirect('/login');
     exit(1);
 }
-$password = $_POST['password'];
 if (!$users->check_email($email)) {
     $_SESSION['error'] = 'not_found';
     redirect('/login');
     exit(1);
 }
+$password = $_POST['password'];
 if (!$users->check($email, $password)) {
     $_SESSION['error'] = 'incorrect_password';
     redirect('/login');

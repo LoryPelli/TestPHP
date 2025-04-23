@@ -35,7 +35,7 @@ class UserTable extends BaseTable
         );
         $res->execute([$email]);
         $row = $res->fetch(PDO::FETCH_ASSOC);
-        return password_verify($password, $row['password']);
+        return $row && password_verify($password, $row['password']);
     }
     public function check_email(string $email): bool
     {
@@ -44,7 +44,7 @@ class UserTable extends BaseTable
         );
         $res->execute([$email]);
         $row = $res->fetch(PDO::FETCH_ASSOC);
-        return $row['count'] > 0;
+        return $row && $row['count'] > 0;
     }
     public function get(string $email, string $password): User|null
     {
@@ -53,7 +53,7 @@ class UserTable extends BaseTable
         );
         $res->execute([$email]);
         $row = $res->fetch(PDO::FETCH_ASSOC);
-        if (password_verify($password, $row['password'])) {
+        if ($row && password_verify($password, $row['password'])) {
             return new User($row['email'], $row['password']);
         }
         return null;
@@ -65,14 +65,14 @@ class UserTable extends BaseTable
         );
         $res->execute([$email]);
         $row = $res->fetch(PDO::FETCH_ASSOC);
-        return $row['username'];
+        return $row ? $row['username'] : '';
     }
     public function get_avatar(string $email): string
     {
         $res = $this->conn->prepare('SELECT avatar FROM users WHERE email = ?');
         $res->execute([$email]);
         $row = $res->fetch(PDO::FETCH_ASSOC);
-        return $row['avatar'];
+        return $row ? $row['avatar'] : '';
     }
     public function set_username(string $email, string $username): void
     {

@@ -5,6 +5,11 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     redirect('/register');
     exit(1);
 }
+if ($users->check_email($email)) {
+    $_SESSION['error'] = 'already_exists';
+    redirect('/register');
+    exit(1);
+}
 $password = $_POST['password'];
 $repeat_password = $_POST['repeat_password'];
 if ($password != $repeat_password) {
@@ -16,11 +21,6 @@ $hash = password_hash($_POST['password'], PASSWORD_BCRYPT);
 $username = $_POST['username'];
 if (strlen($username) > $constants['USERNAME_MAX_LENGTH']) {
     $_SESSION['error'] = 'username_too_long';
-    redirect('/register');
-    exit(1);
-}
-if ($users->check_email($email)) {
-    $_SESSION['error'] = 'already_exists';
     redirect('/register');
     exit(1);
 }
