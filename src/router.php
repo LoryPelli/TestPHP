@@ -15,6 +15,15 @@ $email = $cookies->get('email');
 $password = $cookies->get('password');
 $users = new UserTable();
 if (
+    in_array($file, ['login', 'register']) &&
+    $email &&
+    $password &&
+    $users->check_email($email)
+) {
+    redirect('/');
+    exit(1);
+}
+if (
     in_array($file, ['settings', 'logout']) &&
     (!$email || !$password || !$users->check_email($email))
 ) {
