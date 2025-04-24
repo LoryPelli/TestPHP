@@ -24,7 +24,7 @@ if (
     exit(1);
 }
 if (
-    in_array($file, ['settings', 'logout']) &&
+    in_array($file, ['settings', 'logout', 'delete']) &&
     (!$email || !$password || !$users->check_email($email))
 ) {
     $cookies->remove('email');
