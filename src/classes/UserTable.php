@@ -95,4 +95,9 @@ class UserTable extends BaseTable
         );
         $res->execute([$password, $email]);
     }
+    public function delete(string $email): void
+    {
+        $res = $this->conn->prepare('DELETE FROM users WHERE email = ?');
+        $res->execute([$email]);
+    }
 }
