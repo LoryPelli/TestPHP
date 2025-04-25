@@ -9,12 +9,12 @@ $error = $_SESSION['error'] ?? '';
     <span>Username:</span>
     <input name="username" autocomplete="off" maxlength="<?= $constants[
         'USERNAME_MAX_LENGTH'
-    ] ?>" value="<?= $users->get_username(
-    $email
+    ] ?>" value="<?= htmlspecialchars(
+    $users->get_username($email)
 ) ?>" class="p-1 border-2 rounded-md" />
     <span>Avatar URL</span>
-    <input name="avatar" autocomplete="off" type="url" value="<?= $users->get_avatar(
-        $email
+    <input name="avatar" autocomplete="off" type="url" value="<?= htmlspecialchars(
+        $users->get_avatar($email)
     ) ?>" class="p-1 border-2 rounded-md" />
     <span>Do you want to reset your password? You can <a href="/reset" class="text-blue-600 hover:underline">do it here</a>!</span>
     <details>

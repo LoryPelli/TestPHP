@@ -11,9 +11,9 @@
                 <button class="p-1 border-2 rounded-md cursor-pointer">Register!</button>
             </a>
         <?php else: ?>
-            <img src="<?= $users->get_avatar($email) ?:
+            <img src="<?= htmlspecialchars($users->get_avatar($email)) ?:
                 '/assets/user.png' ?>" class="rounded-full size-10" />
-            <span><?= $users->get_username($email) ?></span>
+            <span><?= htmlspecialchars($users->get_username($email)) ?></span>
             <a href="/settings">
                 <button class="p-1 border-2 rounded-md cursor-pointer">Settings!</button>
             </a>
