@@ -1,5 +1,5 @@
 <?php
-session_name("SESSION");
+session_name('session');
 session_start();
 require_once 'src/enums/ServerError.php';
 $cookies = require_once 'src/cookies/index.php';
