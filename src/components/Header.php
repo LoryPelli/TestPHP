@@ -1,8 +1,8 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" href="/assets/favicon.ico" />
-    <link rel="stylesheet" href="/assets/global.min.css" />
+    <link rel="icon" href="/public/favicon.ico" />
+    <link rel="stylesheet" href="/public/global.min.css" />
     <title>TestPHP <?= isset($title) ? sprintf('- %s', $title) : '' ?></title>
     <meta name="og:title" content="TestPHP <?= isset($title)
         ? sprintf('- %s', $title)

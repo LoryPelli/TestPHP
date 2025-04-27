@@ -9,7 +9,7 @@ Dotenv\Dotenv::createImmutable($_SERVER['DOCUMENT_ROOT'])->load();
 $resend = Resend::client($_ENV['APIKEY']);
 $url_path = parse_url($_SERVER['REQUEST_URI'])['path'];
 $file = trim($url_path, '/') ?: 'index';
-if (str_starts_with($file, 'assets')) {
+if (str_starts_with($file, 'public')) {
     return false;
 }
 $email = $cookies->get('email');

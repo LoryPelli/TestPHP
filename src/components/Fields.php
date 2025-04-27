@@ -25,4 +25,4 @@ $isLogin = $type == Type::Login;
     const show = `<?= file_get_contents('svg/show.php') ?>`;
     const hide = `<?= file_get_contents('svg/hide.php') ?>`;
 </script>
-<script src="/assets/toggle.min.js"></script>
+<script src="/public/toggle.min.js"></script>

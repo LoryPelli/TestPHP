@@ -12,7 +12,7 @@
             </a>
         <?php else: ?>
             <img src="<?= htmlspecialchars($users->get_avatar($email)) ?:
-                '/assets/user.png' ?>" class="rounded-full size-10" />
+                '/public/user.png' ?>" class="rounded-full size-10" />
             <span><?= htmlspecialchars($users->get_username($email)) ?></span>
             <a href="/settings">
                 <button class="p-1 border-2 rounded-md cursor-pointer">Settings!</button>
