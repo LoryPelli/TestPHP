@@ -20,6 +20,6 @@ $error = $_SESSION['error'] ?? '';
         const show = `<?= file_get_contents('svg/show.php') ?>`;
         const hide = `<?= file_get_contents('svg/hide.php') ?>`;
     </script>
-    <script src="/assets/toggle.js"></script>
+    <script src="/assets/toggle.min.js"></script>
     <button type="submit" class="p-1 border-2 rounded-md cursor-pointer">Continue!</button>
 </form>

@@ -2,3 +2,5 @@ node_modules
 vendor
 .env
 assets/global.css
+assets/*.min.js
+assets/*.min.css
