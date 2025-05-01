@@ -7,11 +7,9 @@ passwords.forEach((pwd, i) => {
     }
     const input = pwd.querySelector('input');
     input.addEventListener('keydown', (e) => {
-        if (e.getModifierState('CapsLock')) {
-            svgs[i].innerHTML = capslock;
-        } else {
-            svgs[i].innerHTML = disabledcapslock;
-        }
+        svgs[i].innerHTML = e.getModifierState('CapsLock')
+            ? capslock
+            : disabledcapslock;
     });
     const button = pwd.querySelector('button');
     if (!button.innerHTML) {
