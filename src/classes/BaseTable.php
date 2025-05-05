@@ -1,7 +1,7 @@
 <?php
 abstract class BaseTable
 {
-    protected $conn;
+    protected PDO $conn;
     public function __construct()
     {
         $this->conn = new PDO(
