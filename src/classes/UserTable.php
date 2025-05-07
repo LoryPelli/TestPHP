@@ -17,7 +17,7 @@ class UserTable extends BaseTable
             username VARCHAR(%d) NOT NULL,
             avatar TEXT NOT NULL DEFAULT ''
         )",
-                $constants['USERNAME_MAX_LENGTH']
+                $constants['MAX_LENGTH']
             )
         );
     }

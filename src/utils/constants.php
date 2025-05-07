@@ -1,4 +1,4 @@
 <?php
 return [
-    'USERNAME_MAX_LENGTH' => 12,
+    'MAX_LENGTH' => 12,
 ];

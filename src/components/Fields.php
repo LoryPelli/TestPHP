@@ -20,7 +20,7 @@ $isLogin = $type == Type::Login;
     </div>
     <span>Username:</span>
     <input name="username" autocomplete="off" maxlength="<?= $constants[
-        'USERNAME_MAX_LENGTH'
+        'MAX_LENGTH'
     ] ?>" required class="p-1 border-2 rounded-md w-60" />
 <?php endif; ?>
 <?php require_once 'src/components/Icons.php'; ?>

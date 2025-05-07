@@ -8,7 +8,7 @@ $error = $_SESSION['error'] ?? '';
     <?php endif; ?>
     <span>Username:</span>
     <input name="username" autocomplete="off" maxlength="<?= $constants[
-        'USERNAME_MAX_LENGTH'
+        'MAX_LENGTH'
     ] ?>" value="<?= htmlspecialchars(
     $users->get_username($email)
 ) ?>" class="p-1 border-2 rounded-md" />
