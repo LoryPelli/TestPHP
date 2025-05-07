@@ -1,7 +1,6 @@
 <?php
 require_once 'src/classes/BaseTable.php';
 require_once 'src/classes/User.php';
-$constants = require_once 'src/utils/constants.php';
 class UserTable extends BaseTable
 {
     public function __construct()

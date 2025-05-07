@@ -4,7 +4,9 @@ session_start();
 require_once 'src/enums/ServerError.php';
 $cookies = require_once 'src/cookies/index.php';
 require_once 'src/utils/redirect.php';
+$constants = require_once 'src/utils/constants.php';
 require_once 'src/classes/UserTable.php';
+require_once 'src/classes/TodoTable.php';
 Dotenv\Dotenv::createImmutable($_SERVER['DOCUMENT_ROOT'])->load();
 $resend = Resend::client($_ENV['APIKEY']);
 $url_path = parse_url($_SERVER['REQUEST_URI'])['path'];
@@ -15,6 +17,7 @@ if (str_starts_with($file, 'public')) {
 $email = $cookies->get('email');
 $password = $cookies->get('password');
 $users = new UserTable();
+$todos = new TodoTable();
 if (
     in_array($file, ['login', 'register']) &&
     $email &&

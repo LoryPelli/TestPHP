@@ -1,6 +1,5 @@
 <?php
 require_once 'src/classes/BaseTable.php';
-$constants = require_once 'src/utils/constants.php';
 class TodoTable extends BaseTable
 {
     public function __construct()
@@ -11,10 +10,10 @@ class TodoTable extends BaseTable
             sprintf(
                 "CREATE TABLE IF NOT EXISTS todos (
             id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-            name VARCHAR(%d) NOT NULL,
+            name VARCHAR(12) NOT NULL,
             description VARCHAR(%d) NOT NULL,
             user_id UUID,
-            is_done BOOLEAN,
+            is_done BOOLEAN NOT NULL DEFAULT FALSE,
             FOREIGN KEY (user_id) REFERENCES users(id)
             )",
                 $constants['MAX_LENGTH'],
