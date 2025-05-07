@@ -14,12 +14,11 @@ class TodoTable extends BaseTable
             name VARCHAR(%d) NOT NULL,
             description VARCHAR(%d) NOT NULL,
             user_id UUID,
+            is_done BOOLEAN,
             FOREIGN KEY (user_id) REFERENCES users(id)
             )",
                 $constants['MAX_LENGTH'],
-                $constants['MAX_LENGTH'] *
-                    $constants['MAX_LENGTH'] *
-                    $constants['MAX_LENGTH']
+                $constants['MAX_LENGTH'] * 4
             )
         );
     }
