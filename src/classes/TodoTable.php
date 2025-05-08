@@ -10,7 +10,7 @@ class TodoTable extends BaseTable
             sprintf(
                 "CREATE TABLE IF NOT EXISTS todos (
             id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-            name VARCHAR(12) NOT NULL,
+            name VARCHAR(%d) NOT NULL,
             description VARCHAR(%d) NOT NULL,
             user_id UUID,
             is_done BOOLEAN NOT NULL DEFAULT FALSE,
