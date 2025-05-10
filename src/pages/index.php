@@ -32,11 +32,14 @@
     <div class="grid px-2">
         <button class="p-1 border-2 rounded-md cursor-pointer" onclick="openDialog()">Add!</button>
     </div>
-    <dialog>
+    <dialog class="backdrop:backdrop-blur-sm">
         <div class="fixed inset-0 flex flex-col items-center justify-center h-screen">
+            <button class="p-1 border-2 rounded-md cursor-pointer" onclick="closeDialog()">
+                <?php include_once 'svg/close.php'; ?>
+            </button>
             <form method="POST" class="flex flex-col items-center justify-center gap-y-1">
                 <span>Done:</span>
-                <input name="is_done" type="checkbox" class="p-1 border-2 rounded-md w-60" />
+                <input name="is_done" type="checkbox" class="border-2 rounded-md appearance-none cursor-pointer size-6 checked:bg-black/80 focus:outline-none" />
                 <span>Name:</span>
                 <input name="name" autocomplete="off" type="text" required class="p-1 border-2 rounded-md w-60!" />
                 <span>Description:</span>
@@ -46,4 +49,4 @@
         </div>
     </dialog>
 <?php endif; ?>
-<script src="/public/open.min.js"></script>
+<script src="/public/dialog.min.js"></script>
