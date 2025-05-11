@@ -1,5 +1,13 @@
 @import 'tailwindcss';
 
+dialog.show::backdrop {
+    animation: backdrop 0.25s forwards;
+}
+
+dialog.hide::backdrop {
+    animation: backdrop_reverse 0.25s forwards;
+}
+
 div[data-dialog].show {
     animation: scaling 0.25s;
 }
@@ -17,11 +25,33 @@ div[data-dialog].hide {
     }
 }
 
+@keyframes backdrop {
+    from {
+        -webkit-backdrop-filter: blur(0);
+        backdrop-filter: blur(0);
+    }
+    to {
+        -webkit-backdrop-filter: blur(var(--blur-sm));
+        backdrop-filter: blur(var(--blur-sm));
+    }
+}
+
 @keyframes scaling_reverse {
     from {
         transform: scale(100%);
     }
     to {
         transform: scale(0%);
+    }
+}
+
+@keyframes backdrop_reverse {
+    from {
+        -webkit-backdrop-filter: blur(var(--blur-sm));
+        backdrop-filter: blur(var(--blur-sm));
+    }
+    to {
+        -webkit-backdrop-filter: blur(0);
+        backdrop-filter: blur(0);
     }
 }
