@@ -1,1 +1,27 @@
 @import 'tailwindcss';
+
+div[data-dialog].show {
+    animation: scaling 0.25s;
+}
+
+div[data-dialog].hide {
+    animation: scaling_reverse 0.25s;
+}
+
+@keyframes scaling {
+    from {
+        transform: scale(0%);
+    }
+    to {
+        transform: scale(100%);
+    }
+}
+
+@keyframes scaling_reverse {
+    from {
+        transform: scale(100%);
+    }
+    to {
+        transform: scale(0%);
+    }
+}

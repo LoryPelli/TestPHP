@@ -34,7 +34,7 @@
     </div>
     <dialog class="backdrop:backdrop-blur-sm">
         <div class="fixed inset-0 flex flex-col justify-center items-center h-screen">
-            <div class="flex flex-col items-center shadow-2xl p-5 rounded-md">
+            <div data-dialog class="flex flex-col items-center shadow-2xl p-5 rounded-md">
                 <button class="p-1 border-2 rounded-md cursor-pointer" onclick="closeDialog()">
                     <?php include_once 'svg/close.php'; ?>
                 </button>
