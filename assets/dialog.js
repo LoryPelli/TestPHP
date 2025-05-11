@@ -24,6 +24,6 @@ function closeDialog() {
             dialog.close();
             abortController.abort();
         },
-        abortController,
+        { signal: abortController.signal },
     );
 }
