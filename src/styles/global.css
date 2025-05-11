@@ -5,7 +5,7 @@ dialog.show::backdrop {
 }
 
 dialog.hide::backdrop {
-    animation: backdrop_reverse 0.25s forwards;
+    animation: backdrop_reverse 0.25s;
 }
 
 div[data-dialog].show {
@@ -18,10 +18,10 @@ div[data-dialog].hide {
 
 @keyframes scaling {
     from {
-        transform: scale(0%);
+        transform: scale(0);
     }
     to {
-        transform: scale(100%);
+        transform: scale(1);
     }
 }
 
@@ -38,10 +38,10 @@ div[data-dialog].hide {
 
 @keyframes scaling_reverse {
     from {
-        transform: scale(100%);
+        transform: scale(1);
     }
     to {
-        transform: scale(0%);
+        transform: scale(0);
     }
 }
 
