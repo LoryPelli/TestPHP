@@ -4,7 +4,7 @@ $messages = require_once 'src/enums/UserError.php';
 $isLogin = $type == Type::Login;
 $error = $_SESSION['error'] ?? '';
 ?>
-<form method="POST" class="flex flex-col items-center justify-center h-screen gap-y-1" action="<?= sprintf(
+<form method="POST" class="flex flex-col justify-center items-center gap-y-1 h-screen" action="<?= sprintf(
     '/api/%s',
     $isLogin ? 'login' : 'register'
 ) ?>">

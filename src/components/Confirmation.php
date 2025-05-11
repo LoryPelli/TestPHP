@@ -2,11 +2,11 @@
 require_once 'src/enums/Type.php';
 $isLogout = $type == Type::Logout;
 ?>
-<form method="POST" class="flex flex-col items-center justify-center h-screen gap-y-1" action="<?= sprintf(
+<form method="POST" class="flex flex-col justify-center items-center gap-y-1 h-screen" action="<?= sprintf(
     '/api/%s',
     $isLogout ? 'logout' : 'delete'
 ) ?>">
-    <span class="text-xl font-bold">Are you sure you want to <?= $isLogout
+    <span class="font-bold text-xl">Are you sure you want to <?= $isLogout
         ? 'logout'
         : 'delete your account' ?>?</span>
     <div class="flex gap-x-1">

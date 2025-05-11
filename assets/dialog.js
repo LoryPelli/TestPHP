@@ -1,7 +1,7 @@
 function openDialog() {
-    document.getElementsByTagName('dialog')[0].showModal();
+    document.querySelector('dialog').showModal();
 }
 
 function closeDialog() {
-    document.getElementsByTagName('dialog')[0].close();
+    document.querySelector('dialog').close();
 }
