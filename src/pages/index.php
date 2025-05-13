@@ -1,4 +1,8 @@
-<?php $isLogged = $email && $password && $users->check_email($email); ?>
+<?php
+$messages = require_once 'src/enums/TodoError.php';
+$error = $_SESSION['error'] ?? '';
+$isLogged = $email && $password && $users->check_email($email);
+?>
 <nav class="flex justify-between p-2">
     <a href="/">
         <button class="p-1 border-2 rounded-md cursor-pointer">Home!</button>
@@ -29,7 +33,10 @@
         <span class="font-bold text-6xl italic">Login to see the rest of the page!</span>
     </div>
 <?php else: ?>
-    <div class="grid px-2">
+    <div class="gap-y-1 grid px-2 text-center">
+        <?php if (isset($messages[$error])): ?>
+            <?php include_once 'src/components/Error.php'; ?>
+        <?php endif; ?>
         <button class="p-1 border-2 rounded-md cursor-pointer" onclick="openDialog()">Add!</button>
     </div>
     <dialog>
@@ -38,7 +45,7 @@
                 <button class="p-1 border-2 rounded-md cursor-pointer" onclick="closeDialog()">
                     <?php include_once 'svg/close.php'; ?>
                 </button>
-                <form method="POST" class="flex flex-col justify-center items-center gap-y-1">
+                <form method="POST" class="flex flex-col justify-center items-center gap-y-1" action="/api/add">
                     <span>Done:</span>
                     <input name="is_done" type="checkbox" class="after:flex after:justify-center bg-red-600 checked:bg-blue-600 border-2 rounded-md focus:outline-none size-7 after:text-white after:content-['✕'] checked:after:content-['✓'] appearance-none cursor-pointer" />
                     <span>Name:</span>

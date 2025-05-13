@@ -11,7 +11,7 @@ final class UserTable extends BaseTable
             sprintf(
                 "CREATE TABLE IF NOT EXISTS users (
             id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-            email TEXT NOT NULL UNIQUE,
+            email TEXT UNIQUE NOT NULL,
             password TEXT NOT NULL,
             username VARCHAR(%d) NOT NULL,
             avatar TEXT NOT NULL DEFAULT ''
@@ -25,14 +25,18 @@ final class UserTable extends BaseTable
         $res = $this->conn->prepare(
             'INSERT INTO users (email, password, username) VALUES (?, ?, ?)'
         );
-        $res->execute([$email, $password, $username]);
+        $res->bindParam(1, $email);
+        $res->bindParam(2, $password);
+        $res->bindParam(3, $username);
+        $res->execute();
     }
     public function check(string $email, string $password): bool
     {
         $res = $this->conn->prepare(
             'SELECT password FROM users WHERE email = ?'
         );
-        $res->execute([$email]);
+        $res->bindParam(1, $email);
+        $res->execute();
         $row = $res->fetch(PDO::FETCH_ASSOC);
         return $row && password_verify($password, $row['password']);
     }
@@ -41,7 +45,8 @@ final class UserTable extends BaseTable
         $res = $this->conn->prepare(
             'SELECT COUNT(*) FROM users WHERE email = ?'
         );
-        $res->execute([$email]);
+        $res->bindParam(1, $email);
+        $res->execute();
         $row = $res->fetch(PDO::FETCH_ASSOC);
         return $row && $row['count'] > 0;
     }
@@ -50,26 +55,37 @@ final class UserTable extends BaseTable
         $res = $this->conn->prepare(
             'SELECT email, password FROM users WHERE email = ?'
         );
-        $res->execute([$email]);
+        $res->bindParam(1, $email);
+        $res->execute();
         $row = $res->fetch(PDO::FETCH_ASSOC);
         if ($row && password_verify($password, $row['password'])) {
             return new User($row['email'], $row['password']);
         }
         return null;
     }
+    public function get_id(string $email): string
+    {
+        $res = $this->conn->prepare('SELECT id FROM users WHERE email = ?');
+        $res->bindParam(1, $email);
+        $res->execute();
+        $row = $res->fetch(PDO::FETCH_ASSOC);
+        return $row ? $row['id'] : '';
+    }
     public function get_username(string $email): string
     {
         $res = $this->conn->prepare(
             'SELECT username FROM users WHERE email = ?'
         );
-        $res->execute([$email]);
+        $res->bindParam(1, $email);
+        $res->execute();
         $row = $res->fetch(PDO::FETCH_ASSOC);
         return $row ? $row['username'] : '';
     }
     public function get_avatar(string $email): string
     {
         $res = $this->conn->prepare('SELECT avatar FROM users WHERE email = ?');
-        $res->execute([$email]);
+        $res->bindParam(1, $email);
+        $res->execute();
         $row = $res->fetch(PDO::FETCH_ASSOC);
         return $row ? $row['avatar'] : '';
     }
@@ -78,25 +94,32 @@ final class UserTable extends BaseTable
         $res = $this->conn->prepare(
             'UPDATE users SET username = ? WHERE email = ?'
         );
-        $res->execute([$username, $email]);
+        $res->bindParam(1, $username);
+        $res->bindParam(2, $email);
+        $res->execute();
     }
     public function set_avatar(string $email, string $avatar): void
     {
         $res = $this->conn->prepare(
             'UPDATE users SET avatar = ? WHERE email = ?'
         );
-        $res->execute([$avatar, $email]);
+        $res->bindParam(1, $avatar);
+        $res->bindParam(2, $email);
+        $res->execute();
     }
     public function set_password(string $email, string $password): void
     {
         $res = $this->conn->prepare(
             'UPDATE users SET password = ? WHERE email = ?'
         );
-        $res->execute([$password, $email]);
+        $res->bindParam(1, $password);
+        $res->bindParam(2, $email);
+        $res->execute();
     }
     public function delete(string $email): void
     {
         $res = $this->conn->prepare('DELETE FROM users WHERE email = ?');
-        $res->execute([$email]);
+        $res->bindParam(1, $email);
+        $res->execute();
     }
 }
