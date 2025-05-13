@@ -1,5 +1,5 @@
 <?php
-class User
+final class User
 {
     private string $email;
     private string $password;

@@ -42,9 +42,14 @@
                     <span>Done:</span>
                     <input name="is_done" type="checkbox" class="after:flex after:justify-center bg-red-600 checked:bg-blue-600 border-2 rounded-md focus:outline-none size-7 after:text-white after:content-['✕'] checked:after:content-['✓'] appearance-none cursor-pointer" />
                     <span>Name:</span>
-                    <input name="name" autocomplete="off" type="text" required class="p-1 border-2 rounded-md w-60" />
+                    <input name="name" autocomplete="off" maxlength="<?= $constants[
+                        'MAX_LENGTH'
+                    ] ?>" type="text" required class="p-1 border-2 rounded-md w-60" />
                     <span>Description:</span>
-                    <input name="description" autocomplete="off" type="text" class="p-1 border-2 rounded-md w-60" />
+                    <input name="description" autocomplete="off" maxlength="<?= $constants[
+                        'MAX_LENGTH'
+                    ] *
+                        4 ?>" type="text" class="p-1 border-2 rounded-md w-60" />
                     <button type="submit" class="p-1 border-2 rounded-md cursor-pointer">Create!</button>
                 </form>                
             </div>

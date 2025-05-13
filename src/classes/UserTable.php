@@ -1,7 +1,7 @@
 <?php
 require_once 'src/classes/BaseTable.php';
 require_once 'src/classes/User.php';
-class UserTable extends BaseTable
+final class UserTable extends BaseTable
 {
     public function __construct()
     {

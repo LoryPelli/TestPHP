@@ -1,6 +1,6 @@
 <?php
 require_once 'src/classes/BaseTable.php';
-class TodoTable extends BaseTable
+final class TodoTable extends BaseTable
 {
     public function __construct()
     {
