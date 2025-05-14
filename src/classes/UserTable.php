@@ -50,7 +50,7 @@ final class UserTable extends BaseTable
         $row = $res->fetch(PDO::FETCH_ASSOC);
         return $row && $row['count'] > 0;
     }
-    public function get(string $email, string $password): User|null
+    public function get(string $email, string $password): ?User
     {
         $res = $this->conn->prepare(
             'SELECT email, password FROM users WHERE email = ?'
