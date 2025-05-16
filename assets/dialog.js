@@ -9,13 +9,13 @@ dialog.addEventListener('keydown', (e) => {
 });
 
 function openDialog() {
-    div.setAttribute('data-show', '');
+    div.setAttribute('data-open', '');
     dialog.showModal();
 }
 
 function closeDialog() {
     const abortController = new AbortController();
-    div.removeAttribute('data-show');
+    div.removeAttribute('data-open');
     document.addEventListener(
         'animationend',
         () => {

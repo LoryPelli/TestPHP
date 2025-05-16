@@ -1,12 +1,12 @@
 @import 'tailwindcss';
 
-div[data-dialog][data-show] {
+div[data-dialog][data-open] {
     animation:
         backdrop 0.25s forwards,
         scaling 0.25s;
 }
 
-div[data-dialog] {
+div[data-dialog]:not([data-open]) {
     animation:
         backdrop_reverse 0.25s,
         scaling_reverse 0.25s;
