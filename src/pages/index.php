@@ -40,8 +40,8 @@ $isLogged = $email && $password && $users->check_email($email);
         <button class="p-1 border-2 rounded-md cursor-pointer" onclick="openDialog()">Add!</button>
     </div>
     <dialog>
-        <div class="fixed inset-0 flex flex-col justify-center items-center h-screen">
-            <div data-dialog class="flex flex-col items-center shadow-2xl p-5 rounded-md">
+        <div data-dialog class="fixed inset-0 flex flex-col justify-center items-center h-screen">
+            <div class="flex flex-col items-center shadow-2xl p-5 rounded-md">
                 <button class="p-1 border-2 rounded-md cursor-pointer" onclick="closeDialog()">
                     <?php include_once 'svg/close.php'; ?>
                 </button>

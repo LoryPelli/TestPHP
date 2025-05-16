@@ -1,19 +1,15 @@
 @import 'tailwindcss';
 
-dialog.show::backdrop {
-    animation: backdrop 0.25s forwards;
+div[data-dialog][data-show] {
+    animation:
+        backdrop 0.25s forwards,
+        scaling 0.25s;
 }
 
-dialog.hide::backdrop {
-    animation: backdrop_reverse 0.25s;
-}
-
-div[data-dialog].show {
-    animation: scaling 0.25s;
-}
-
-div[data-dialog].hide {
-    animation: scaling_reverse 0.25s;
+div[data-dialog] {
+    animation:
+        backdrop_reverse 0.25s,
+        scaling_reverse 0.25s;
 }
 
 @keyframes scaling {

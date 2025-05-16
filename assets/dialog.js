@@ -9,19 +9,13 @@ dialog.addEventListener('keydown', (e) => {
 });
 
 function openDialog() {
-    dialog.classList.remove('hide');
-    div.classList.remove('hide');
-    dialog.classList.add('show');
-    div.classList.add('show');
+    div.setAttribute('data-show', '');
     dialog.showModal();
 }
 
 function closeDialog() {
     const abortController = new AbortController();
-    dialog.classList.remove('show');
-    div.classList.remove('show');
-    dialog.classList.add('hide');
-    div.classList.add('hide');
+    div.removeAttribute('data-show');
     document.addEventListener(
         'animationend',
         () => {
