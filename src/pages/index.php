@@ -2,6 +2,7 @@
 $messages = require_once 'src/enums/TodoError.php';
 $error = $_SESSION['error'] ?? '';
 $isLogged = $email && $password && $users->check_email($email);
+$user_id = $users->get_id($email);
 ?>
 <nav class="flex justify-between p-2">
     <a href="/">
@@ -37,8 +38,8 @@ $isLogged = $email && $password && $users->check_email($email);
         <?php if (isset($messages[$error])): ?>
             <?php include_once 'src/components/Error.php'; ?>
         <?php endif; ?>
-        <?php foreach ($todos->get($users->get_id($email)) as $t): ?>
-            <div class="flex flex-row justify-center gap-x-1 cursor-not-allowed">
+        <?php foreach ($todos->get($user_id) as $t): ?>
+            <form method="POST" class="flex flex-row justify-center items-center gap-x-1 cursor-not-allowed" action="/api/delete">
                 <span class="font-bold">Done:</span>
                 <input type="checkbox" disabled checked="<?= htmlspecialchars(
                     $t->get_is_done()
@@ -47,7 +48,8 @@ $isLogged = $email && $password && $users->check_email($email);
                 <span><?= htmlspecialchars($t->get_name()) ?></span>
                 <span class="font-bold">Description:</span>
                 <span><?= htmlspecialchars($t->get_description()) ?></span>
-            </div>
+                <button type="submit" class="p-1 border-2 rounded-md cursor-pointer">Delete!</button>
+            </form>
         <?php endforeach; ?>
         <button class="p-1 border-2 rounded-md cursor-pointer" onclick="openDialog()">Add!</button>
     </div>
