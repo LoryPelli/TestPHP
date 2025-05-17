@@ -50,7 +50,7 @@ final class TodoTable extends BaseTable
     /**
      * @return Todo[]
      */
-    public function get(string $user_id): array
+    public function get_all(string $user_id): array
     {
         $res = $this->conn->prepare('SELECT * FROM todos WHERE user_id = ?');
         $res->bindParam(1, $user_id);

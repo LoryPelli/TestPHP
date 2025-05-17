@@ -38,8 +38,8 @@ $user_id = $users->get_id($email);
         <?php if (isset($messages[$error])): ?>
             <?php include_once 'src/components/Error.php'; ?>
         <?php endif; ?>
-        <?php foreach ($todos->get($user_id) as $t): ?>
-            <form method="POST" class="flex flex-row justify-center items-center gap-x-2 cursor-not-allowed" action="/api/remove">
+        <?php foreach ($todos->get_all($user_id) as $t): ?>
+            <form method="POST" class="flex justify-center items-center gap-x-2 sm:gap-x-4 md:gap-x-8 lg:gap-x-12 2xl:gap-x-20 xl:gap-x-16 cursor-not-allowed" action="/api/remove">
                 <span class="font-bold">Done:</span>
                 <input type="checkbox" disabled <?= $t->get_is_done()
                     ? 'checked'
