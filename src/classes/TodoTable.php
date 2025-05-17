@@ -1,5 +1,6 @@
 <?php
 require_once 'src/classes/BaseTable.php';
+require_once 'src/classes/Todo.php';
 final class TodoTable extends BaseTable
 {
     public function __construct()
@@ -45,5 +46,25 @@ final class TodoTable extends BaseTable
         $res->execute();
         $row = $res->fetch(PDO::FETCH_ASSOC);
         return $row && $row['count'] > 0;
+    }
+    /**
+     * @return Todo[]
+     */
+    public function get(string $user_id): array
+    {
+        $res = $this->conn->prepare('SELECT * FROM todos WHERE user_id = ?');
+        $res->bindParam(1, $user_id);
+        $res->execute();
+        /**
+         * @var Todo[]
+         */
+        $arr = [];
+        $row = $res->fetchAll(PDO::FETCH_ASSOC);
+        if ($row) {
+            foreach ($row as $r) {
+                $arr[] = new Todo($r['name'], $r['description'], $r['is_done']);
+            }
+        }
+        return $arr;
     }
 }

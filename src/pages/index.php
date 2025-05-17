@@ -37,6 +37,18 @@ $isLogged = $email && $password && $users->check_email($email);
         <?php if (isset($messages[$error])): ?>
             <?php include_once 'src/components/Error.php'; ?>
         <?php endif; ?>
+        <?php foreach ($todos->get($users->get_id($email)) as $t): ?>
+            <div class="flex flex-row justify-center gap-x-1 cursor-not-allowed">
+                <span class="font-bold">Done:</span>
+                <input type="checkbox" disabled checked="<?= htmlspecialchars(
+                    $t->get_is_done()
+                ) ?>" class="after:flex after:justify-center bg-red-600 checked:bg-blue-600 border-2 rounded-md focus:outline-none size-7 after:text-white after:content-['✕'] checked:after:content-['✓'] appearance-none cursor-not-allowed" />
+                <span class="font-bold">Name:</span>
+                <span><?= htmlspecialchars($t->get_name()) ?></span>
+                <span class="font-bold">Description:</span>
+                <span><?= htmlspecialchars($t->get_description()) ?></span>
+            </div>
+        <?php endforeach; ?>
         <button class="p-1 border-2 rounded-md cursor-pointer" onclick="openDialog()">Add!</button>
     </div>
     <dialog>
