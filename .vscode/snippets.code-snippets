@@ -1,5 +1,6 @@
 {
     "htmlspecialchars": {
+        "scope": "html",
         "prefix": "<!=",
         "body": "<?= htmlspecialchars($1) ?>",
         "description": "Escape HTML characters",
