@@ -39,15 +39,19 @@ $user_id = $users->get_id($email);
             <?php include_once 'src/components/Error.php'; ?>
         <?php endif; ?>
         <?php foreach ($todos->get($user_id) as $t): ?>
-            <form method="POST" class="flex flex-row justify-center items-center gap-x-1 cursor-not-allowed" action="/api/delete">
+            <form method="POST" class="flex flex-row justify-center items-center gap-x-2 cursor-not-allowed" action="/api/remove">
                 <span class="font-bold">Done:</span>
-                <input type="checkbox" disabled checked="<?= htmlspecialchars(
-                    $t->get_is_done()
-                ) ?>" class="after:flex after:justify-center bg-red-600 checked:bg-blue-600 border-2 rounded-md focus:outline-none size-7 after:text-white after:content-['✕'] checked:after:content-['✓'] appearance-none cursor-not-allowed" />
+                <input type="checkbox" disabled <?= $t->get_is_done()
+                    ? 'checked'
+                    : '' ?> class="after:flex after:justify-center bg-red-600 checked:bg-blue-600 border-2 rounded-md focus:outline-none size-7 after:text-white after:content-['✕'] checked:after:content-['✓'] appearance-none cursor-not-allowed" />
                 <span class="font-bold">Name:</span>
-                <span><?= htmlspecialchars($t->get_name()) ?></span>
+                <input name="name" readonly value="<?= htmlspecialchars(
+                    $t->get_name()
+                ) ?>" class="focus:outline-none w-[20vw] text-center cursor-not-allowed" />
                 <span class="font-bold">Description:</span>
-                <span><?= htmlspecialchars($t->get_description()) ?></span>
+                <input readonly value="<?= htmlspecialchars(
+                    $t->get_description()
+                ) ?>" class="focus:outline-none w-[20vw] text-center cursor-not-allowed" />
                 <button type="submit" class="p-1 border-2 rounded-md cursor-pointer">Delete!</button>
             </form>
         <?php endforeach; ?>

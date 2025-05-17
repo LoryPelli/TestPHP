@@ -67,4 +67,13 @@ final class TodoTable extends BaseTable
         }
         return $arr;
     }
+    public function delete(string $user_id, string $name): void
+    {
+        $res = $this->conn->prepare(
+            'DELETE FROM todos WHERE user_id = ? AND name = ?'
+        );
+        $res->bindParam(1, $user_id);
+        $res->bindParam(2, $name);
+        $res->execute();
+    }
 }
