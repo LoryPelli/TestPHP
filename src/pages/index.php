@@ -39,19 +39,21 @@ $user_id = $users->get_id($email);
             <?php include_once 'src/components/Error.php'; ?>
         <?php endif; ?>
         <?php foreach ($todos->get_all($user_id) as $t): ?>
+            <?php
+            $name = htmlspecialchars($t->get_name());
+            $description = htmlspecialchars($t->get_description());
+            $is_done = htmlspecialchars($t->get_is_done());
+            ?>
             <form method="POST" class="flex justify-center items-center gap-x-2 sm:gap-x-4 md:gap-x-8 lg:gap-x-12 2xl:gap-x-20 xl:gap-x-16 cursor-not-allowed" action="/api/remove">
                 <span class="font-bold">Done:</span>
-                <input type="checkbox" disabled <?= $t->get_is_done()
+                <input type="checkbox" disabled <?= $is_done
                     ? 'checked'
                     : '' ?> class="after:flex after:justify-center bg-red-600 checked:bg-blue-600 border-2 rounded-md focus:outline-none size-7 after:text-white after:content-['✕'] checked:after:content-['✓'] appearance-none cursor-not-allowed" />
                 <span class="font-bold">Name:</span>
-                <input name="name" readonly value="<?= htmlspecialchars(
-                    $t->get_name()
-                ) ?>" class="focus:outline-none w-[20vw] text-center cursor-not-allowed" />
+                <input name="name" readonly value="<?= $name ?>" class="focus:outline-none w-[20vw] text-center cursor-not-allowed" />
                 <span class="font-bold">Description:</span>
-                <input readonly value="<?= htmlspecialchars(
-                    $t->get_description()
-                ) ?>" class="focus:outline-none w-[20vw] text-center cursor-not-allowed" />
+                <input readonly value="<?= $description ?>" class="focus:outline-none w-[20vw] text-center cursor-not-allowed" />
+                <button type="button" class="p-1 border-2 rounded-md cursor-pointer" onclick="openDialog('<?= $name ?>', '<?= $description ?>', '<?= $is_done ?>')">Edit!</button>
                 <button type="submit" class="p-1 border-2 rounded-md cursor-pointer">Delete!</button>
             </form>
         <?php endforeach; ?>
@@ -63,7 +65,7 @@ $user_id = $users->get_id($email);
                 <button class="p-1 border-2 rounded-md cursor-pointer" onclick="closeDialog()">
                     <?php include_once 'svg/close.php'; ?>
                 </button>
-                <form method="POST" class="flex flex-col justify-center items-center gap-y-1" action="/api/add">
+                <form method="POST" class="flex flex-col justify-center items-center gap-y-1">
                     <span>Done:</span>
                     <input name="is_done" type="checkbox" class="after:flex after:justify-center bg-red-600 checked:bg-blue-600 border-2 rounded-md focus:outline-none size-7 after:text-white after:content-['✕'] checked:after:content-['✓'] appearance-none cursor-pointer" />
                     <span>Name:</span>
@@ -75,7 +77,7 @@ $user_id = $users->get_id($email);
                         'MAX_LENGTH'
                     ] *
                         4 ?>" type="text" class="p-1 border-2 rounded-md w-60" />
-                    <button type="submit" class="p-1 border-2 rounded-md cursor-pointer">Create!</button>
+                    <button type="submit" class="p-1 border-2 rounded-md cursor-pointer">Continue!</button>
                 </form>                
             </div>
         </div>
