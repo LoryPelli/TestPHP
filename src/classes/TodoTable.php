@@ -78,6 +78,23 @@ final class TodoTable extends BaseTable
         }
         return $arr;
     }
+    public function set(
+        string $name,
+        string $description,
+        bool $is_done,
+        string $user_id,
+        string $id
+    ): void {
+        $res = $this->conn->prepare(
+            'UPDATE todos SET name = ?, description = ?, is_done = ? WHERE user_id = ? AND id = ?'
+        );
+        $res->bindParam(1, $name);
+        $res->bindParam(2, $description);
+        $res->bindParam(3, $is_done, PDO::PARAM_BOOL);
+        $res->bindParam(4, $user_id);
+        $res->bindParam(5, $id);
+        $res->execute();
+    }
     public function delete(string $user_id, string $name): void
     {
         $res = $this->conn->prepare(

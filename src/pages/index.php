@@ -2,7 +2,7 @@
 $messages = require_once 'src/enums/TodoError.php';
 $error = $_SESSION['error'] ?? '';
 $isLogged = $email && $password && $users->check_email($email);
-$user_id = $users->get_id($email);
+$user_id = $email ? $users->get_id($email) : '';
 ?>
 <nav class="flex justify-between p-2">
     <a href="/">
@@ -76,12 +76,11 @@ $user_id = $users->get_id($email);
                     <span>Name:</span>
                     <input name="name" autocomplete="off" maxlength="<?= $constants[
                         'MAX_LENGTH'
-                    ] ?>" type="text" required class="p-1 border-2 rounded-md w-60" />
+                    ] ?>" required class="p-1 border-2 rounded-md w-60" />
                     <span>Description:</span>
                     <input name="description" autocomplete="off" maxlength="<?= $constants[
                         'MAX_LENGTH'
-                    ] *
-                        4 ?>" type="text" class="p-1 border-2 rounded-md w-60" />
+                    ] * 4 ?>" class="p-1 border-2 rounded-md w-60" />
                     <button type="submit" class="p-1 border-2 rounded-md cursor-pointer">Continue!</button>
                 </form>                
             </div>

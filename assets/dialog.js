@@ -22,6 +22,12 @@ function openDialog(id) {
         form.setAttribute('action', '/api/edit');
         const todo = document.querySelector(`form[data-todo-${id}]`);
         if (todo) {
+            const todo_id = document.createElement('input');
+            todo_id.setAttribute('name', 'id');
+            todo_id.setAttribute('type', 'hidden');
+            todo_id.setAttribute('readonly', '');
+            todo_id.setAttribute('value', id);
+            form.appendChild(todo_id);
             const todo_name = todo
                 .querySelector("input[name='name']")
                 .getAttribute('value');
