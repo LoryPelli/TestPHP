@@ -21,23 +21,25 @@ function openDialog(id) {
     if (id) {
         form.setAttribute('action', '/api/edit');
         const todo = document.querySelector(`form[data-todo-${id}]`);
-        const todo_name = todo
-            .querySelector("input[name='name'")
-            .getAttribute('value');
-        const todo_description = todo
-            .querySelector("input[name='description'")
-            .getAttribute('value');
-        const todo_is_done = todo
-            .querySelector("input[name='is_done'")
-            .hasAttribute('checked');
-        if (todo_name) {
-            name.setAttribute('value', todo_name);
-        }
-        if (todo_description) {
-            description.setAttribute('value', todo_description);
-        }
-        if (todo_is_done) {
-            is_done.setAttribute('checked', '');
+        if (todo) {
+            const todo_name = todo
+                .querySelector("input[name='name']")
+                .getAttribute('value');
+            const todo_description = todo
+                .querySelector("input[name='description']")
+                .getAttribute('value');
+            const todo_is_done = todo
+                .querySelector("input[name='is_done']")
+                .hasAttribute('checked');
+            if (todo_name) {
+                name.setAttribute('value', todo_name);
+            }
+            if (todo_description) {
+                description.setAttribute('value', todo_description);
+            }
+            if (todo_is_done) {
+                is_done.setAttribute('checked', '');
+            }
         }
     } else {
         name.removeAttribute('value');
