@@ -1,11 +1,6 @@
 <?php
 $id = $_POST['id'];
 $name = $_POST['name'];
-if ($todos->check_name($name)) {
-    $_SESSION['error'] = 'already_exists';
-    redirect('/');
-    exit(1);
-}
 if (strlen($name) > $constants['MAX_LENGTH']) {
     $_SESSION['error'] = 'name_too_long';
     redirect('/');
