@@ -1,6 +1,7 @@
 const dialog = document.querySelector('dialog');
 const form = dialog.querySelector('form');
 const div = document.querySelector('div[data-dialog]');
+const todo_id = document.createElement('input');
 
 dialog.addEventListener('keydown', (e) => {
     if (e.key == 'Escape') {
@@ -21,7 +22,6 @@ function openDialog(id) {
         form.setAttribute('action', '/api/edit');
         const todo = document.querySelector(`form[data-todo-${id}]`);
         if (todo) {
-            const todo_id = document.createElement('input');
             todo_id.setAttribute('name', 'id');
             todo_id.setAttribute('type', 'hidden');
             todo_id.setAttribute('readonly', '');
@@ -60,6 +60,9 @@ function closeDialog() {
     const abortController = new AbortController();
     div.removeAttribute('data-open');
     form.removeAttribute('action');
+    if (form.contains(todo_id)) {
+        form.removeChild(todo_id);
+    }
     document.addEventListener(
         'animationend',
         () => {
