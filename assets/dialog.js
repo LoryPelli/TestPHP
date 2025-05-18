@@ -10,35 +10,39 @@ dialog.addEventListener('keydown', (e) => {
 });
 
 /**
- * @param { string } name
- * @param { string } description
- * @param { boolean } is_done
+ * @param { string } id
  */
 
-function openDialog(name, description, is_done) {
+function openDialog(id) {
     const form = dialog.querySelector('form');
-    if (name && description) {
+    const name = form.querySelector("input[name='name']");
+    const description = form.querySelector("input[name='description']");
+    const is_done = form.querySelector("input[name='is_done']");
+    if (id) {
         form.setAttribute('action', '/api/edit');
-        const inputs = form.querySelectorAll('input');
-        inputs.forEach((i) => {
-            switch (i.getAttribute('name')) {
-                case 'name': {
-                    i.setAttribute('value', name);
-                    break;
-                }
-                case 'description': {
-                    i.setAttribute('value', description);
-                    break;
-                }
-                case 'is_done': {
-                    if (is_done) {
-                        i.setAttribute('checked', '');
-                    }
-                    break;
-                }
-            }
-        });
+        const todo = document.querySelector(`form[data-todo-${id}]`);
+        const todo_name = todo
+            .querySelector("input[name='name'")
+            .getAttribute('value');
+        const todo_description = todo
+            .querySelector("input[name='description'")
+            .getAttribute('value');
+        const todo_is_done = todo
+            .querySelector("input[name='is_done'")
+            .hasAttribute('checked');
+        if (todo_name) {
+            name.setAttribute('value', todo_name);
+        }
+        if (todo_description) {
+            description.setAttribute('value', todo_description);
+        }
+        if (todo_is_done) {
+            is_done.setAttribute('checked', '');
+        }
     } else {
+        name.removeAttribute('value');
+        description.removeAttribute('value');
+        is_done.removeAttribute('checked');
         form.setAttribute('action', '/api/add');
     }
     div.setAttribute('data-open', '');

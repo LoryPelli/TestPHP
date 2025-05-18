@@ -41,19 +41,24 @@ $user_id = $users->get_id($email);
         <?php foreach ($todos->get_all($user_id) as $t): ?>
             <?php
             $name = htmlspecialchars($t->get_name());
-            $description = htmlspecialchars($t->get_description());
-            $is_done = htmlspecialchars($t->get_is_done());
+            $id = htmlspecialchars($todos->get_id($user_id, $name));
             ?>
-            <form method="POST" class="flex justify-center items-center gap-x-2 sm:gap-x-4 md:gap-x-8 lg:gap-x-12 2xl:gap-x-20 xl:gap-x-16 cursor-not-allowed" action="/api/remove">
+            <form <?= $id
+                ? sprintf('data-todo-%s', $id)
+                : '' ?> method="POST" class="flex justify-center items-center gap-x-2 sm:gap-x-4 md:gap-x-8 lg:gap-x-12 2xl:gap-x-20 xl:gap-x-16 cursor-not-allowed" action="/api/remove">
                 <span class="font-bold">Done:</span>
-                <input type="checkbox" disabled <?= $is_done
+                <input name="is_done" type="checkbox" disabled <?= htmlspecialchars(
+                    $t->get_is_done()
+                )
                     ? 'checked'
                     : '' ?> class="after:flex after:justify-center bg-red-600 checked:bg-blue-600 border-2 rounded-md focus:outline-none size-7 after:text-white after:content-['✕'] checked:after:content-['✓'] appearance-none cursor-not-allowed" />
                 <span class="font-bold">Name:</span>
                 <input name="name" readonly value="<?= $name ?>" class="focus:outline-none w-[20vw] text-center cursor-not-allowed" />
                 <span class="font-bold">Description:</span>
-                <input readonly value="<?= $description ?>" class="focus:outline-none w-[20vw] text-center cursor-not-allowed" />
-                <button type="button" class="p-1 border-2 rounded-md cursor-pointer" onclick="openDialog('<?= $name ?>', '<?= $description ?>', '<?= $is_done ?>')">Edit!</button>
+                <input name="description" readonly value="<?= htmlspecialchars(
+                    $t->get_description()
+                ) ?>" class="focus:outline-none w-[20vw] text-center cursor-not-allowed" />
+                <button type="button" class="p-1 border-2 rounded-md cursor-pointer" onclick="openDialog('<?= $id ?>')">Edit!</button>
                 <button type="submit" class="p-1 border-2 rounded-md cursor-pointer">Delete!</button>
             </form>
         <?php endforeach; ?>

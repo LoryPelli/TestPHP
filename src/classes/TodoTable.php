@@ -47,6 +47,17 @@ final class TodoTable extends BaseTable
         $row = $res->fetch(PDO::FETCH_ASSOC);
         return $row && $row['count'] > 0;
     }
+    public function get_id(string $user_id, string $name): string
+    {
+        $res = $this->conn->prepare(
+            'SELECT id FROM todos WHERE user_id = ? AND name = ?'
+        );
+        $res->bindParam(1, $user_id);
+        $res->bindParam(2, $name);
+        $res->execute();
+        $row = $res->fetch(PDO::FETCH_ASSOC);
+        return $row ? $row['id'] : '';
+    }
     /**
      * @return Todo[]
      */
