@@ -14,7 +14,6 @@ dialog.addEventListener('keydown', (e) => {
  */
 
 function openDialog(id) {
-    const form = dialog.querySelector('form');
     const name = form.querySelector("input[name='name']");
     const description = form.querySelector("input[name='description']");
     const is_done = form.querySelector("input[name='is_done']");
