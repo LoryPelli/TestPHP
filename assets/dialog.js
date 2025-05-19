@@ -38,12 +38,18 @@ function openDialog(id) {
                 .hasAttribute('checked');
             if (todo_name) {
                 name.setAttribute('value', todo_name);
+            } else {
+                name.removeAttribute('value');
             }
             if (todo_description) {
                 description.setAttribute('value', todo_description);
+            } else {
+                description.removeAttribute('value');
             }
             if (todo_is_done) {
                 is_done.setAttribute('checked', '');
+            } else {
+                is_done.removeAttribute('checked');
             }
         }
     } else {
