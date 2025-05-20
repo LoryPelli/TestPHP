@@ -19,13 +19,13 @@ function openDialog(id) {
     const description = form.querySelector("input[name='description']");
     const is_done = form.querySelector("input[name='is_done']");
     if (id) {
-        form.setAttribute('action', '/api/edit');
+        form.action = '/api/edit';
         const todo = document.querySelector(`form[data-todo-${id}]`);
         if (todo) {
-            todo_id.setAttribute('name', 'id');
-            todo_id.setAttribute('type', 'hidden');
-            todo_id.setAttribute('readonly', '');
-            todo_id.setAttribute('value', id);
+            todo_id.name = 'id';
+            todo_id.type = 'hidden';
+            todo_id.readOnly = true;
+            todo_id.value = id;
             form.appendChild(todo_id);
             const todo_name = todo
                 .querySelector("input[name='name']")
@@ -37,28 +37,28 @@ function openDialog(id) {
                 .querySelector("input[name='is_done']")
                 .hasAttribute('checked');
             if (todo_name) {
-                name.setAttribute('value', todo_name);
+                name.value = todo_name;
             } else {
-                name.removeAttribute('value');
+                name.value = '';
             }
             if (todo_description) {
-                description.setAttribute('value', todo_description);
+                description.value = todo_description;
             } else {
-                description.removeAttribute('value');
+                description.value = '';
             }
             if (todo_is_done) {
-                is_done.setAttribute('checked', '');
+                is_done.checked = true;
             } else {
-                is_done.removeAttribute('checked');
+                is_done.checked = false;
             }
         }
     } else {
-        name.removeAttribute('value');
-        description.removeAttribute('value');
-        is_done.removeAttribute('checked');
-        form.setAttribute('action', '/api/add');
+        name.value = '';
+        description.value = '';
+        is_done.checked = false;
+        form.action = '/api/add';
     }
-    div.setAttribute('data-open', '');
+    div.dataset.open = '';
     dialog.showModal();
 }
 
