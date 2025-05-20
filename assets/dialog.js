@@ -46,11 +46,7 @@ function openDialog(id) {
             } else {
                 description.value = '';
             }
-            if (todo_is_done) {
-                is_done.checked = true;
-            } else {
-                is_done.checked = false;
-            }
+            is_done.checked = todo_is_done;
         }
     } else {
         name.value = '';
