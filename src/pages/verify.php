@@ -15,5 +15,5 @@ $error = $_SESSION['error'] ?? '';
         <?php endforeach; ?>
     </div>
     <button type="submit" class="p-1 border-2 rounded-md cursor-pointer">Verify!</button>
-    <script src="/public/input.min.js"></script>
+    <script src="/input.min.js"></script>
 </form>

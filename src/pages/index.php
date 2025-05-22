@@ -18,7 +18,7 @@ $user_id = $email ? $users->get_id($email) : '';
             </a>
         <?php else: ?>
             <img src="<?= htmlspecialchars($users->get_avatar($email)) ?:
-                '/public/user.png' ?>" class="rounded-full size-10" />
+                '/user.png' ?>" class="rounded-full size-10" />
             <span><?= htmlspecialchars($users->get_username($email)) ?></span>
             <a href="/settings">
                 <button class="p-1 border-2 rounded-md cursor-pointer">Settings!</button>
@@ -87,4 +87,4 @@ $user_id = $email ? $users->get_id($email) : '';
         </div>
     </dialog>
 <?php endif; ?>
-<script src="/public/dialog.min.js"></script>
+<script src="/dialog.min.js"></script>

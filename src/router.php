@@ -11,8 +11,20 @@ Dotenv\Dotenv::createImmutable($_SERVER['DOCUMENT_ROOT'])->load();
 $resend = Resend::client($_ENV['APIKEY']);
 $url_path = parse_url($_SERVER['REQUEST_URI'])['path'];
 $file = trim($url_path, '/') ?: 'index';
-if (str_starts_with($file, 'public')) {
-    return false;
+if (!str_ends_with($file, '.php')) {
+    $publicFile = sprintf('%s/public/%s', $_SERVER['DOCUMENT_ROOT'], $file);
+    if (file_exists($publicFile)) {
+        header(
+            sprintf(
+                'Content-Type: %s',
+                horstoeko\mimedb\MimeDb::singleton()->findFirstMimeTypeByExtension(
+                    pathinfo($publicFile, PATHINFO_EXTENSION)
+                )
+            )
+        );
+        readfile($publicFile);
+        exit(0);
+    }
 }
 $email = $cookies->get('email');
 $password = $cookies->get('password');
