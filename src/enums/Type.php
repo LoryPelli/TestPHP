@@ -5,4 +5,5 @@ enum Type
     case Register;
     case Logout;
     case Delete;
+    case Remove;
 }

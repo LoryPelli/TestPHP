@@ -40,4 +40,8 @@ return [
         'title' => 'Delete your Account',
         'description' => 'Are you sure you want to delete your account?',
     ],
+    'remove' => [
+        'title' => 'Remove a Todo',
+        'description' => 'Are you sure you want to remove this todo?',
+    ],
 ];
