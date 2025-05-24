@@ -1,34 +1,8 @@
 <?php
 $messages = require_once 'src/enums/TodoError.php';
 $error = $_SESSION['error'] ?? '';
-$isLogged = $email && $password && $users->check_email($email);
 $user_id = $email ? $users->get_id($email) : '';
 ?>
-<nav class="flex justify-between p-2">
-    <a href="/">
-        <button class="p-1 border-2 rounded-md cursor-pointer">Home!</button>
-    </a>
-    <div class="flex items-center gap-x-1 p-3 border-2 rounded-md">
-        <?php if (!$isLogged): ?>
-            <a href="/login">
-                <button class="p-1 border-2 rounded-md cursor-pointer">Login!</button>
-            </a>
-            <a href="/register">
-                <button class="p-1 border-2 rounded-md cursor-pointer">Register!</button>
-            </a>
-        <?php else: ?>
-            <img src="<?= htmlspecialchars($users->get_avatar($email)) ?:
-                '/user.png' ?>" class="rounded-full size-10" />
-            <span><?= htmlspecialchars($users->get_username($email)) ?></span>
-            <a href="/settings">
-                <button class="p-1 border-2 rounded-md cursor-pointer">Settings!</button>
-            </a>
-            <a href="/logout">
-                <button class="p-1 border-2 rounded-md cursor-pointer">Logout!</button>
-            </a>
-        <?php endif; ?>
-    </div>
-</nav>
 <?php if (!$isLogged): ?>
     <div class="flex flex-col justify-center items-center h-screen">
         <span class="font-bold text-6xl italic">Login to see the rest of the page!</span>
@@ -59,7 +33,7 @@ $user_id = $email ? $users->get_id($email) : '';
                     $t->get_description()
                 ) ?>" class="focus:outline-none w-[20vw] text-center cursor-not-allowed" />
                 <button type="button" class="p-1 border-2 rounded-md cursor-pointer" onclick="openDialog('<?= $id ?>')">Edit!</button>
-                <button type="submit" class="p-1 border-2 rounded-md cursor-pointer">Delete!</button>
+                <button type="submit" class="p-1 border-2 rounded-md cursor-pointer">Remove!</button>
             </form>
         <?php endforeach; ?>
         <button class="p-1 border-2 rounded-md cursor-pointer" onclick="openDialog()">Add!</button>
