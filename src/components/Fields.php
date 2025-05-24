@@ -23,5 +23,5 @@ $isLogin = $type == Type::Login;
         'MAX_LENGTH'
     ] ?>" required class="p-1 border-2 rounded-md w-60" />
 <?php endif; ?>
-<?php require_once 'src/components/Icons.php'; ?>
+<?php include_once 'src/components/Icons.php'; ?>
 <script src="/toggle.min.js"></script>

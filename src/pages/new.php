@@ -18,7 +18,7 @@ $error = $_SESSION['error'] ?? '';
         <input name="repeat_password" autocomplete="off" type="password" required class="px-8 py-1 border-2 rounded-md w-60" />
         <?php include 'src/components/Toggle.php'; ?>
     </div>
-    <?php require_once 'src/components/Icons.php'; ?>
-    <script src="/toggle.min.js"></script>
     <button type="submit" class="p-1 border-2 rounded-md cursor-pointer">Continue!</button>
 </form>
+<?php include_once 'src/components/Icons.php'; ?>
+<script src="/toggle.min.js"></script>
