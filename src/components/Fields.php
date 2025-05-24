@@ -24,4 +24,4 @@ $isLogin = $type == Type::Login;
     ] ?>" required class="p-1 border-2 rounded-md w-60" />
 <?php endif; ?>
 <?php include_once 'src/components/Icons.php'; ?>
-<script src="/toggle.min.js"></script>
+<script src="/toggle.min.js" defer></script>

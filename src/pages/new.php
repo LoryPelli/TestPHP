@@ -21,4 +21,4 @@ $error = $_SESSION['error'] ?? '';
     <button type="submit" class="p-1 border-2 rounded-md cursor-pointer">Continue!</button>
 </form>
 <?php include_once 'src/components/Icons.php'; ?>
-<script src="/toggle.min.js"></script>
+<script src="/toggle.min.js" defer></script>
