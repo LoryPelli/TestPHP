@@ -9,8 +9,11 @@ $error = $_SESSION['error'] ?? '';
     <span class="font-bold text-xl">A verification code has been sent to your email, please enter it to complete
         registration!</span>
     <div class="flex gap-x-1">
-        <?php foreach (range(0, 5) as $_): ?>
-            <input name="digit[]" autocomplete="off" type="number" min="0" max="9" required
+        <?php foreach (range(0, 5) as $i): ?>
+            <input name="digit[]" autocomplete="off" type="number" min="0" max="9" <?= $i ==
+            0
+                ? 'autofocus'
+                : '' ?> required
                 class="disabled:bg-gray-200 p-1 border-2 rounded-md w-12 text-center disabled:cursor-not-allowed" />
         <?php endforeach; ?>
     </div>

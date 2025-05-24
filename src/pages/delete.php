@@ -14,7 +14,11 @@ $error = $_SESSION['error'] ?? '';
         <?php include_once 'src/components/Error.php'; ?>
     <?php endif; ?>
     <span>Type your password to delete your account:</span>
-    <input name="password" autocomplete="off" type="password" required class="p-1 border-2 rounded-md w-60" />
+    <div data-pwd class="relative flex flex-row-reverse">
+        <?php include 'src/components/CapsLock.php'; ?>
+        <input name="password" autocomplete="off" type="password" required class="px-8 py-1 border-2 rounded-md w-60" />
+        <?php include 'src/components/Toggle.php'; ?>
+    </div>
     <button type="submit" class="p-1 border-2 rounded-md cursor-pointer">Delete!</button>
     <span>Forgot password? No problem, you can <a href="/reset" class="text-blue-600 hover:underline">reset here</a>!</span>
 </form>
