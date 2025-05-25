@@ -18,7 +18,7 @@ function openDialog(id) {
     const name = form.querySelector("input[name='name']");
     const description = form.querySelector("input[name='description']");
     const is_done = form.querySelector("input[name='is_done']");
-    if (id) {
+    if (id.trim() != '') {
         form.action = '/api/edit';
         const todo = document.querySelector(`form[data-todo-${id}]`);
         if (todo) {
