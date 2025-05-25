@@ -60,5 +60,5 @@ $user_id = $email ? $users->get_id($email) : '';
             </div>
         </div>
     </dialog>
+    <script src="/dialog.min.js" defer></script>
 <?php endif; ?>
-<script src="/dialog.min.js" defer></script>
