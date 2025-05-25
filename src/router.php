@@ -66,7 +66,8 @@ if (!$exists) {
     ServerError::NOT_FOUND->send();
     exit(1);
 }
-if (!$isAPI) {
+$hasExt = pathinfo($file, PATHINFO_EXTENSION) != '';
+if (!$isAPI && !$hasExt) {
     $config = require_once 'src/config/index.php';
     $page = $config[$file];
     $title = $page['title'];
@@ -77,40 +78,46 @@ if (!$isAPI) {
 }
 $isLogged = $email && $password && $users->check_email($email);
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<?php include_once 'src/components/Header.php'; ?>
+<?php if (!$hasExt): ?>
+    <!DOCTYPE html>
+    <html lang="en">
+    <?php include_once 'src/components/Header.php'; ?>
 
-<body class="flex flex-col h-screen">
-    <nav class="flex justify-between p-2">
-        <a href="/">
-            <button class="p-1 border-2 rounded-md cursor-pointer">Home!</button>
-        </a>
-        <div class="flex items-center gap-x-1 p-3 border-2 rounded-md">
-            <?php if (!$isLogged): ?>
-                <a href="/login">
-                    <button class="p-1 border-2 rounded-md cursor-pointer">Login!</button>
-                </a>
-                <a href="/register">
-                    <button class="p-1 border-2 rounded-md cursor-pointer">Register!</button>
-                </a>
-            <?php else: ?>
-                <img src="<?= htmlspecialchars($users->get_avatar($email)) ?:
-                    '/user.png' ?>" class="rounded-full size-10" />
-                <span><?= htmlspecialchars(
-                    $users->get_username($email)
-                ) ?></span>
-                <a href="/settings">
-                    <button class="p-1 border-2 rounded-md cursor-pointer">Settings!</button>
-                </a>
-                <a href="/logout">
-                    <button class="p-1 border-2 rounded-md cursor-pointer">Logout!</button>
-                </a>
-            <?php endif; ?>
-        </div>
-    </nav>
+    <body class="flex flex-col h-screen">
+        <nav class="flex justify-between p-2">
+            <a href="/">
+                <button class="p-1 border-2 rounded-md cursor-pointer">Home!</button>
+            </a>
+            <div class="flex items-center gap-x-1 p-3 border-2 rounded-md">
+                <?php if (!$isLogged): ?>
+                    <a href="/login">
+                        <button class="p-1 border-2 rounded-md cursor-pointer">Login!</button>
+                    </a>
+                    <a href="/register">
+                        <button class="p-1 border-2 rounded-md cursor-pointer">Register!</button>
+                    </a>
+                <?php else: ?>
+                    <img src="<?= htmlspecialchars(
+                        $users->get_avatar($email)
+                    ) ?:
+                        '/user.png' ?>" class="rounded-full size-10" />
+                    <span><?= htmlspecialchars(
+                        $users->get_username($email)
+                    ) ?></span>
+                    <a href="/settings">
+                        <button class="p-1 border-2 rounded-md cursor-pointer">Settings!</button>
+                    </a>
+                    <a href="/logout">
+                        <button class="p-1 border-2 rounded-md cursor-pointer">Logout!</button>
+                    </a>
+                <?php endif; ?>
+            </div>
+        </nav>
+        <?php require_once $path; ?>
+    </body>
+
+    </html>
+    <?php unset($_SESSION['error']); ?>
+<?php else: ?>
     <?php require_once $path; ?>
-</body>
-
-</html>
-<?php unset($_SESSION['error']); ?>
+<?php endif; ?>
