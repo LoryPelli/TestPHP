@@ -1,5 +1,4 @@
 <?php
-require_once 'vendor/autoload.php';
 return new Josantonius\Cookie\Cookie(
     '',
     time() + 86400 * 21,

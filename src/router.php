@@ -1,12 +1,13 @@
 <?php
 session_name('session');
 session_start();
+require_once 'vendor/autoload.php';
 require_once 'src/enums/ServerError.php';
-$cookies = require_once 'src/cookies/index.php';
 require_once 'src/utils/redirect.php';
-$constants = require_once 'src/utils/constants.php';
 require_once 'src/classes/UserTable.php';
 require_once 'src/classes/TodoTable.php';
+$cookies = require_once 'src/cookies/index.php';
+$constants = require_once 'src/utils/constants.php';
 Dotenv\Dotenv::createImmutable($_SERVER['DOCUMENT_ROOT'])->load();
 $resend = Resend::client($_ENV['APIKEY']);
 $url_path = parse_url($_SERVER['REQUEST_URI'])['path'];
