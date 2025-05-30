@@ -98,11 +98,10 @@ $isLogged = $email && $password && $users->check_email($email);
                         <button class="p-1 border-2 rounded-md cursor-pointer">Register!</button>
                     </a>
                 <?php else: ?>
-                    <script src="/error.min.js"></script>
                     <img src="<?= htmlspecialchars(
                         $users->get_avatar($email)
                     ) ?:
-                        '/user.png' ?>" class="rounded-full size-10" />
+                        '/user.png' ?>" loading="lazy" class="rounded-full size-10" />
                     <span><?= htmlspecialchars(
                         $users->get_username($email)
                     ) ?></span>
@@ -112,6 +111,7 @@ $isLogged = $email && $password && $users->check_email($email);
                     <a href="/logout">
                         <button class="p-1 border-2 rounded-md cursor-pointer">Logout!</button>
                     </a>
+                    <script src="/error.min.js" defer></script>
                 <?php endif; ?>
             </div>
         </nav>

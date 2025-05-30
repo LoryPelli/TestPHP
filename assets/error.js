@@ -1,6 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const img = document.querySelector('img');
-    img.addEventListener('error', () => {
-        img.src = '/user.png';
-    });
+const img = document.querySelector('img');
+img.addEventListener('error', () => {
+    img.src = '/user.png';
 });
