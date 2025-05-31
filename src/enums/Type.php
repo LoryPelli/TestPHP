@@ -6,4 +6,6 @@ enum Type
     case Logout;
     case Delete;
     case Remove;
+    case Reset;
+    case Change;
 }

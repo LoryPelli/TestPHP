@@ -18,13 +18,12 @@ if ($userCode != $serverCode) {
     redirect('/verify', 308);
     exit(1);
 }
-switch ($type) {
-    case 'register':
+match ($type) {
+    'register' => (function () use ($email, $password, $username): void {
+        global $users;
         $users->new($email, $password, $username);
         session_destroy();
         redirect('/login');
-        break;
-    case 'reset':
-        redirect('/new', 308);
-        break;
-}
+    })(),
+    'reset' => redirect('/new', 308),
+};

@@ -15,7 +15,7 @@ final class TodoTable extends BaseTable
             description VARCHAR(%d) NOT NULL,
             user_id UUID,
             is_done BOOLEAN NOT NULL DEFAULT FALSE,
-            FOREIGN KEY (user_id) REFERENCES users(id)
+            FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
             )",
                 $constants['MAX_LENGTH'],
                 $constants['MAX_LENGTH'] * 4

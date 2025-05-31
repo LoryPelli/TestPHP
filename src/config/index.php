@@ -32,6 +32,10 @@ return [
         'title' => 'Reset Password',
         'description' => 'Reset your password',
     ],
+    'change' => [
+        'title' => 'Change Email',
+        'description' => 'Change your email',
+    ],
     'new' => [
         'title' => 'New Password',
         'description' => 'Choose your new your password',
