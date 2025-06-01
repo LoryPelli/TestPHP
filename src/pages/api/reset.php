@@ -21,7 +21,7 @@ try {
         'subject' => 'Verification Code',
         'text' => sprintf('Your verification code is: %s', $code),
     ]);
-} catch (Exception $_) {
+} catch (Exception) {
     $_SESSION['error'] = 'invalid_email';
     redirect('/reset');
     exit(1);
