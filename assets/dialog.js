@@ -10,10 +10,6 @@ dialog.addEventListener('keydown', (e) => {
     }
 });
 
-/**
- * @param { string } id
- */
-
 function openDialog(id = '') {
     const name = form.querySelector("input[name='name']");
     const description = form.querySelector("input[name='description']");
