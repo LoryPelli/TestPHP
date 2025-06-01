@@ -78,6 +78,10 @@ if (!$isAPI && !$hasExt) {
     exit(0);
 }
 $isLogged = $email && $password && $users->check_email($email);
+$html = new voku\helper\HtmlMin();
+$html->doRemoveOmittedQuotes(false);
+$html->doSortCssClassNames(false);
+ob_start(fn($buffer): string => $html->minify($buffer));
 ?>
 <?php if (!$hasExt): ?>
     <!DOCTYPE html>
@@ -123,3 +127,4 @@ $isLogged = $email && $password && $users->check_email($email);
 <?php else: ?>
     <?php require_once $path; ?>
 <?php endif; ?>
+<?php ob_end_flush(); ?>
