@@ -77,13 +77,9 @@ if (!$isAPI && !$hasExt) {
     require_once $path;
     exit(0);
 }
+require_once 'src/utils/buffer.php';
 $isLogged = $email && $password && $users->check_email($email);
-ob_start(function ($buffer): string {
-    $html = require_once 'src/minify/index.php';
-    $html->doRemoveOmittedQuotes(false);
-    $html->doSortCssClassNames(false);
-    return $html->minify($buffer);
-});
+ob_start(buffer(...));
 ?>
 <?php if (!$hasExt): ?>
     <!DOCTYPE html>

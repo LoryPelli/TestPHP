@@ -1,10 +1,7 @@
 <?php
-ob_start(function ($buffer): string {
-    $html = require_once 'src/minify/index.php';
-    $html->doRemoveOmittedQuotes(false);
-    $html->doSortCssClassNames(false);
-    return $html->minify($buffer);
-}); ?>
+require_once 'src/utils/buffer.php';
+ob_start(buffer(...));
+?>
 <!DOCTYPE html>
 <html lang="en">
 <?php include_once 'src/components/Header.php'; ?>
