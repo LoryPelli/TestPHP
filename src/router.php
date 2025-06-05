@@ -50,7 +50,7 @@ if (
     exit(1);
 }
 if (
-    ($file == 'verify' || $file == 'new') &&
+    ($file == 'verify' || str_starts_with($file, 'new')) &&
     $_SERVER['REQUEST_METHOD'] != 'POST'
 ) {
     redirect('/');

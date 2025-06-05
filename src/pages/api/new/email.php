@@ -41,4 +41,4 @@ if (!$is_confirm) {
 }
 $users->set_email($session_email, $email);
 session_destroy();
-redirect('/');
+redirect('/api/logout', 308);

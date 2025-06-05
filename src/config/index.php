@@ -36,7 +36,11 @@ return [
         'title' => 'Change Email',
         'description' => 'Change your email',
     ],
-    'new' => [
+    'new/email' => [
+        'title' => 'New Email',
+        'description' => 'Choose your new your email',
+    ],
+    'new/password' => [
         'title' => 'New Password',
         'description' => 'Choose your new your password',
     ],

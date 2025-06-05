@@ -15,4 +15,4 @@ if ($password != $repeat_password) {
 $hash = password_hash($password, PASSWORD_BCRYPT);
 $users->set_password($email, $hash);
 session_destroy();
-redirect('/');
+redirect('/api/logout', 308);
