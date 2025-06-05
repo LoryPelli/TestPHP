@@ -116,6 +116,15 @@ final class UserTable extends BaseTable
         $res->bindParam(2, $email);
         $res->execute();
     }
+    public function set_email(string $old_email, string $email): void
+    {
+        $res = $this->conn->prepare(
+            'UPDATE users SET email = ? WHERE email = ?'
+        );
+        $res->bindParam(1, $email);
+        $res->bindParam(2, $old_email);
+        $res->execute();
+    }
     public function delete(string $email): void
     {
         $res = $this->conn->prepare('DELETE FROM users WHERE email = ?');

@@ -5,6 +5,7 @@ enum UserError: string
     case NOT_FOUND = 'User not found';
     case INVALID_EMAIL = 'The email is not valid';
     case INCORRECT_PASSWORD = 'The user exists but the password is not correct';
+    case EMAILS_NOT_MATCH = 'Emails do not match';
     case PASSWORDS_NOT_MATCH = 'Passwords do not match';
     case WRONG_CODE = 'Your verification code is not valid';
     case EXPIRED = 'Verification code expired';
@@ -16,6 +17,7 @@ return [
     'not_found' => UserError::NOT_FOUND->value,
     'invalid_email' => UserError::INVALID_EMAIL->value,
     'incorrect_password' => UserError::INCORRECT_PASSWORD->value,
+    'emails_not_match' => UserError::EMAILS_NOT_MATCH->value,
     'passwords_not_match' => UserError::PASSWORDS_NOT_MATCH->value,
     'wrong_code' => UserError::WRONG_CODE->value,
     'expired' => UserError::EXPIRED->value,

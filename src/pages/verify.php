@@ -6,8 +6,7 @@ $error = $_SESSION['error'] ?? '';
     <?php if (isset($messages[$error])): ?>
         <?php include_once 'src/components/Error.php'; ?>
     <?php endif; ?>
-    <span class="font-bold text-xl">A verification code has been sent to your email, please enter it to complete
-        registration!</span>
+    <span class="font-bold text-xl">A verification code has been sent to your email!</span>
     <div class="flex gap-x-1">
         <?php foreach (range(0, 5) as $i): ?>
             <input name="digit[]" autocomplete="off" type="number" min="0" max="9" <?= $i ==

@@ -11,9 +11,9 @@ if (!$email || ($type == 'register' && (!$password || !$username))) {
     exit(1);
 }
 $code = $_POST['digit'];
-$userCode = implode('', $code);
-$serverCode = $_SESSION['code'] ?? '';
-if ($userCode != $serverCode) {
+$user_code = implode('', $code);
+$server_code = $_SESSION['code'] ?? '';
+if ($user_code != $server_code) {
     $_SESSION['error'] = 'wrong_code';
     redirect('/verify', 308);
     exit(1);
@@ -25,5 +25,7 @@ match ($type) {
         session_destroy();
         redirect('/login');
     })(),
-    'reset' => redirect('/new', 308),
+    'reset' => redirect('/new/password', 308),
+    'change' => redirect('/new/email', 308),
+    'change_confirm' => redirect('/api/new/email?confirm', 308),
 };

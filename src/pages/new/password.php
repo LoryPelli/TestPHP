@@ -2,7 +2,7 @@
 $messages = require_once 'src/enums/UserError.php';
 $error = $_SESSION['error'] ?? '';
 ?>
-<form method="POST" class="flex flex-col justify-center items-center gap-y-1 h-screen" action="/api/new">
+<form method="POST" class="flex flex-col justify-center items-center gap-y-1 h-screen" action="/api/new/password">
     <?php if (isset($messages[$error])): ?>
         <?php include_once 'src/components/Error.php'; ?>
     <?php endif; ?>
@@ -20,5 +20,5 @@ $error = $_SESSION['error'] ?? '';
     </div>
     <button type="submit" class="p-1 border-2 rounded-md cursor-pointer">Continue!</button>
 </form>
-<?php include_once 'src/components/Icons.php'; ?>
+<script src="/icons.js" defer></script>
 <script src="/toggle.min.js" defer></script>

@@ -22,5 +22,5 @@ $error = $_SESSION['error'] ?? '';
     <button type="submit" class="p-1 border-2 rounded-md cursor-pointer">Delete!</button>
     <span>Forgot password? No problem, you can <a href="/reset" class="text-blue-600 hover:underline">reset here</a>!</span>
 </form>
-<?php include_once 'src/components/Icons.php'; ?>
+<script src="/icons.js" defer></script>
 <script src="/toggle.min.js" defer></script>
