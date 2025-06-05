@@ -1,1 +1,0 @@
-<script src="/icons.js" defer></script>
