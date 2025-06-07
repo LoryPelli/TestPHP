@@ -1,6 +1,7 @@
 {
     "require": {
         "php": "8.4.5",
+        "guzzlehttp/guzzle": "^7.9",
         "horstoeko/mimedb": "^1.0",
         "josantonius/cookie": "^2.0",
         "resend/resend-php": "^0.16",
