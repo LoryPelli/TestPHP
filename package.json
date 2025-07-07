@@ -4,16 +4,19 @@
         "dev:server": "make",
         "dev:css": "pnpm tailwindcss -i ./src/styles/global.css -o ./assets/global.css -w",
         "dev:minify": "node esbuild.config.js",
-        "format": "prettier --write ."
+        "format": "pnpm \"/format:.*/\"",
+        "format:prettier": "prettier --write .",
+        "format:sort": "tailwind-sorter sort -i src/**/*.php"
     },
     "type": "module",
     "devDependencies": {
         "@prettier/plugin-php": "^0.22.4",
-        "@tailwindcss/cli": "^4.1.8",
-        "@types/node": "^22.15.23",
+        "@tailwindcss/cli": "^4.1.11",
+        "@types/node": "^24.0.10",
         "esbuild": "^0.25.5",
-        "prettier": "^3.5.3",
-        "tailwindcss": "^4.1.8",
+        "prettier": "^3.6.2",
+        "tailwind-sorter": "^1.0.1",
+        "tailwindcss": "^4.1.11",
         "tinyglobby": "^0.2.14"
     }
 }
