@@ -21,6 +21,7 @@ function openDialog(id = '') {
             todo_id.name = 'id';
             todo_id.type = 'hidden';
             todo_id.readOnly = true;
+            todo_id.autocomplete = 'off';
             todo_id.value = id;
             form.appendChild(todo_id);
             const todo_name = todo

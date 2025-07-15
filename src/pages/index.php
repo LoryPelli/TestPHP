@@ -27,9 +27,9 @@ $user_id = $email ? $users->get_id($email) : '';
                     ? 'checked'
                     : '' ?> class="after:flex after:justify-center bg-red-600 checked:bg-blue-600 border-2 rounded-md focus:outline-none size-7 after:text-white after:content-['✕'] checked:after:content-['✓'] appearance-none cursor-not-allowed" />
                 <span class="font-bold">Name:</span>
-                <input name="name" readonly value="<?= $name ?>" class="focus:outline-none w-[20vw] text-center cursor-not-allowed" />
+                <input name="name" autocomplete="off" readonly value="<?= $name ?>" class="focus:outline-none w-[20vw] text-center cursor-not-allowed" />
                 <span class="font-bold">Description:</span>
-                <input name="description" readonly value="<?= htmlspecialchars(
+                <input name="description" autocomplete="off" readonly value="<?= htmlspecialchars(
                     $t->get_description()
                 ) ?>" class="focus:outline-none w-[20vw] text-center cursor-not-allowed" />
                 <button type="button" class="p-1 border-2 rounded-md cursor-pointer" onclick="openDialog('<?= $id ?>')">Edit!</button>
