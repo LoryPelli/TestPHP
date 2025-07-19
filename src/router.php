@@ -19,9 +19,9 @@ if (!str_ends_with($file, '.php')) {
             sprintf(
                 'Content-Type: %s',
                 horstoeko\mimedb\MimeDb::singleton()->findFirstMimeTypeByExtension(
-                    pathinfo($publicFile, PATHINFO_EXTENSION)
-                )
-            )
+                    pathinfo($publicFile, PATHINFO_EXTENSION),
+                ),
+            ),
         );
         readfile($publicFile);
         exit(0);
@@ -101,11 +101,11 @@ ob_start(buffer(...));
                     </a>
                 <?php else: ?>
                     <img src="<?= htmlspecialchars(
-                        $users->get_avatar($email)
+                        $users->get_avatar($email),
                     ) ?:
                         '/user.png' ?>" loading="lazy" class="rounded-full size-10" />
                     <span><?= htmlspecialchars(
-                        $users->get_username($email)
+                        $users->get_username($email),
                     ) ?></span>
                     <a href="/settings">
                         <button class="p-1 border-2 rounded-md cursor-pointer">Settings!</button>

@@ -10,10 +10,10 @@
     },
     "type": "module",
     "devDependencies": {
-        "@prettier/plugin-php": "^0.22.4",
+        "@prettier/plugin-php": "^0.24.0",
         "@tailwindcss/cli": "^4.1.11",
-        "@types/node": "^24.0.10",
-        "esbuild": "^0.25.6",
+        "@types/node": "^24.0.15",
+        "esbuild": "^0.25.7",
         "prettier": "^3.6.2",
         "tailwind-sorter": "^1.0.1",
         "tailwindcss": "^4.1.11",

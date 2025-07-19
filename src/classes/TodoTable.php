@@ -18,18 +18,18 @@ final class TodoTable extends BaseTable
             FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
             )",
                 $constants['MAX_LENGTH'],
-                $constants['MAX_LENGTH'] * 4
-            )
+                $constants['MAX_LENGTH'] * 4,
+            ),
         );
     }
     public function new(
         string $name,
         string $description,
         bool $is_done,
-        string $user_id
+        string $user_id,
     ): void {
         $res = $this->conn->prepare(
-            'INSERT INTO todos (name, description, is_done, user_id) VALUES (?, ?, ?, ?)'
+            'INSERT INTO todos (name, description, is_done, user_id) VALUES (?, ?, ?, ?)',
         );
         $res->bindParam(1, $name);
         $res->bindParam(2, $description);
@@ -40,7 +40,7 @@ final class TodoTable extends BaseTable
     public function check_name(string $name): bool
     {
         $res = $this->conn->prepare(
-            'SELECT COUNT(*) FROM todos WHERE name = ?'
+            'SELECT COUNT(*) FROM todos WHERE name = ?',
         );
         $res->bindParam(1, $name);
         $res->execute();
@@ -50,7 +50,7 @@ final class TodoTable extends BaseTable
     public function get_id(string $user_id, string $name): string
     {
         $res = $this->conn->prepare(
-            'SELECT id FROM todos WHERE user_id = ? AND name = ?'
+            'SELECT id FROM todos WHERE user_id = ? AND name = ?',
         );
         $res->bindParam(1, $user_id);
         $res->bindParam(2, $name);
@@ -83,10 +83,10 @@ final class TodoTable extends BaseTable
         string $description,
         bool $is_done,
         string $user_id,
-        string $id
+        string $id,
     ): void {
         $res = $this->conn->prepare(
-            'UPDATE todos SET name = ?, description = ?, is_done = ? WHERE user_id = ? AND id = ?'
+            'UPDATE todos SET name = ?, description = ?, is_done = ? WHERE user_id = ? AND id = ?',
         );
         $res->bindParam(1, $name);
         $res->bindParam(2, $description);
@@ -98,7 +98,7 @@ final class TodoTable extends BaseTable
     public function delete(string $user_id, string $name): void
     {
         $res = $this->conn->prepare(
-            'DELETE FROM todos WHERE user_id = ? AND name = ?'
+            'DELETE FROM todos WHERE user_id = ? AND name = ?',
         );
         $res->bindParam(1, $user_id);
         $res->bindParam(2, $name);

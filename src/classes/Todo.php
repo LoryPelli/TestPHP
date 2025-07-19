@@ -7,7 +7,7 @@ final class Todo
     public function __construct(
         string $name,
         string $description,
-        bool $is_done
+        bool $is_done,
     ) {
         $this->name = $name;
         $this->description = $description;

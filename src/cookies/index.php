@@ -6,5 +6,5 @@ return new Josantonius\Cookie\Cookie(
     '/',
     false,
     'Strict',
-    true
+    true,
 );

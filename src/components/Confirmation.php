@@ -5,7 +5,7 @@ $isDelete = $type == Type::Delete;
 ?>
 <form method="POST" class="flex flex-col justify-center items-center gap-y-1 h-screen" action="<?= sprintf(
     '/api/%s',
-    $isLogout ? 'logout' : ($isDelete ? 'delete' : 'remove')
+    $isLogout ? 'logout' : ($isDelete ? 'delete' : 'remove'),
 ) ?>">
     <span class="font-bold text-xl">Are you sure you want to <?= $isLogout
         ? 'logout'

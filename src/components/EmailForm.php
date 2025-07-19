@@ -5,7 +5,7 @@ $error = $_SESSION['error'] ?? '';
 ?>
 <form method="POST" class="flex flex-col justify-center items-center gap-y-1 h-screen" action="<?= sprintf(
     '/api/%s',
-    $isReset ? 'reset' : 'change'
+    $isReset ? 'reset' : 'change',
 ) ?>">
     <?php if (isset($messages[$error])): ?>
         <?php include_once 'src/components/Error.php'; ?>

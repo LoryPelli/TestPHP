@@ -8,10 +8,10 @@ abstract class BaseTable
             sprintf(
                 'pgsql:host=%s;dbname=%s',
                 $_ENV['PGHOST'],
-                $_ENV['PGDATABASE']
+                $_ENV['PGDATABASE'],
             ),
             $_ENV['PGUSER'],
-            $_ENV['PGPASSWORD']
+            $_ENV['PGPASSWORD'],
         );
     }
 }
