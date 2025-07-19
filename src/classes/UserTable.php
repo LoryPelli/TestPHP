@@ -5,7 +5,6 @@ final class UserTable extends BaseTable
 {
     public function __construct()
     {
-        global $constants;
         parent::__construct();
         $this->conn->query(
             sprintf(
@@ -16,7 +15,7 @@ final class UserTable extends BaseTable
             username VARCHAR(%d) NOT NULL,
             avatar TEXT NOT NULL DEFAULT ''
         )",
-                $constants['MAX_LENGTH'],
+                Constants::MAX_NAME_LENGTH,
             ),
         );
     }

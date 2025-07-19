@@ -1,6 +1,6 @@
 <?php
 $username = $_POST['username'];
-if (strlen($username) > $constants['MAX_LENGTH']) {
+if (strlen($username) > Constants::MAX_NAME_LENGTH) {
     $_SESSION['error'] = 'username_too_long';
     redirect('/settings');
     exit(1);

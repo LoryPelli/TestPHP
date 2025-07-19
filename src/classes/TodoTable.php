@@ -5,7 +5,6 @@ final class TodoTable extends BaseTable
 {
     public function __construct()
     {
-        global $constants;
         parent::__construct();
         $this->conn->query(
             sprintf(
@@ -17,8 +16,8 @@ final class TodoTable extends BaseTable
             is_done BOOLEAN NOT NULL DEFAULT FALSE,
             FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
             )",
-                $constants['MAX_LENGTH'],
-                $constants['MAX_LENGTH'] * 4,
+                Constants::MAX_NAME_LENGTH,
+                Constants::MAX_DESCRIPTION_LENGTH,
             ),
         );
     }

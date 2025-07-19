@@ -1,13 +1,13 @@
 <?php
 $id = $_POST['id'];
 $name = $_POST['name'];
-if (strlen($name) > $constants['MAX_LENGTH']) {
+if (strlen($name) > Constants::MAX_NAME_LENGTH) {
     $_SESSION['error'] = 'name_too_long';
     redirect('/');
     exit(1);
 }
 $description = $_POST['description'] ?? '';
-if (strlen($description) > $constants['MAX_LENGTH'] * 4) {
+if (strlen($description) > Constants::MAX_DESCRIPTION_LENGTH) {
     $_SESSION['error'] = 'description_too_long';
     redirect('/');
     exit(1);

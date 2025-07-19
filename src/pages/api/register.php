@@ -19,7 +19,7 @@ if ($password != $repeat_password) {
 }
 $hash = password_hash($_POST['password'], PASSWORD_BCRYPT);
 $username = $_POST['username'];
-if (strlen($username) > $constants['MAX_LENGTH']) {
+if (strlen($username) > Constants::MAX_NAME_LENGTH) {
     $_SESSION['error'] = 'username_too_long';
     redirect('/register');
     exit(1);

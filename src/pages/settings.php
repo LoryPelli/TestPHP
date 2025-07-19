@@ -7,9 +7,7 @@ $error = $_SESSION['error'] ?? '';
         <?php include_once 'src/components/Error.php'; ?>
     <?php endif; ?>
     <span>Username:</span>
-    <input name="username" autocomplete="off" maxlength="<?= $constants[
-        'MAX_LENGTH'
-    ] ?>" value="<?= htmlspecialchars(
+    <input name="username" autocomplete="off" maxlength="<?= Constants::MAX_NAME_LENGTH ?>" value="<?= htmlspecialchars(
     $users->get_username($email),
 ) ?>" class="p-1 border-2 rounded-md" />
     <span>Avatar URL</span>

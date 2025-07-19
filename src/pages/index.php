@@ -48,13 +48,9 @@ $user_id = $email ? $users->get_id($email) : '';
                     <span>Done:</span>
                     <input name="is_done" type="checkbox" class="after:flex after:justify-center bg-red-600 checked:bg-blue-600 border-2 rounded-md focus:outline-none size-7 after:text-white after:content-['✕'] checked:after:content-['✓'] appearance-none cursor-pointer" />
                     <span>Name:</span>
-                    <input name="name" autocomplete="off" maxlength="<?= $constants[
-                        'MAX_LENGTH'
-                    ] ?>" required class="p-1 border-2 rounded-md w-60" />
+                    <input name="name" autocomplete="off" maxlength="<?= Constants::MAX_NAME_LENGTH ?>" required class="p-1 border-2 rounded-md w-60" />
                     <span>Description:</span>
-                    <input name="description" autocomplete="off" maxlength="<?= $constants[
-                        'MAX_LENGTH'
-                    ] * 4 ?>" class="p-1 border-2 rounded-md w-60" />
+                    <input name="description" autocomplete="off" maxlength="<?= Constants::MAX_DESCRIPTION_LENGTH ?>" class="p-1 border-2 rounded-md w-60" />
                     <button type="submit" class="p-1 border-2 rounded-md cursor-pointer">Continue!</button>
                 </form>                
             </div>

@@ -1,6 +1,5 @@
 <?php
 require_once 'src/enums/Type.php';
-$constants = require_once 'src/utils/constants.php';
 $isLogin = $type == Type::Login;
 ?>
 <span>Email:</span>
@@ -19,9 +18,7 @@ $isLogin = $type == Type::Login;
         <?php include 'src/components/Toggle.php'; ?>
     </div>
     <span>Username:</span>
-    <input name="username" autocomplete="off" maxlength="<?= $constants[
-        'MAX_LENGTH'
-    ] ?>" required class="p-1 border-2 rounded-md w-60" />
+    <input name="username" autocomplete="off" maxlength="<?= Constants::MAX_NAME_LENGTH ?>" required class="p-1 border-2 rounded-md w-60" />
 <?php endif; ?>
 <script src="/icons.js" defer></script>
 <script src="/toggle.min.js" defer></script>
