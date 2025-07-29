@@ -50,13 +50,13 @@ if (
     exit(1);
 }
 if (
-    ($file == 'verify' || str_starts_with($file, 'new')) &&
+    ($file == 'verify' || str_starts_with($file, 'new/')) &&
     $_SERVER['REQUEST_METHOD'] != 'POST'
 ) {
     redirect('/');
     exit(1);
 }
-$isAPI = str_starts_with($file, 'api');
+$isAPI = str_starts_with($file, 'api/');
 $path = sprintf('src/pages/%s.php', $file);
 $exists = file_exists($path);
 if ($isAPI && $_SERVER['REQUEST_METHOD'] != 'POST') {
