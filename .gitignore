@@ -3,3 +3,4 @@ vendor
 .env
 assets/global.css
 public
+data

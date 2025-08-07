@@ -1,0 +1,50 @@
+services:
+    pgsql:
+        image: postgres:17.5-alpine
+        restart: always
+        ports:
+            - 5432:5432
+        volumes:
+            - ./data/pgsql:/var/lib/postgresql/data
+        environment:
+            POSTGRES_USER: ${PGUSER}
+            POSTGRES_PASSWORD: ${PGPASSWORD}
+            POSTGRES_DB: ${PGDATABASE}
+    composer:
+        image: composer:2.8.7
+        working_dir: /app
+        volumes:
+            - ./:/app
+        command: composer install
+    php:
+        image: php:8.4.5-fpm-alpine
+        restart: always
+        build:
+            context: .
+            dockerfile: Dockerfile
+        ports:
+            - 9000:9000
+        volumes:
+            - ./:/var/www/html
+            - ./php.ini:/usr/local/etc/php/php.ini
+        environment:
+            PGDATABASE: ${PGDATABASE}
+            PGUSER: ${PGUSER}
+            PGPASSWORD: ${PGPASSWORD}
+            APIKEY: ${APIKEY}
+            EMAIL: ${EMAIL}
+        depends_on:
+            - pgsql
+            - composer
+    nginx:
+        image: nginx:1.27.5-alpine
+        restart: always
+        ports:
+            - 80:80
+        volumes:
+            - ./:/var/www/html
+            - ./nginx.conf:/etc/nginx/conf.d/default.conf
+        depends_on:
+            - pgsql
+            - php
+            - composer

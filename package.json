@@ -1,7 +1,7 @@
 {
     "scripts": {
         "dev": "pnpm \"/dev:.*/\"",
-        "dev:server": "make",
+        "dev:server": "docker compose up --build",
         "dev:css": "pnpm tailwindcss -i ./src/styles/global.css -o ./assets/global.css -w",
         "dev:minify": "node esbuild.config.js",
         "format": "pnpm \"/format:.*/\"",

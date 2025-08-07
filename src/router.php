@@ -59,7 +59,7 @@ if (
 }
 $isAPI = str_starts_with($file, 'api/');
 $path = sprintf('src/pages/%s.php', $file);
-$exists = file_exists($path);
+$exists = file_exists(sprintf('%s/%s', $root, $path));
 if ($isAPI && $_SERVER['REQUEST_METHOD'] != 'POST') {
     ServerError::METHOD_NOT_ALLOWED->send();
     exit(1);
