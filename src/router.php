@@ -103,7 +103,7 @@ ob_start(buffer(...));
                         <img src="<?= htmlspecialchars(
                             $users->get_avatar($email),
                         ) ?:
-                            '/user.png' ?>" loading="lazy" class="rounded-full size-10" />
+                            '/user.png' ?>" loading="lazy" decoding="async" class="rounded-full size-10" />
                         <span><?= htmlspecialchars(
                             $users->get_username($email),
                         ) ?></span>
