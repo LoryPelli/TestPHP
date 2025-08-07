@@ -1,10 +1,10 @@
 <?php
-$messages = require_once 'src/enums/UserError.php';
+$messages = require_once sprintf('%s/src/enums/UserError.php', $root);
 $error = $_SESSION['error'] ?? '';
 ?>
 <form method="POST" class="flex flex-col justify-center items-center gap-y-1 h-screen" action="/api/settings">
     <?php if (isset($messages[$error])): ?>
-        <?php include_once 'src/components/Error.php'; ?>
+        <?php include_once sprintf('%s/src/components/Error.php', $root); ?>
     <?php endif; ?>
     <span>Username:</span>
     <input name="username" autocomplete="off" maxlength="<?= Constants::MAX_NAME_LENGTH ?>" value="<?= htmlspecialchars(

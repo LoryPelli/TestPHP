@@ -1,3 +1,3 @@
 <?php
-require_once 'src/utils/update_user.php';
+require_once sprintf('%s/src/utils/update_user.php', $root);
 update_user('reset');

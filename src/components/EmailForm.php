@@ -1,5 +1,5 @@
 <?php
-$messages = require_once 'src/enums/UserError.php';
+$messages = require_once sprintf('%s/src/enums/UserError.php', $root);
 $isReset = $type == Type::Reset;
 $error = $_SESSION['error'] ?? '';
 ?>
@@ -8,7 +8,7 @@ $error = $_SESSION['error'] ?? '';
     $isReset ? 'reset' : 'change',
 ) ?>">
     <?php if (isset($messages[$error])): ?>
-        <?php include_once 'src/components/Error.php'; ?>
+        <?php include_once sprintf('%s/src/components/Error.php', $root); ?>
     <?php endif; ?>
     <span>Email:</span>
     <input name="email" autocomplete="off" type="email" required class="p-1 border-2 rounded-md w-60" />

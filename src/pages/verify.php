@@ -1,10 +1,10 @@
 <?php
-$messages = require_once 'src/enums/UserError.php';
+$messages = require_once sprintf('%s/src/enums/UserError.php', $root);
 $error = $_SESSION['error'] ?? '';
 ?>
 <form method="POST" class="flex flex-col justify-center items-center gap-y-1 h-screen" action="/api/verify">
     <?php if (isset($messages[$error])): ?>
-        <?php include_once 'src/components/Error.php'; ?>
+        <?php include_once sprintf('%s/src/components/Error.php', $root); ?>
     <?php endif; ?>
     <span class="font-bold text-xl">A verification code has been sent to your email!</span>
     <div class="flex gap-x-1">

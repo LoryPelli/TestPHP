@@ -1,4 +1,4 @@
 <?php
-require_once 'src/enums/Type.php';
+require_once sprintf('%s/src/enums/Type.php', $root);
 $type = Type::Reset;
-include_once 'src/components/EmailForm.php';
+include_once sprintf('%s/src/components/EmailForm.php', $root);

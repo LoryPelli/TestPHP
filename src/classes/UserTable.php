@@ -1,6 +1,6 @@
 <?php
-require_once 'src/classes/BaseTable.php';
-require_once 'src/classes/User.php';
+require_once sprintf('%s/src/classes/BaseTable.php', $root);
+require_once sprintf('%s/src/classes/User.php', $root);
 final class UserTable extends BaseTable
 {
     public function __construct()

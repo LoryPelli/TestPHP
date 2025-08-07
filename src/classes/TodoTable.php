@@ -1,6 +1,6 @@
 <?php
-require_once 'src/classes/BaseTable.php';
-require_once 'src/classes/Todo.php';
+require_once sprintf('%s/src/classes/BaseTable.php', $root);
+require_once sprintf('%s/src/classes/Todo.php', $root);
 final class TodoTable extends BaseTable
 {
     public function __construct()

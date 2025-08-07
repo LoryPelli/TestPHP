@@ -1,5 +1,10 @@
 <?php
 function inline(string $file): string
 {
-    return preg_replace('/\s+/', ' ', file_get_contents($file));
+    global $root;
+    return preg_replace(
+        '/\s+/',
+        ' ',
+        file_get_contents(sprintf('%s/%s', $root, $file)),
+    );
 }

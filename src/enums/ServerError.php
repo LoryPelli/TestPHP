@@ -12,9 +12,10 @@ enum ServerError: int
     }
     public function send(): void
     {
+        global $root;
         $error = $this->value;
         $message = $this->message();
         http_response_code($error);
-        require_once 'src/errors/index.php';
+        require_once sprintf('%s/src/errors/index.php', $root);
     }
 }

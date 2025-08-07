@@ -1,4 +1,4 @@
 <?php
-require_once 'src/enums/Type.php';
+require_once sprintf('%s/src/enums/Type.php', $root);
 $type = Type::Remove;
-include_once 'src/components/Confirmation.php';
+include_once sprintf('%s/src/components/Confirmation.php', $root);

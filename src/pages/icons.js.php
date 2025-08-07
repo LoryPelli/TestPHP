@@ -1,5 +1,5 @@
 <?php
-require_once 'src/utils/inline.php';
+require_once sprintf('%s/src/utils/inline.php', $root);
 header('Content-Type: application/javascript');
 ?>
 const show = '<?= inline('svg/show.php') ?>';

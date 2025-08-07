@@ -1,13 +1,14 @@
 <?php
 session_name('session');
 session_start();
-require_once 'vendor/autoload.php';
-require_once 'src/enums/ServerError.php';
-require_once 'src/utils/redirect.php';
-require_once 'src/classes/UserTable.php';
-require_once 'src/classes/TodoTable.php';
-require_once 'src/classes/Constants.php';
-$cookies = require_once 'src/cookies/index.php';
+$root = $_SERVER['DOCUMENT_ROOT'];
+require_once sprintf('%s/vendor/autoload.php', $root);
+require_once sprintf('%s/src/enums/ServerError.php', $root);
+require_once sprintf('%s/src/utils/redirect.php', $root);
+require_once sprintf('%s/src/classes/UserTable.php', $root);
+require_once sprintf('%s/src/classes/TodoTable.php', $root);
+require_once sprintf('%s/src/classes/Constants.php', $root);
+$cookies = require_once sprintf('%s/src/cookies/index.php', $root);
 Dotenv\Dotenv::createImmutable($_SERVER['DOCUMENT_ROOT'])->load();
 $resend = Resend::client($_ENV['APIKEY']);
 $url_path = parse_url($_SERVER['REQUEST_URI'])['path'];
@@ -69,22 +70,22 @@ if (!$exists) {
 }
 $hasExt = pathinfo($file, PATHINFO_EXTENSION) != '';
 if (!$isAPI && !$hasExt) {
-    $config = require_once 'src/config/index.php';
+    $config = require_once sprintf('%s/src/config/index.php', $root);
     $page = $config[$file];
     $title = $page['title'];
     $description = $page['description'];
 } else {
-    require_once $path;
+    require_once sprintf('%s/%s', $root, $path);
     exit(0);
 }
-require_once 'src/utils/buffer.php';
+require_once sprintf('%s/src/utils/buffer.php', $root);
 $isLogged = $email && $password && $users->check_email($email);
 ob_start(buffer(...));
 ?>
 <?php if (!$hasExt): ?>
     <!DOCTYPE html>
     <html lang="en">
-        <?php include_once 'src/components/Header.php'; ?>
+        <?php include_once sprintf('%s/src/components/Header.php', $root); ?>
         <body class="flex flex-col h-screen">
             <nav class="flex justify-between p-2">
                 <a href="/">
@@ -116,11 +117,11 @@ ob_start(buffer(...));
                     <?php endif; ?>
                 </div>
             </nav>
-            <?php require_once $path; ?>
+            <?php require_once sprintf('%s/%s', $root, $path); ?>
         </body>
     </html>
     <?php unset($_SESSION['error']); ?>
 <?php else: ?>
-    <?php require_once $path; ?>
+    <?php require_once sprintf('%s/%s', $root, $path); ?>
 <?php endif; ?>
 <?php ob_end_flush(); ?>

@@ -1,5 +1,5 @@
 <?php
-require_once 'src/enums/Type.php';
+require_once sprintf('%s/src/enums/Type.php', $root);
 $isLogout = $type == Type::Logout;
 $isDelete = $type == Type::Delete;
 ?>

@@ -1,6 +1,6 @@
 <?php
-require_once 'src/enums/Type.php';
-$messages = require_once 'src/enums/UserError.php';
+require_once sprintf('%s/src/enums/Type.php', $root);
+$messages = require_once sprintf('%s/src/enums/UserError.php', $root);
 $isLogin = $type == Type::Login;
 $error = $_SESSION['error'] ?? '';
 ?>
@@ -9,9 +9,9 @@ $error = $_SESSION['error'] ?? '';
     $isLogin ? 'login' : 'register',
 ) ?>">
     <?php if (isset($messages[$error])): ?>
-        <?php include_once 'src/components/Error.php'; ?>
+        <?php include_once sprintf('%s/src/components/Error.php', $root); ?>
     <?php endif; ?>
-    <?php include_once 'src/components/Fields.php'; ?>
+    <?php include_once sprintf('%s/src/components/Fields.php', $root); ?>
     <button type="submit" class="p-1 border-2 rounded-md cursor-pointer"><?= $isLogin
         ? 'Login!'
         : 'Register!' ?></button>
