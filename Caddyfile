@@ -1,0 +1,6 @@
+:80 {
+    root * /var/www/html
+    encode zstd gzip
+    php_fastcgi php:9000
+    rewrite * /src/router.php
+}
