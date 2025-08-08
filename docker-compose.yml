@@ -45,7 +45,8 @@ services:
             - ./Caddyfile:/etc/caddy/Caddyfile
         depends_on:
             - pgsql
-            - php
             - composer
+            - php
 volumes:
     pgdata:
+        name: pgdata
