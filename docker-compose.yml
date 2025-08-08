@@ -1,6 +1,16 @@
 services:
+    pgsql:
+        image: postgres:16.5-alpine
+        restart: always
+        ports:
+            - 5432:5432
+        volumes:
+            - pgdata:/var/lib/postgresql/data
+        environment:
+            POSTGRES_PASSWORD: ${PGPASSWORD}
     composer:
         image: composer:2.8.7
+        restart: always
         working_dir: /app
         volumes:
             - ./:/app
@@ -23,6 +33,7 @@ services:
             APIKEY: ${APIKEY}
             EMAIL: ${EMAIL}
         depends_on:
+            - pgsql
             - composer
     caddy:
         image: caddy:2.7.5-alpine
@@ -33,5 +44,8 @@ services:
             - ./:/var/www/html
             - ./Caddyfile:/etc/caddy/Caddyfile
         depends_on:
+            - pgsql
             - php
             - composer
+volumes:
+    pgdata:
