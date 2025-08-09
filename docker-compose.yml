@@ -10,7 +10,6 @@ services:
             POSTGRES_PASSWORD: ${PGPASSWORD}
     composer:
         image: composer:2.8.7
-        restart: always
         working_dir: /app
         volumes:
             - ./:/app
