@@ -12,8 +12,8 @@
     "devDependencies": {
         "@prettier/plugin-php": "^0.24.0",
         "@tailwindcss/cli": "^4.1.11",
-        "@types/node": "^24.0.15",
-        "esbuild": "^0.25.7",
+        "@types/node": "^24.2.1",
+        "esbuild": "^0.25.8",
         "prettier": "^3.6.2",
         "tailwind-sorter": "^1.0.1",
         "tailwindcss": "^4.1.11",

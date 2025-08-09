@@ -5,26 +5,29 @@ services:
         ports:
             - 5432:5432
         volumes:
-            - pgdata:/var/lib/postgresql/data
+            - postgres:/var/lib/postgresql/data
         environment:
             POSTGRES_PASSWORD: ${PGPASSWORD}
     composer:
         image: composer:2.8.7
+        restart: on-failure
         working_dir: /app
         volumes:
             - ./:/app
         command: composer install
     php:
-        image: php:8.4.5-fpm-alpine
+        image: dunglas/frankenphp:php8.4.5-alpine
         restart: always
         build:
             context: .
             dockerfile: Dockerfile
         ports:
-            - 9000:9000
+            - 80:80
+            - 63342:63342
+        working_dir: /var/www/html
         volumes:
             - ./:/var/www/html
-            - ./php.ini:/usr/local/etc/php/php.ini
+            - ./Caddyfile:/etc/caddy/Caddyfile
         environment:
             PGDATABASE: ${PGDATABASE}
             PGUSER: ${PGUSER}
@@ -34,19 +37,6 @@ services:
         depends_on:
             - pgsql
             - composer
-    caddy:
-        image: caddy:2.7.5-alpine
-        restart: always
-        ports:
-            - 80:80
-            - 63342:63342
-        volumes:
-            - ./:/var/www/html
-            - ./Caddyfile:/etc/caddy/Caddyfile
-        depends_on:
-            - pgsql
-            - composer
-            - php
 volumes:
-    pgdata:
-        name: pgdata
+    postgres:
+        name: postgres
