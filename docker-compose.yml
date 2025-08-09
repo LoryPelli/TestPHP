@@ -22,11 +22,10 @@ services:
             context: .
             dockerfile: Dockerfile
         ports:
-            - 80:80
             - 63342:63342
-        working_dir: /var/www/html
+        working_dir: /app
         volumes:
-            - ./:/var/www/html
+            - ./:/app
             - ./Caddyfile:/etc/caddy/Caddyfile
         environment:
             PGDATABASE: ${PGDATABASE}

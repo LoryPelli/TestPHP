@@ -2,15 +2,11 @@
 	frankenphp
 }
 
-:80 {
-    reverse_proxy 127.0.0.1:63342
-}
-
 :63342 {
-    root * /var/www/html
+    root * /app
     encode zstd br gzip
     php_server {
-        root /var/www/html
+        root /app
     }
     rewrite * /src/router.php
 }
