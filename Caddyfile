@@ -1,4 +1,8 @@
 :80 {
+    reverse_proxy 127.0.0.1:63342
+}
+
+:63342 {
     root * /var/www/html
     encode zstd gzip
     php_fastcgi php:9000

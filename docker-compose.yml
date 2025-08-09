@@ -39,6 +39,7 @@ services:
         restart: always
         ports:
             - 80:80
+            - 63342:63342
         volumes:
             - ./:/var/www/html
             - ./Caddyfile:/etc/caddy/Caddyfile
