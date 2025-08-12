@@ -1,6 +1,6 @@
 services:
     pgsql:
-        image: postgres:16.5-alpine
+        image: postgres:16.8-alpine
         restart: always
         ports:
             - 5432:5432
@@ -21,8 +21,6 @@ services:
         build:
             context: .
             dockerfile: Dockerfile
-        ports:
-            - 63342:63342
         working_dir: /app
         volumes:
             - ./:/app
@@ -36,6 +34,17 @@ services:
         depends_on:
             - pgsql
             - composer
+    varnish:
+        image: varnish:7.7.0-alpine
+        restart: always
+        ports:
+            - 63342:80
+        volumes:
+            - ./default.vcl:/etc/varnish/default.vcl
+        depends_on:
+            - pgsql
+            - composer
+            - php
 volumes:
     postgres:
         name: postgres
