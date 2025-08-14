@@ -15,7 +15,7 @@ $url_path = parse_url($_SERVER['REQUEST_URI'])['path'];
 $file = trim($url_path, '/') ?: 'index';
 if (!str_ends_with($file, '.php')) {
     $publicFile = sprintf('%s/public/%s', $root, $file);
-    if (file_exists($publicFile)) {
+    if (is_file($publicFile)) {
         header(
             sprintf(
                 'Content-Type: %s',
@@ -59,7 +59,7 @@ if (
 }
 $isAPI = str_starts_with($file, 'api/');
 $path = sprintf('src/pages/%s.php', $file);
-$exists = file_exists(sprintf('%s/%s', $root, $path));
+$exists = is_file(sprintf('%s/%s', $root, $path));
 if ($isAPI && $_SERVER['REQUEST_METHOD'] != 'POST') {
     ServerError::METHOD_NOT_ALLOWED->send();
     exit(1);
