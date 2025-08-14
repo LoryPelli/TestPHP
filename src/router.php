@@ -13,7 +13,8 @@ Dotenv\Dotenv::createImmutable($_SERVER['DOCUMENT_ROOT'])->load();
 $resend = Resend::client($_ENV['APIKEY']);
 $url_path = parse_url($_SERVER['REQUEST_URI'])['path'];
 $file = trim($url_path, '/') ?: 'index';
-if (!str_ends_with($file, '.php')) {
+$hasExt = pathinfo($file, PATHINFO_EXTENSION) != '';
+if ($hasExt) {
     $publicFile = sprintf('%s/public/%s', $root, $file);
     if (is_file($publicFile)) {
         header(
@@ -68,7 +69,6 @@ if (!$exists) {
     ServerError::NOT_FOUND->send();
     exit(1);
 }
-$hasExt = pathinfo($file, PATHINFO_EXTENSION) != '';
 if (!$isAPI && !$hasExt) {
     $config = require_once sprintf('%s/src/config/index.php', $root);
     $page = $config[$file];
