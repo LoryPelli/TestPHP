@@ -14,7 +14,7 @@ $resend = Resend::client($_ENV['APIKEY']);
 $url_path = parse_url($_SERVER['REQUEST_URI'])['path'];
 $file = trim($url_path, '/') ?: 'index';
 if (!str_ends_with($file, '.php')) {
-    $publicFile = sprintf('%s/public/%s', $_SERVER['DOCUMENT_ROOT'], $file);
+    $publicFile = sprintf('%s/public/%s', $root, $file);
     if (file_exists($publicFile)) {
         header(
             sprintf(
