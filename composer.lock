@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6952bb1674894aebab6a52dcaae2671a",
+    "content-hash": "a42d956a4ae91315e58e6529741634dd",
     "packages": [
         {
             "name": "graham-campbell/result-type",
@@ -392,61 +392,6 @@
                 }
             ],
             "time": "2025-03-27T12:30:47+00:00"
-        },
-        {
-            "name": "horstoeko/mimedb",
-            "version": "v1.0.8",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/horstoeko/mimedb.git",
-                "reference": "2d50f2b6bf63f14741514682869b53fc97232308"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/horstoeko/mimedb/zipball/2d50f2b6bf63f14741514682869b53fc97232308",
-                "reference": "2d50f2b6bf63f14741514682869b53fc97232308",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.3"
-            },
-            "require-dev": {
-                "pdepend/pdepend": "^2",
-                "phploc/phploc": "^7",
-                "phpmd/phpmd": "^2",
-                "phpstan/phpstan": "^1.8",
-                "phpunit/phpunit": "^9",
-                "sebastian/phpcpd": "^6",
-                "squizlabs/php_codesniffer": "^3"
-            },
-            "type": "package",
-            "autoload": {
-                "psr-4": {
-                    "horstoeko\\mimedb\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Daniel Erling",
-                    "email": "daniel@erling.com.de",
-                    "role": "lead"
-                }
-            ],
-            "description": "Get mimetypes by fileextensions and visa versa",
-            "homepage": "https://github.com/horstoeko/mimedb",
-            "keywords": [
-                "file extension",
-                "mimetype"
-            ],
-            "support": {
-                "issues": "https://github.com/horstoeko/mimedb/issues",
-                "source": "https://github.com/horstoeko/mimedb/tree/v1.0.8"
-            },
-            "time": "2024-12-03T10:57:28+00:00"
         },
         {
             "name": "josantonius/cookie",
