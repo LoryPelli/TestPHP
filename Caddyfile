@@ -8,5 +8,5 @@
     php_server {
         root /app
     }
-    rewrite * /src/router.php
+    try_files /public/{path} /src/router.php
 }

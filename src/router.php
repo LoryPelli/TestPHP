@@ -13,22 +13,6 @@ Dotenv\Dotenv::createImmutable($_SERVER['DOCUMENT_ROOT'])->load();
 $resend = Resend::client($_ENV['APIKEY']);
 $url_path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 $file = trim($url_path, '/') ?: 'index';
-$hasExt = pathinfo($file, PATHINFO_EXTENSION) != '';
-if ($hasExt) {
-    $publicFile = sprintf('%s/public/%s', $root, $file);
-    if (is_file($publicFile)) {
-        header(
-            sprintf(
-                'Content-Type: %s',
-                horstoeko\mimedb\MimeDb::singleton()->findFirstMimeTypeByExtension(
-                    pathinfo($publicFile, PATHINFO_EXTENSION),
-                ),
-            ),
-        );
-        readfile($publicFile);
-        exit(0);
-    }
-}
 $email = $cookies->get('email');
 $password = $cookies->get('password');
 $users = new UserTable();
@@ -69,6 +53,7 @@ if (!$exists) {
     ServerError::NOT_FOUND->send();
     exit(1);
 }
+$hasExt = pathinfo($file, PATHINFO_EXTENSION) != '';
 if (!$isAPI && !$hasExt) {
     $config = require_once sprintf('%s/src/config/index.php', $root);
     $page = $config[$file];
