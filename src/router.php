@@ -9,7 +9,7 @@ require_once sprintf('%s/src/classes/UserTable.php', $root);
 require_once sprintf('%s/src/classes/TodoTable.php', $root);
 require_once sprintf('%s/src/classes/Constants.php', $root);
 $cookies = require_once sprintf('%s/src/cookies/index.php', $root);
-Dotenv\Dotenv::createImmutable($_SERVER['DOCUMENT_ROOT'])->load();
+Dotenv\Dotenv::createImmutable($root)->load();
 $resend = Resend::client($_ENV['APIKEY']);
 $url_path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 $file = trim($url_path, '/') ?: 'index';
