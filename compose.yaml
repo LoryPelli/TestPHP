@@ -42,8 +42,6 @@ services:
         volumes:
             - ./default.vcl:/etc/varnish/default.vcl
         depends_on:
-            - pgsql
-            - composer
             - php
 volumes:
     postgres:

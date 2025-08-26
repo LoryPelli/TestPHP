@@ -3,19 +3,19 @@ $is_confirm = isset($_GET['confirm']);
 $session_email = !$is_confirm ? $_SESSION['email'] : $_SESSION['old_email'];
 if (!filter_var($session_email, FILTER_VALIDATE_EMAIL)) {
     $_SESSION['error'] = 'invalid_email';
-    redirect('/new/email', 308);
+    redirect('/new/email', 307);
     exit(1);
 }
 $email = $_POST['email'] ?? $_SESSION['email'];
 $repeat_email = $_POST['repeat_email'] ?? '';
 if (!$is_confirm && $email != $repeat_email) {
     $_SESSION['error'] = 'emails_not_match';
-    redirect('/new/email', 308);
+    redirect('/new/email', 307);
     exit(1);
 }
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     $_SESSION['error'] = 'invalid_email';
-    redirect('/new/email', 308);
+    redirect('/new/email', 307);
     exit(1);
 }
 if (!$is_confirm) {
@@ -36,9 +36,9 @@ if (!$is_confirm) {
         redirect('/new/email');
         exit(1);
     }
-    redirect('/verify', 308);
+    redirect('/verify', 307);
     exit(0);
 }
 $users->set_email($session_email, $email);
 session_destroy();
-redirect('/api/logout', 308);
+redirect('/api/logout', 307);

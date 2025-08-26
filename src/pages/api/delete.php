@@ -11,4 +11,4 @@ if (!$users->check($email, $password)) {
 }
 $users->delete($email);
 session_destroy();
-redirect('/api/logout', 308);
+redirect('/api/logout', 307);

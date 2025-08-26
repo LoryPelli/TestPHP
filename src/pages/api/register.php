@@ -42,4 +42,4 @@ try {
     redirect('/register');
     exit(1);
 }
-redirect('/verify', 308);
+redirect('/verify', 307);

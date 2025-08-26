@@ -29,5 +29,5 @@ function update_user(string $action): void
         redirect(sprintf('/%s', $action));
         exit(1);
     }
-    redirect('/verify', 308);
+    redirect('/verify', 307);
 }
