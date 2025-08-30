@@ -1,5 +1,6 @@
 {
     "scripts": {
+        "build": "docker compose build",
         "dev": "pnpm \"/dev:.*/\"",
         "dev:server": "docker compose up",
         "dev:css": "pnpm tailwindcss -i ./src/styles/global.css -o ./assets/global.css -w",
