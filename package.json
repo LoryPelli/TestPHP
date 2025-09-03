@@ -7,7 +7,8 @@
         "dev:minify": "node esbuild.config.js",
         "format": "pnpm \"/format:.*/\"",
         "format:prettier": "prettier --write .",
-        "format:sort": "tailwind-sorter sort -i ./src/**/*.php"
+        "format:sort": "tailwind-sorter sort -i ./src/**/*.php",
+        "postinstall": "pnpm build && pnpm dev"
     },
     "type": "module",
     "devDependencies": {
