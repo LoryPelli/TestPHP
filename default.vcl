@@ -8,10 +8,7 @@ backend default {
 sub vcl_backend_response {
     unset beresp.http.Pragma;
     unset beresp.http.Expires;
-    if (bereq.url ~ "\.(css|js|png|ico)$") {
-        unset beresp.http.Set-Cookie;
-    }
-    set beresp.http.Cache-Control = "max-age=300";
+    unset beresp.http.Server;
     set beresp.ttl = 5m;
 }
 
