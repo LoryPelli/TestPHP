@@ -3,13 +3,13 @@
 div[data-dialog][data-open] {
     animation:
         backdrop 0.25s forwards,
-        scaling 0.25s;
+        scaling 0.25s forwards;
 }
 
 div[data-dialog]:not([data-open]) {
     animation:
-        backdrop_reverse 0.25s,
-        scaling_reverse 0.25s;
+        backdrop_reverse 0.25s forwards,
+        scaling_reverse 0.25s forwards;
 }
 
 @keyframes scaling {
