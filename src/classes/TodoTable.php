@@ -49,12 +49,12 @@ final class TodoTable extends BaseTable
     public function check_name(string $name): bool
     {
         $res = $this->conn->prepare(
-            'SELECT COUNT(*) FROM todos WHERE name = ?',
+            'SELECT EXISTS(SELECT 1 FROM todos WHERE name = ?)',
         );
         $res->bindParam(1, $name);
         $res->execute();
-        $row = $res->fetch(PDO::FETCH_ASSOC);
-        return $row && $row['count'] > 0;
+        $exists = $res->fetchColumn();
+        return $exists;
     }
     public function get_id(string $user_id, string $name): string
     {
