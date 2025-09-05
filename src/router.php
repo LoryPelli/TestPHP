@@ -53,7 +53,7 @@ if ($isAPI && $_SERVER['REQUEST_METHOD'] != 'POST') {
     ServerError::METHOD_NOT_ALLOWED->send();
     exit(1);
 }
-if (!$exists && !$is_valid_todo) {
+if (!$exists) {
     ServerError::NOT_FOUND->send();
     exit(1);
 }
