@@ -61,8 +61,8 @@ $user_id = $email ? $users->get_id($email) : '';
             </div>
         </div>
     </dialog>
+    <script src="/dialog.min.js" defer></script>
     <?php if ($is_valid_todo): ?>
-        <script>const load = () => document.addEventListener('DOMContentLoaded', openDialog('<?= $id ?>'));</script>
+        <script>document.addEventListener('DOMContentLoaded', () => openDialog('<?= $id ?>'));</script>
     <?php endif; ?>
-    <script src="/dialog.min.js" defer onload="typeof load == 'function' && load()"></script>
 <?php endif; ?>
