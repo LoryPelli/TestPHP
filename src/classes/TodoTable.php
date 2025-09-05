@@ -38,11 +38,13 @@ final class TodoTable extends BaseTable
     }
     public function has(string $id): bool
     {
-        $res = $this->conn->prepare('SELECT COUNT(*) FROM todos WHERE id = ?');
+        $res = $this->conn->prepare(
+            'SELECT EXISTS(SELECT 1 FROM todos WHERE id = ?)',
+        );
         $res->bindParam(1, $id);
         $res->execute();
-        $row = $res->fetch(PDO::FETCH_ASSOC);
-        return $row && $row['count'] > 0;
+        $exists = $res->fetchColumn();
+        return $exists;
     }
     public function check_name(string $name): bool
     {

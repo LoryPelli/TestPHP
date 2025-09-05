@@ -42,12 +42,12 @@ final class UserTable extends BaseTable
     public function check_email(string $email): bool
     {
         $res = $this->conn->prepare(
-            'SELECT COUNT(*) FROM users WHERE email = ?',
+            'SELECT EXISTS(SELECT 1 FROM users WHERE email = ?)',
         );
         $res->bindParam(1, $email);
         $res->execute();
-        $row = $res->fetch(PDO::FETCH_ASSOC);
-        return $row && $row['count'] > 0;
+        $exists = $res->fetchColumn();
+        return $exists;
     }
     public function get(string $email, string $password): ?User
     {
