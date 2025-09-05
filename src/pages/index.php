@@ -17,9 +17,9 @@ $user_id = $email ? $users->get_id($email) : '';
             $name = htmlspecialchars($t->get_name());
             $id = htmlspecialchars($todos->get_id($user_id, $name));
             ?>
-            <form <?= $id
-                ? sprintf('data-todo-%s', $id)
-                : '' ?> method="POST" class="flex justify-center items-center gap-x-2 sm:gap-x-4 md:gap-x-8 lg:gap-x-12 2xl:gap-x-20 xl:gap-x-16 cursor-not-allowed" action="/api/remove">
+            <form <?= $id ? sprintf('data-todo-%s', $id) : '' ?> method="POST"
+                class="flex justify-center items-center gap-x-2 sm:gap-x-4 md:gap-x-8 lg:gap-x-12 2xl:gap-x-20 xl:gap-x-16 cursor-not-allowed"
+                action="/api/remove">
                 <span class="font-bold">Done:</span>
                 <input name="is_done" type="checkbox" disabled <?= htmlspecialchars(
                     $t->get_is_done(),
@@ -27,12 +27,14 @@ $user_id = $email ? $users->get_id($email) : '';
                     ? 'checked'
                     : '' ?> class="after:flex after:justify-center bg-red-600 checked:bg-blue-600 border-2 rounded-md focus:outline-none size-7 after:text-white after:content-['✕'] checked:after:content-['✓'] appearance-none cursor-not-allowed" />
                 <span class="font-bold">Name:</span>
-                <input name="name" autocomplete="off" readonly value="<?= $name ?>" class="focus:outline-none w-[20vw] text-center cursor-not-allowed" />
+                <input name="name" autocomplete="off" readonly value="<?= $name ?>"
+                    class="focus:outline-none w-[20vw] text-center cursor-not-allowed" />
                 <span class="font-bold">Description:</span>
                 <input name="description" autocomplete="off" readonly value="<?= htmlspecialchars(
                     $t->get_description(),
                 ) ?>" class="focus:outline-none w-[20vw] text-center cursor-not-allowed" />
-                <button type="button" class="p-1 border-2 rounded-md cursor-pointer" onclick="openDialog('<?= $id ?>')">Edit!</button>
+                <button type="button" class="p-1 border-2 rounded-md cursor-pointer"
+                    onclick="openDialog('<?= $id ?>')">Edit!</button>
                 <button type="submit" class="p-1 border-2 rounded-md cursor-pointer">Remove!</button>
             </form>
         <?php endforeach; ?>
@@ -46,15 +48,21 @@ $user_id = $email ? $users->get_id($email) : '';
                 </button>
                 <form method="POST" class="flex flex-col justify-center items-center gap-y-1">
                     <span>Done:</span>
-                    <input name="is_done" type="checkbox" class="after:flex after:justify-center bg-red-600 checked:bg-blue-600 border-2 rounded-md focus:outline-none size-7 after:text-white after:content-['✕'] checked:after:content-['✓'] appearance-none cursor-pointer" />
+                    <input name="is_done" type="checkbox"
+                        class="after:flex after:justify-center bg-red-600 checked:bg-blue-600 border-2 rounded-md focus:outline-none size-7 after:text-white after:content-['✕'] checked:after:content-['✓'] appearance-none cursor-pointer" />
                     <span>Name:</span>
-                    <input name="name" autocomplete="off" maxlength="<?= Constants::MAX_NAME_LENGTH ?>" required class="p-1 border-2 rounded-md w-60" />
+                    <input name="name" autocomplete="off" maxlength="<?= Constants::MAX_NAME_LENGTH ?>" required
+                        class="p-1 border-2 rounded-md w-60" />
                     <span>Description:</span>
-                    <input name="description" autocomplete="off" maxlength="<?= Constants::MAX_DESCRIPTION_LENGTH ?>" class="p-1 border-2 rounded-md w-60" />
+                    <input name="description" autocomplete="off" maxlength="<?= Constants::MAX_DESCRIPTION_LENGTH ?>"
+                        class="p-1 border-2 rounded-md w-60" />
                     <button type="submit" class="p-1 border-2 rounded-md cursor-pointer">Continue!</button>
-                </form>                
+                </form>
             </div>
         </div>
     </dialog>
-    <script src="/dialog.min.js" defer></script>
+    <?php if ($is_valid_todo): ?>
+        <script>const load = () => document.addEventListener('DOMContentLoaded', openDialog('<?= $id ?>'));</script>
+    <?php endif; ?>
+    <script src="/dialog.min.js" defer onload="typeof load == 'function' && load()"></script>
 <?php endif; ?>

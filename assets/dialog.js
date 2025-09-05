@@ -44,6 +44,7 @@ function openDialog(id = '') {
                 description.value = '';
             }
             is_done.checked = todo_is_done;
+            history.pushState(null, '', `/${id}`);
         }
     } else {
         name.value = '';
@@ -61,6 +62,7 @@ function closeDialog() {
     form.removeAttribute('action');
     if (form.contains(todo_id)) {
         form.removeChild(todo_id);
+        history.replaceState(null, '', '/');
     }
     document.addEventListener(
         'animationend',

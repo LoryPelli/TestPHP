@@ -36,6 +36,14 @@ final class TodoTable extends BaseTable
         $res->bindParam(4, $user_id);
         $res->execute();
     }
+    public function has(string $id): bool
+    {
+        $res = $this->conn->prepare('SELECT COUNT(*) FROM todos WHERE id = ?');
+        $res->bindParam(1, $id);
+        $res->execute();
+        $row = $res->fetch(PDO::FETCH_ASSOC);
+        return $row && $row['count'] > 0;
+    }
     public function check_name(string $name): bool
     {
         $res = $this->conn->prepare(

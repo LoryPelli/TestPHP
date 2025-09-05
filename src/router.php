@@ -43,13 +43,17 @@ if (
     exit(1);
 }
 $isAPI = str_starts_with($file, 'api/');
+$is_valid_todo = Ramsey\Uuid\Uuid::isValid($file) && $todos->has($file);
+if ($is_valid_todo) {
+    $file = 'index';
+}
 $path = sprintf('src/pages/%s.php', $file);
 $exists = is_file(sprintf('%s/%s', $root, $path));
 if ($isAPI && $_SERVER['REQUEST_METHOD'] != 'POST') {
     ServerError::METHOD_NOT_ALLOWED->send();
     exit(1);
 }
-if (!$exists) {
+if (!$exists && !$is_valid_todo) {
     ServerError::NOT_FOUND->send();
     exit(1);
 }
