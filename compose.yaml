@@ -16,7 +16,6 @@ services:
             - ./:/app
         command: composer install
     php:
-        image: dunglas/frankenphp:php8.4.5-alpine
         restart: always
         build:
             context: .
