@@ -1,14 +1,12 @@
 {
     "scripts": {
-        "build": "docker compose build",
         "dev": "pnpm \"/dev:.*/\"",
         "dev:server": "docker compose up",
         "dev:css": "pnpm tailwindcss -i ./src/styles/global.css -o ./assets/global.css -w",
         "dev:minify": "node esbuild.config.js",
         "format": "pnpm \"/format:.*/\"",
         "format:prettier": "prettier --write .",
-        "format:sort": "tailwind-sorter sort -i ./src/**/*.php",
-        "postinstall": "pnpm build && pnpm dev"
+        "format:sort": "tailwind-sorter sort -i ./src/**/*.php"
     },
     "type": "module",
     "devDependencies": {
