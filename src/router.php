@@ -39,7 +39,7 @@ if (
     ($file == 'verify' || str_starts_with($file, 'new/')) &&
     $_SERVER['REQUEST_METHOD'] != 'POST'
 ) {
-    redirect('/');
+    ServerError::METHOD_NOT_ALLOWED->send();
     exit(1);
 }
 $isAPI = str_starts_with($file, 'api/');

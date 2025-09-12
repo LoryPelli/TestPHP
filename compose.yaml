@@ -22,14 +22,8 @@ services:
             dockerfile: Dockerfile
         working_dir: /app
         volumes:
-            - ./:/app
-            - ./Caddyfile:/etc/caddy/Caddyfile
-        environment:
-            PGDATABASE: ${PGDATABASE}
-            PGUSER: ${PGUSER}
-            PGPASSWORD: ${PGPASSWORD}
-            APIKEY: ${APIKEY}
-            EMAIL: ${EMAIL}
+            - ./:/app:ro
+            - ./Caddyfile:/etc/caddy/Caddyfile:ro
         depends_on:
             - pgsql
             - composer
@@ -39,7 +33,7 @@ services:
         ports:
             - 63342:80
         volumes:
-            - ./default.vcl:/etc/varnish/default.vcl
+            - ./default.vcl:/etc/varnish/default.vcl:ro
         depends_on:
             - php
 volumes:
