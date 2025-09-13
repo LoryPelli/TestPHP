@@ -3,10 +3,16 @@
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" href="/favicon.ico" />
     <link rel="stylesheet" href="/global.min.css" />
-    <title>TestPHP <?= isset($title) ? sprintf('- %s', $title) : '' ?></title>
-    <meta name="og:title" content="TestPHP <?= isset($title)
-        ? sprintf('- %s', $title)
-        : '' ?>" />
+    <?php if (isset($title)): ?>
+        <title>TestPHP <?= sprintf('- %s', $title) ?></title>
+        <meta name="og:title" content="TestPHP <?= sprintf(
+            '- %s',
+            $title,
+        ) ?>" />
+    <?php else: ?>
+        <title>TestPHP</title>
+        <meta name="og:title" content="TestPHP" />
+    <?php endif; ?>
     <?php if (isset($description)): ?>
         <meta name="description" content="<?= $description ?>" />
         <meta name="og:description" content="<?= $description ?>" />
