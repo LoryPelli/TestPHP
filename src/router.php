@@ -13,10 +13,28 @@ Dotenv\Dotenv::createImmutable($root)->load();
 $resend = Resend::client($_ENV['APIKEY']);
 $url_path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 $file = trim($url_path, '/') ?: 'index';
+$isAPI = str_starts_with($file, 'api/');
+if (
+    ($isAPI || $file == 'verify' || str_starts_with($file, 'new/')) &&
+    $_SERVER['REQUEST_METHOD'] != 'POST'
+) {
+    ServerError::METHOD_NOT_ALLOWED->send();
+    exit(1);
+}
+$todos = new TodoTable();
+$is_valid_todo = Ramsey\Uuid\Uuid::isValid($file) && $todos->has($file);
+if ($is_valid_todo) {
+    $file = 'index';
+}
+$path = sprintf('src/pages/%s.php', $file);
+$exists = is_file(sprintf('%s/%s', $root, $path));
+if (!$exists) {
+    ServerError::NOT_FOUND->send();
+    exit(1);
+}
 $email = $cookies->get('email');
 $password = $cookies->get('password');
 $users = new UserTable();
-$todos = new TodoTable();
 if (
     in_array($file, ['login', 'register']) &&
     $email &&
@@ -33,28 +51,6 @@ if (
     $cookies->remove('email');
     $cookies->remove('password');
     redirect('/');
-    exit(1);
-}
-if (
-    ($file == 'verify' || str_starts_with($file, 'new/')) &&
-    $_SERVER['REQUEST_METHOD'] != 'POST'
-) {
-    ServerError::METHOD_NOT_ALLOWED->send();
-    exit(1);
-}
-$isAPI = str_starts_with($file, 'api/');
-$is_valid_todo = Ramsey\Uuid\Uuid::isValid($file) && $todos->has($file);
-if ($is_valid_todo) {
-    $file = 'index';
-}
-$path = sprintf('src/pages/%s.php', $file);
-$exists = is_file(sprintf('%s/%s', $root, $path));
-if ($isAPI && $_SERVER['REQUEST_METHOD'] != 'POST') {
-    ServerError::METHOD_NOT_ALLOWED->send();
-    exit(1);
-}
-if (!$exists) {
-    ServerError::NOT_FOUND->send();
     exit(1);
 }
 $hasExt = pathinfo($file, PATHINFO_EXTENSION) != '';
