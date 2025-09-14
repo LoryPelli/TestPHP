@@ -1,11 +1,11 @@
 <?php
 $messages = require_once sprintf('%s/src/enums/UserError.php', $root);
-$isReset = $type == Type::Reset;
+$is_reset = $type == Type::Reset;
 $error = $_SESSION['error'] ?? '';
 ?>
 <form method="POST" class="flex flex-col justify-center items-center gap-y-1 h-screen" action="<?= sprintf(
     '/api/%s',
-    $isReset ? 'reset' : 'change',
+    $is_reset ? 'reset' : 'change',
 ) ?>">
     <?php if (isset($messages[$error])): ?>
         <?php include_once sprintf('%s/src/components/Error.php', $root); ?>

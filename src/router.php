@@ -26,26 +26,19 @@ if (!$exists) {
 $email = $cookies->get('email');
 $password = $cookies->get('password');
 $users = new UserTable();
-if (
-    in_array($file, ['login', 'register']) &&
-    $email &&
-    $password &&
-    $users->check_email($email)
-) {
+$is_logged = $email && $password && $users->check_email($email);
+if ($is_logged && in_array($file, ['login', 'register'])) {
     redirect('/');
     exit(1);
 }
-if (
-    in_array($file, ['settings', 'logout', 'delete']) &&
-    (!$email || !$password || !$users->check_email($email))
-) {
+if (!$is_logged && in_array($file, ['settings', 'logout', 'delete'])) {
     $cookies->remove('email');
     $cookies->remove('password');
     redirect('/');
     exit(1);
 }
-$isAPI = str_starts_with($file, 'api/');
-if (!$isAPI) {
+$is_api = str_starts_with($file, 'api/');
+if (!$is_api) {
     $config = require_once sprintf('%s/src/config/index.php', $root);
     $page = $config[$file];
     $title = $page['title'];
@@ -55,10 +48,9 @@ if (!$isAPI) {
     exit(0);
 }
 require_once sprintf('%s/src/utils/buffer.php', $root);
-$isLogged = $email && $password && $users->check_email($email);
 ob_start(buffer(...));
 ?>
-<?php if (!$hasExt): ?>
+<?php if (!$is_api): ?>
     <!DOCTYPE html>
     <html lang="en">
         <?php include_once sprintf('%s/src/components/Header.php', $root); ?>
@@ -68,7 +60,7 @@ ob_start(buffer(...));
                     <button class="p-1 border-2 rounded-md cursor-pointer">Home!</button>
                 </a>
                 <div class="flex items-center gap-x-1 p-3 border-2 rounded-md">
-                    <?php if (!$isLogged): ?>
+                    <?php if (!$is_logged): ?>
                         <a href="/login">
                             <button class="p-1 border-2 rounded-md cursor-pointer">Login!</button>
                         </a>

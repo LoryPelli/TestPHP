@@ -1,15 +1,15 @@
 <?php
 require_once sprintf('%s/src/enums/Type.php', $root);
-$isLogout = $type == Type::Logout;
-$isDelete = $type == Type::Delete;
+$is_logout = $type == Type::Logout;
+$is_delete = $type == Type::Delete;
 ?>
 <form method="POST" class="flex flex-col justify-center items-center gap-y-1 h-screen" action="<?= sprintf(
     '/api/%s',
-    $isLogout ? 'logout' : ($isDelete ? 'delete' : 'remove'),
+    $is_logout ? 'logout' : ($is_delete ? 'delete' : 'remove'),
 ) ?>">
-    <span class="font-bold text-xl">Are you sure you want to <?= $isLogout
+    <span class="font-bold text-xl">Are you sure you want to <?= $is_logout
         ? 'logout'
-        : ($isDelete
+        : ($is_delete
             ? 'delete your account'
             : 'remove the todo') ?>?</span>
     <div class="flex gap-x-1">

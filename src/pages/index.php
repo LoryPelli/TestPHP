@@ -3,7 +3,7 @@ $messages = require_once sprintf('%s/src/enums/TodoError.php', $root);
 $error = $_SESSION['error'] ?? '';
 $user_id = $email ? $users->get_id($email) : '';
 ?>
-<?php if (!$isLogged): ?>
+<?php if (!$is_logged): ?>
     <div class="flex flex-col justify-center items-center h-screen">
         <span class="font-bold text-6xl italic">Login to see the rest of the page!</span>
     </div>

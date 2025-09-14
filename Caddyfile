@@ -17,7 +17,7 @@
     }
 
     @not_allowed {
-        path /verify /new/* /api/*
+        path /verify /remove /new/* /api/*
         not method POST
     }
 
