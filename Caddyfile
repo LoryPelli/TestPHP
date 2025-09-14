@@ -5,8 +5,39 @@
 :63342 {
     root * /app
     encode zstd br gzip
+
+    @static_files {
+        path_regexp \.(css|js|png|ico)$
+    }
+
+    @not_found {
+        not path /
+        not path_regexp ^/[0-9A-Fa-f]{8}-[0-9A-Fa-f]{4}-[1-8][0-9A-Fa-f]{3}-[ABab89][0-9A-Fa-f]{3}-[0-9A-Fa-f]{12}$
+        not file /src/pages/{path}.php
+    }
+
+    @not_allowed {
+        path /verify /new/* /api/*
+        not method POST
+    }
+
     php_server {
         root /app
     }
-    try_files /public/{path} /src/router.php
+
+    handle @static_files {
+        try_files /public/{path}
+    }
+
+    handle @not_found {
+        rewrite * /src/errors/index.php?code=404
+    }
+
+    handle @not_allowed {
+        rewrite * /src/errors/index.php?code=405
+    }
+    
+    handle {
+        rewrite * /src/router.php
+    }
 }

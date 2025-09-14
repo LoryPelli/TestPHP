@@ -3,7 +3,6 @@ session_name('session');
 session_start();
 $root = $_SERVER['DOCUMENT_ROOT'];
 require_once sprintf('%s/vendor/autoload.php', $root);
-require_once sprintf('%s/src/enums/ServerError.php', $root);
 require_once sprintf('%s/src/utils/redirect.php', $root);
 require_once sprintf('%s/src/classes/UserTable.php', $root);
 require_once sprintf('%s/src/classes/TodoTable.php', $root);
@@ -13,14 +12,6 @@ Dotenv\Dotenv::createImmutable($root)->load();
 $resend = Resend::client($_ENV['APIKEY']);
 $url_path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 $file = trim($url_path, '/') ?: 'index';
-$isAPI = str_starts_with($file, 'api/');
-if (
-    ($isAPI || $file == 'verify' || str_starts_with($file, 'new/')) &&
-    $_SERVER['REQUEST_METHOD'] != 'POST'
-) {
-    ServerError::METHOD_NOT_ALLOWED->send();
-    exit(1);
-}
 $todos = new TodoTable();
 $is_valid_todo = Ramsey\Uuid\Uuid::isValid($file) && $todos->has($file);
 if ($is_valid_todo) {
@@ -29,7 +20,7 @@ if ($is_valid_todo) {
 $path = sprintf('src/pages/%s.php', $file);
 $exists = is_file(sprintf('%s/%s', $root, $path));
 if (!$exists) {
-    ServerError::NOT_FOUND->send();
+    require_once sprintf('%s/src/errors/index.php', $root);
     exit(1);
 }
 $email = $cookies->get('email');
@@ -53,8 +44,8 @@ if (
     redirect('/');
     exit(1);
 }
-$hasExt = pathinfo($file, PATHINFO_EXTENSION) != '';
-if (!$isAPI && !$hasExt) {
+$isAPI = str_starts_with($file, 'api/');
+if (!$isAPI) {
     $config = require_once sprintf('%s/src/config/index.php', $root);
     $page = $config[$file];
     $title = $page['title'];

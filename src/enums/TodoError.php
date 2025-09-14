@@ -5,8 +5,8 @@ enum TodoError: string
     case NAME_TOO_LONG = 'The todo name is too long';
     case DESCRIPTION_TOO_LONG = 'The todo description is too long';
 }
-return [
-    'already_exists' => TodoError::ALREADY_EXISTS->value,
-    'name_too_long' => TodoError::NAME_TOO_LONG->value,
-    'description_too_long' => TodoError::DESCRIPTION_TOO_LONG->value,
-];
+
+return array_combine(
+    array_map(fn(TodoError $c) => strtolower($c->name), TodoError::cases()),
+    array_map(fn(TodoError $c) => $c->value, TodoError::cases()),
+);

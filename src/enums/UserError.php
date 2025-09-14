@@ -13,16 +13,8 @@ enum UserError: string
     case INVALID_IMAGE = 'The image you provided is not valid';
     case USERNAME_TOO_LONG = 'The username is too long';
 }
-return [
-    'already_exists' => UserError::ALREADY_EXISTS->value,
-    'not_found' => UserError::NOT_FOUND->value,
-    'invalid_email' => UserError::INVALID_EMAIL->value,
-    'incorrect_password' => UserError::INCORRECT_PASSWORD->value,
-    'emails_not_match' => UserError::EMAILS_NOT_MATCH->value,
-    'passwords_not_match' => UserError::PASSWORDS_NOT_MATCH->value,
-    'wrong_code' => UserError::WRONG_CODE->value,
-    'expired' => UserError::EXPIRED->value,
-    'invalid_url' => UserError::INVALID_URL->value,
-    'invalid_image' => UserError::INVALID_IMAGE->value,
-    'username_too_long' => UserError::USERNAME_TOO_LONG->value,
-];
+
+return array_combine(
+    array_map(fn(UserError $c) => strtolower($c->name), UserError::cases()),
+    array_map(fn(UserError $c) => $c->value, UserError::cases()),
+);
