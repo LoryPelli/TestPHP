@@ -26,7 +26,7 @@
     }
 
     handle @static_files {
-        try_files /public/{path}
+        try_files /public/{path} /src/errors/index.php?code=404
     }
 
     handle @not_found {

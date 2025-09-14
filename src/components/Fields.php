@@ -20,5 +20,5 @@ $isLogin = $type == Type::Login;
     <span>Username:</span>
     <input name="username" autocomplete="off" maxlength="<?= Constants::MAX_NAME_LENGTH ?>" required class="p-1 border-2 rounded-md w-60" />
 <?php endif; ?>
-<script src="/icons.js" defer></script>
+<?php include sprintf('%s/src/components/Icons.php', $root); ?>
 <script src="/toggle.min.js" defer></script>
