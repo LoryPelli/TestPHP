@@ -17,7 +17,7 @@ $user_id = $email ? $users->get_id($email) : '';
             $name = htmlspecialchars($t->get_name());
             $id = htmlspecialchars($todos->get_id($user_id, $name));
             ?>
-            <form <?= $id ? sprintf('data-todo-%s', $id) : '' ?> method="POST"
+            <form <?= $id ? sprintf('data-todo="%s"', $id) : '' ?> method="POST"
                 class="flex justify-center items-center gap-x-2 sm:gap-x-4 md:gap-x-8 lg:gap-x-12 2xl:gap-x-20 xl:gap-x-16 cursor-not-allowed"
                 action="/api/remove">
                 <span class="font-bold">Done:</span>
