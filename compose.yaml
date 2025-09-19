@@ -1,5 +1,6 @@
 services:
-    pgsql:
+    postgres:
+        container_name: postgres
         image: postgres:16.8-alpine
         restart: always
         ports:
@@ -9,6 +10,7 @@ services:
         environment:
             POSTGRES_PASSWORD: ${PGPASSWORD}
     composer:
+        container_name: composer
         image: composer:2.8.7
         restart: on-failure
         working_dir: /app
@@ -16,6 +18,7 @@ services:
             - ./:/app
         command: composer install
     php:
+        container_name: php
         restart: always
         build:
             context: .
@@ -25,9 +28,10 @@ services:
             - ./:/app:ro
             - ./Caddyfile:/etc/caddy/Caddyfile:ro
         depends_on:
-            - pgsql
+            - postgres
             - composer
     varnish:
+        container_name: varnish
         image: varnish:7.7.0-alpine
         restart: always
         ports:
