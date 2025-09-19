@@ -15,6 +15,7 @@ $file = trim($url_path, '/') ?: 'index';
 $todos = new TodoTable();
 $is_valid_todo = Ramsey\Uuid\Uuid::isValid($file) && $todos->has($file);
 if ($is_valid_todo) {
+    $todo_id = $file;
     $file = 'index';
 }
 $path = sprintf('src/pages/%s.php', $file);

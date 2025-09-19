@@ -63,6 +63,6 @@ $user_id = $email ? $users->get_id($email) : '';
     </dialog>
     <script src="/dialog.min.js" defer></script>
     <?php if ($is_valid_todo): ?>
-        <script>document.addEventListener('DOMContentLoaded', () => openDialog('<?= $id ?>'));</script>
+        <script>document.addEventListener('DOMContentLoaded', () => openDialog('<?= $todo_id ?>'));</script>
     <?php endif; ?>
 <?php endif; ?>
