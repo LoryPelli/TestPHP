@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "816f4f9b4d5431e28b4cd09482a9d014",
+    "content-hash": "d448708585666f7a311a0c53410d360e",
     "packages": [
         {
             "name": "brick/math",
@@ -952,16 +952,16 @@
         },
         {
             "name": "resend/resend-php",
-            "version": "v0.16.0",
+            "version": "v0.20.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/resend/resend-php.git",
-                "reference": "6e9be898c9e0035a5da3c2904e86d0b12999c2fc"
+                "reference": "25391cb93382601e3b2678c4c57d34d3a84210e8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/resend/resend-php/zipball/6e9be898c9e0035a5da3c2904e86d0b12999c2fc",
-                "reference": "6e9be898c9e0035a5da3c2904e86d0b12999c2fc",
+                "url": "https://api.github.com/repos/resend/resend-php/zipball/25391cb93382601e3b2678c4c57d34d3a84210e8",
+                "reference": "25391cb93382601e3b2678c4c57d34d3a84210e8",
                 "shasum": ""
             },
             "require": {
@@ -1003,9 +1003,9 @@
             ],
             "support": {
                 "issues": "https://github.com/resend/resend-php/issues",
-                "source": "https://github.com/resend/resend-php/tree/v0.16.0"
+                "source": "https://github.com/resend/resend-php/tree/v0.20.0"
             },
-            "time": "2025-03-24T22:12:48+00:00"
+            "time": "2025-09-18T05:31:42+00:00"
         },
         {
             "name": "symfony/css-selector",
