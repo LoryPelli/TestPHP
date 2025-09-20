@@ -10,11 +10,13 @@ final class UserTable extends BaseTable
             sprintf(
                 "CREATE TABLE IF NOT EXISTS users (
             id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-            email TEXT UNIQUE NOT NULL,
-            password TEXT NOT NULL,
+            email VARCHAR(%d) UNIQUE NOT NULL,
+            password VARCHAR(%d) NOT NULL,
             username VARCHAR(%d) NOT NULL,
             avatar TEXT NOT NULL DEFAULT ''
         )",
+                Constants::MAX_EMAIL_LENGTH,
+                Constants::MAX_PASSWORD_LENGTH,
                 Constants::MAX_NAME_LENGTH,
             ),
         );

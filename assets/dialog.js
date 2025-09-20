@@ -12,7 +12,7 @@ dialog.addEventListener('keydown', (e) => {
 
 function openDialog(id = '') {
     const name = form.querySelector("input[name='name']");
-    const description = form.querySelector("input[name='description']");
+    const description = form.querySelector("textarea[name='description']");
     const is_done = form.querySelector("input[name='is_done']");
     if (id.trim() != '') {
         form.action = '/api/edit';
@@ -39,16 +39,16 @@ function openDialog(id = '') {
                 name.value = '';
             }
             if (todo_description) {
-                description.value = todo_description;
+                description.textContent = todo_description;
             } else {
-                description.value = '';
+                description.textContent = '';
             }
             is_done.checked = todo_is_done;
             history.pushState(null, '', `/${id}`);
         }
     } else {
         name.value = '';
-        description.value = '';
+        description.textContent = '';
         is_done.checked = false;
         form.action = '/api/add';
     }

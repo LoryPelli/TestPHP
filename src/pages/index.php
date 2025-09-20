@@ -8,7 +8,7 @@ $user_id = $email ? $users->get_id($email) : '';
         <span class="font-bold text-6xl italic">Login to see the rest of the page!</span>
     </div>
 <?php else: ?>
-    <div class="gap-y-1 grid px-2 text-center">
+    <div class="gap-y-1 grid p-1 text-center">
         <?php if (isset($messages[$error])): ?>
             <?php include_once sprintf('%s/src/components/Error.php', $root); ?>
         <?php endif; ?>
@@ -54,8 +54,8 @@ $user_id = $email ? $users->get_id($email) : '';
                     <input name="name" autocomplete="off" maxlength="<?= Constants::MAX_NAME_LENGTH ?>" required
                         class="p-1 border-2 rounded-md w-60" />
                     <span>Description:</span>
-                    <input name="description" autocomplete="off" maxlength="<?= Constants::MAX_DESCRIPTION_LENGTH ?>"
-                        class="p-1 border-2 rounded-md w-60" />
+                    <textarea name="description" autocomplete="off" maxlength="<?= Constants::MAX_DESCRIPTION_LENGTH ?>"
+                        class="p-1 border-2 rounded-md w-60 resize-none"></textarea>
                     <button type="submit" class="p-1 border-2 rounded-md cursor-pointer">Continue!</button>
                 </form>
             </div>

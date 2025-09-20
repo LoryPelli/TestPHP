@@ -11,6 +11,7 @@ Dotenv\Dotenv::createImmutable($root)->load();
 $resend = Resend::client($_ENV['APIKEY']);
 $url_path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 $file = trim($url_path, '/') ?: 'index';
+$users = new UserTable();
 $todos = new TodoTable();
 $is_valid_todo = Ramsey\Uuid\Uuid::isValid($file) && $todos->has($file);
 if ($is_valid_todo) {
@@ -25,15 +26,16 @@ if (!$exists) {
 }
 $email = $cookies->get('email');
 $password = $cookies->get('password');
-$users = new UserTable();
 $is_logged = $email && $password && $users->check_email($email);
-if ($is_logged && in_array($file, ['login', 'register'])) {
+if (!$is_logged && ($email || $password)) {
+    $cookies->remove('email');
+    $cookies->remove('password');
+}
+if (!$is_logged && in_array($file, ['settings', 'logout', 'delete'])) {
     redirect('/');
     exit(1);
 }
-if (!$is_logged && in_array($file, ['settings', 'logout', 'delete'])) {
-    $cookies->remove('email');
-    $cookies->remove('password');
+if ($is_logged && in_array($file, ['login', 'register'])) {
     redirect('/');
     exit(1);
 }
