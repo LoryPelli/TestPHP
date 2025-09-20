@@ -1,5 +1,4 @@
 <?php
-session_name('session');
 session_start();
 $root = $_SERVER['DOCUMENT_ROOT'];
 require_once sprintf('%s/vendor/autoload.php', $root);

@@ -15,7 +15,9 @@ services:
         restart: on-failure
         working_dir: /app
         volumes:
-            - ./:/app
+            - ./composer.json:/app/composer.json:ro
+            - ./composer.lock:/app/composer.lock:ro
+            - ./vendor:/app/vendor
         command: composer install
     php:
         container_name: php
@@ -25,7 +27,12 @@ services:
             dockerfile: Dockerfile
         working_dir: /app
         volumes:
-            - ./:/app:ro
+            - ./public:/app/public:ro
+            - ./src:/app/src:ro
+            - ./svg:/app/svg:ro
+            - ./vendor:/app/vendor:ro
+            - ./.env:/app/.env:ro
+            - ./php.ini:/app/php.ini:ro
             - ./Caddyfile:/etc/caddy/Caddyfile:ro
         depends_on:
             - postgres
