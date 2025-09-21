@@ -42,7 +42,7 @@ $user_id = $email ? $users->get_id($email) : '';
     </div>
     <dialog>
         <div data-dialog class="fixed inset-0 flex flex-col justify-center items-center h-screen">
-            <div class="flex flex-col items-center shadow-2xl p-5 rounded-md">
+            <div data-draggable class="flex flex-col items-center shadow-2xl p-5 rounded-md cursor-move">
                 <button class="p-1 border-2 rounded-md cursor-pointer" onclick="closeDialog()">
                     <?php include_once sprintf('%s/svg/close.php', $root); ?>
                 </button>
@@ -51,10 +51,10 @@ $user_id = $email ? $users->get_id($email) : '';
                     <input name="is_done" type="checkbox"
                         class="after:flex after:justify-center bg-red-600 checked:bg-blue-600 border-2 rounded-md focus:outline-none size-7 after:text-white after:content-['✕'] checked:after:content-['✓'] appearance-none cursor-pointer" />
                     <span>Name:</span>
-                    <input name="name" autocomplete="off" maxlength="<?= Constants::MAX_NAME_LENGTH ?>" required
+                    <input data-not-draggable name="name" autocomplete="off" maxlength="<?= Constants::MAX_NAME_LENGTH ?>" required
                         class="p-1 border-2 rounded-md w-60" />
                     <span>Description:</span>
-                    <textarea name="description" autocomplete="off" maxlength="<?= Constants::MAX_DESCRIPTION_LENGTH ?>"
+                    <textarea data-not-draggable name="description" autocomplete="off" maxlength="<?= Constants::MAX_DESCRIPTION_LENGTH ?>"
                         class="p-1 border-2 rounded-md w-60 resize-none"></textarea>
                     <button type="submit" class="p-1 border-2 rounded-md cursor-pointer">Continue!</button>
                 </form>
@@ -62,6 +62,8 @@ $user_id = $email ? $users->get_id($email) : '';
         </div>
     </dialog>
     <script src="/dialog.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/@neodrag/vanilla@2.3.0" defer></script>
+    <script>document.addEventListener('DOMContentLoaded', () => new NeoDrag.Draggable(document.querySelector('div[data-draggable]'), { bounds: 'parent', cancel: [...document.querySelectorAll('[data-not-draggable]')], }));</script>
     <?php if ($is_valid_todo): ?>
         <script>document.addEventListener('DOMContentLoaded', () => openDialog('<?= $todo_id ?>'));</script>
     <?php endif; ?>
