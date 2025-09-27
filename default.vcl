@@ -9,6 +9,9 @@ sub vcl_backend_response {
     unset beresp.http.Pragma;
     unset beresp.http.Expires;
     unset beresp.http.Server;
+    if (bereq.http.host ~ "localhost:63342") {
+        return (pass);
+    }
     set beresp.ttl = 5m;
 }
 
