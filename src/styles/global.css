@@ -1,53 +1,15 @@
 @import 'tailwindcss';
+@import './keyframes.css';
 
-div[data-dialog][data-open] {
-    animation:
-        backdrop 0.25s forwards,
-        scaling 0.25s forwards;
+@theme {
+    --animate-backdrop: backdrop 0.25s forwards;
+    --animate-scaling: scaling 0.25s forwards;
+    --animate-backdrop-reverse: backdrop-reverse 0.25s forwards;
+    --animate-scaling-reverse: scaling-reverse 0.25s forwards;
 }
 
-div[data-dialog]:not([data-open]) {
-    animation:
-        backdrop_reverse 0.25s forwards,
-        scaling_reverse 0.25s forwards;
-}
-
-@keyframes scaling {
-    from {
-        transform: scale(0);
-    }
-    to {
-        transform: scale(1);
-    }
-}
-
-@keyframes backdrop {
-    from {
-        -webkit-backdrop-filter: blur(0);
-        backdrop-filter: blur(0);
-    }
-    to {
-        -webkit-backdrop-filter: blur(var(--blur-sm));
-        backdrop-filter: blur(var(--blur-sm));
-    }
-}
-
-@keyframes scaling_reverse {
-    from {
-        transform: scale(1);
-    }
-    to {
-        transform: scale(0);
-    }
-}
-
-@keyframes backdrop_reverse {
-    from {
-        -webkit-backdrop-filter: blur(var(--blur-sm));
-        backdrop-filter: blur(var(--blur-sm));
-    }
-    to {
-        -webkit-backdrop-filter: blur(0);
-        backdrop-filter: blur(0);
-    }
+@theme inline {
+    --animate-both: var(--animate-backdrop), var(--animate-scaling);
+    --animate-both-reverse:
+        var(--animate-backdrop-reverse), var(--animate-scaling-reverse);
 }
