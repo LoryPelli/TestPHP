@@ -52,4 +52,8 @@ return [
         'title' => 'Remove a Todo',
         'description' => 'Are you sure you want to remove this todo?',
     ],
+    'admin' => [
+        'title' => 'Admin Page',
+        'description' => 'Application admin page',
+    ],
 ];

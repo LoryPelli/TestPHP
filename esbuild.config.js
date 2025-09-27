@@ -23,4 +23,6 @@ await ctx.watch();
 
 await mkdir('public', { recursive: true });
 
-await Promise.all(other.map(async (o) => await copyFile(o, `public/${basename(o)}`)))
+await Promise.all(
+    other.map(async (o) => await copyFile(o, `public/${basename(o)}`)),
+);

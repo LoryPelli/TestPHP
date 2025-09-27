@@ -2,7 +2,7 @@
 	frankenphp
 }
 
-:63342 {
+:80 {
     root * /app
     encode zstd br gzip
 
@@ -21,12 +21,21 @@
         not method POST
     }
 
+    @not_admin {
+        path /admin
+        not method POST
+    }
+
     php_server {
         root /app
     }
 
     handle @static_files {
         try_files /public/{path} /src/errors/index.php?code=404
+    }
+
+    handle @not_admin {
+        reverse_proxy nginx
     }
 
     handle @not_found {

@@ -2,13 +2,11 @@ vcl 4.1;
 
 backend default {
     .host = "php";
-    .port = "63342";
 }
 
 sub vcl_backend_response {
     unset beresp.http.Pragma;
     unset beresp.http.Expires;
-    unset beresp.http.Server;
     if (bereq.http.host ~ "localhost:63342") {
         return (pass);
     }
