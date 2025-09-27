@@ -1,5 +1,4 @@
 import { context } from 'esbuild';
-import { existsSync } from 'node:fs';
 import { copyFile, mkdir } from 'node:fs/promises';
 import { basename } from 'node:path';
 import { glob } from 'tinyglobby';
@@ -20,12 +19,8 @@ const ctx = await context({
     minify: true,
     allowOverwrite: true,
 });
-ctx.watch();
+await ctx.watch();
 
-if (!existsSync('public')) {
-    await mkdir('public');
-}
+await mkdir('public', { recursive: true });
 
-for (const o of other) {
-    await copyFile(o, `public/${basename(o)}`);
-}
+await Promise.all(other.map(async (o) => await copyFile(o, `public/${basename(o)}`)))
