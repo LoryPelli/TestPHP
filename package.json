@@ -4,10 +4,11 @@
         "dev": "pnpm \"/dev:.*/\"",
         "dev:server": "docker compose up",
         "dev:css": "pnpm tailwindcss -i \"./src/styles/global.css\" -o \"./assets/global.css\" -w",
-        "dev:minify": "node esbuild.config.js",
+        "dev:minify": "pnpm node esbuild.config.js",
         "format": "pnpm \"/format:.*/\"",
         "format:prettier": "prettier --write .",
-        "format:sort": "tailwind-sorter sort -i \"./src/**/*.php\""
+        "format:sort": "pnpm dlx tailwind-sorter sort -i \"./src/**/*.php\"",
+        "postinstall": "pnpm dlx shx cp \"./.env.example\" \"./.env\""
     },
     "type": "module",
     "devDependencies": {
@@ -16,7 +17,6 @@
         "@types/node": "^24.3.0",
         "esbuild": "^0.25.9",
         "prettier": "^3.6.2",
-        "tailwind-sorter": "^1.0.1",
         "tailwindcss": "^4.1.12",
         "tinyglobby": "^0.2.14"
     }
