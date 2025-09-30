@@ -16,7 +16,7 @@ echo -n "Provide Password: (again) "
 read -s verification_password
 printf "\n"
 
-if [[ -z "$username" || -z "$password" || -z $verification_password ]]; then
+if [[ -z "$username" || -z "$password" || -z "$verification_password" ]]; then
     echo "Values cannot be empty!"
     exit 1
 fi
