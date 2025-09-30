@@ -8,6 +8,8 @@ services:
         volumes:
             - postgres:/var/lib/postgresql/data
         environment:
+            POSTGRES_DB: ${PGDATABASE}
+            POSTGRES_USER: ${PGUSER}
             POSTGRES_PASSWORD: ${PGPASSWORD}
     composer:
         container_name: composer
