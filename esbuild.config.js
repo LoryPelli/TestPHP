@@ -2,6 +2,7 @@ import { context } from 'esbuild';
 import { copyFile, mkdir } from 'node:fs/promises';
 import { basename } from 'node:path';
 import { glob } from 'tinyglobby';
+import 'array-iter';
 
 const files = await glob('assets/*.{js,css}', {
     ignore: 'assets/*.min.{js,css}',
@@ -23,6 +24,4 @@ await ctx.watch();
 
 await mkdir('public', { recursive: true });
 
-await Promise.all(
-    other.map(async (o) => await copyFile(o, `public/${basename(o)}`)),
-);
+other.iter(async (o) => await copyFile(o, `public/${basename(o)}`));

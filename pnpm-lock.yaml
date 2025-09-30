@@ -17,6 +17,9 @@ importers:
       '@types/node':
         specifier: ^24.3.0
         version: 24.3.0
+      array-iter:
+        specifier: ^1.0.0
+        version: 1.0.0
       esbuild:
         specifier: ^0.25.9
         version: 0.25.9
@@ -386,6 +389,9 @@ packages:
 
   '@types/node@24.3.0':
     resolution: {integrity: sha512-aPTXCrfwnDLj4VvXrm+UUCQjNEvJgNA8s5F1cvwQU+3KNltTOkBm1j30uNLyqqPNe7gE3KFzImYoZEfLhp4Yow==}
+
+  array-iter@1.0.0:
+    resolution: {integrity: sha512-i5A4GCYwimCS7nZnS/Wz192DnYHpoNcK9EjfZR2KMdk7gG1Yhz1URIEsKL3oULgjjoTK0tisrYh8tIIRYKIO6w==}
 
   braces@3.0.3:
     resolution: {integrity: sha512-yQbXgO/OSZVD2IsiLlro+7Hf6Q18EJrKSEsdoMzKePKXct3gvD8oLcOQdIzGupr5Fj+EDe8gO/lxc1BzfMpxvA==}
@@ -834,6 +840,8 @@ snapshots:
   '@types/node@24.3.0':
     dependencies:
       undici-types: 7.10.0
+
+  array-iter@1.0.0: {}
 
   braces@3.0.3:
     dependencies:

@@ -15,6 +15,7 @@
         "@prettier/plugin-php": "^0.24.0",
         "@tailwindcss/cli": "^4.1.12",
         "@types/node": "^24.3.0",
+        "array-iter": "^1.0.0",
         "esbuild": "^0.25.9",
         "prettier": "^3.6.2",
         "tailwindcss": "^4.1.12",
