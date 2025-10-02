@@ -11,6 +11,20 @@ services:
             POSTGRES_DB: ${PGDATABASE}
             POSTGRES_USER: ${PGUSER}
             POSTGRES_PASSWORD: ${PGPASSWORD}
+    pnpm:
+        container_name: pnpm
+        image: gplane/pnpm:10.6.5-alpine
+        restart: always
+        working_dir: /app
+        volumes:
+            - ./package.json:/app/package.json:ro
+            - ./pnpm-lock.yaml:/app/pnpm-lock.yaml:ro
+            - ./.env.example:/app/.env.example:ro
+            - ./esbuild.config.js:/app/esbuild.config.js:ro
+            - ./src/styles:/app/src/styles:ro
+            - ./assets:/app/assets
+            - ./public:/app/public
+        command: sh -c "pnpm i && pnpm dev"
     composer:
         container_name: composer
         image: composer:2.8.7
@@ -20,7 +34,7 @@ services:
             - ./composer.json:/app/composer.json:ro
             - ./composer.lock:/app/composer.lock:ro
             - ./vendor:/app/vendor
-        command: composer install
+        command: sh -c "composer i"
     php:
         container_name: php
         restart: always

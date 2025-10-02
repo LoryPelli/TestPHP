@@ -1,14 +1,14 @@
 {
     "scripts": {
-        "htpasswd": "docker exec -it nginx \"./htpasswd.sh\" && docker cp \"nginx:/etc/nginx/.htpasswd\" \"./.htpasswd\"",
         "dev": "pnpm \"/dev:.*/\"",
-        "dev:server": "docker compose up",
         "dev:css": "pnpm tailwindcss -i \"./src/styles/global.css\" -o \"./assets/global.css\" -w",
-        "dev:minify": "pnpm node esbuild.config.js",
+        "dev:minify": "sleep 1.25 && pnpm node esbuild.config.js",
         "format": "pnpm \"/format:.*/\"",
         "format:prettier": "prettier --write .",
         "format:sort": "pnpm dlx tailwind-sorter sort -i \"./src/**/*.php\"",
-        "postinstall": "pnpm dlx shx cp \"./.env.example\" \"./.env\""
+        "htpasswd": "docker exec -it nginx \"./htpasswd.sh\" && docker cp \"nginx:/etc/nginx/.htpasswd\" \"./.htpasswd\"",
+        "postinstall": "pnpm dlx shx cp \"./.env.example\" \"./.env\"",
+        "start": "docker compose up"
     },
     "type": "module",
     "devDependencies": {
