@@ -21,7 +21,7 @@ services:
             - ./pnpm-lock.yaml:/app/pnpm-lock.yaml:ro
             - ./.env.example:/app/.env.example:ro
             - ./esbuild.config.js:/app/esbuild.config.js:ro
-            - ./src/styles:/app/src/styles:ro
+            - ./src:/app/src:ro
             - ./assets:/app/assets
             - ./public:/app/public
         command: sh -c "pnpm i && pnpm dev"
@@ -52,6 +52,7 @@ services:
             - ./Caddyfile:/etc/caddy/Caddyfile:ro
         depends_on:
             - postgres
+            - pnpm
             - composer
     nginx:
         container_name: nginx
