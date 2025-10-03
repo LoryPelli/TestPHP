@@ -9,13 +9,13 @@ final class TodoTable extends BaseTable
         $this->conn->query(
             sprintf(
                 "CREATE TABLE IF NOT EXISTS todos (
-            id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-            name VARCHAR(%d) UNIQUE NOT NULL,
-            description VARCHAR(%d) NOT NULL,
-            user_id UUID,
-            is_done BOOLEAN NOT NULL DEFAULT FALSE,
-            FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
-            )",
+                    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+                    name VARCHAR(%d) UNIQUE NOT NULL,
+                    description VARCHAR(%d) NOT NULL,
+                    user_id UUID,
+                    is_done BOOLEAN NOT NULL DEFAULT FALSE,
+                    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+                )",
                 Constants::MAX_NAME_LENGTH,
                 Constants::MAX_DESCRIPTION_LENGTH,
             ),
