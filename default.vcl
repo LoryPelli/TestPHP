@@ -14,6 +14,7 @@ sub vcl_backend_response {
 }
 
 sub vcl_recv {
+    unset req.http.X-Auth;
     if (req.url ~ "\.(css|js|png|ico)$") {
         unset req.http.Cookie;
     }

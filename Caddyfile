@@ -23,7 +23,7 @@
 
     @not_admin {
         path /admin
-        not method POST
+        not header X-Auth 1
     }
 
     php_server {
