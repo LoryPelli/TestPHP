@@ -1,5 +1,5 @@
 <?php
-abstract class BaseTable
+abstract class BaseConnection
 {
     protected PDO $conn;
     public function __construct()

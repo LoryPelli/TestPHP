@@ -1,7 +1,7 @@
 <?php
-require_once sprintf('%s/src/classes/BaseTable.php', $root);
+require_once sprintf('%s/src/classes/BaseConnection.php', $root);
 require_once sprintf('%s/src/classes/User.php', $root);
-final class UserTable extends BaseTable
+final class UserTable extends BaseConnection
 {
     public function __construct()
     {
