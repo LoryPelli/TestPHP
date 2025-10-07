@@ -38,6 +38,10 @@
         reverse_proxy nginx
     }
 
+    handle /admin {
+        rewrite * /src/admin/index.php
+    }
+
     handle @not_found {
         rewrite * /src/errors/index.php?code=404
     }

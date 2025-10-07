@@ -49,11 +49,10 @@ if (!$is_api) {
     require_once sprintf('%s/%s', $root, $path);
     exit(0);
 }
-$is_admin = $file == 'admin';
 require_once sprintf('%s/src/utils/buffer.php', $root);
 ob_start(buffer(...));
 ?>
-<?php if (!$is_api && !$is_admin): ?>
+<?php if (!$is_api): ?>
     <!DOCTYPE html>
     <html lang="en">
         <?php include_once sprintf('%s/src/components/Header.php', $root); ?>

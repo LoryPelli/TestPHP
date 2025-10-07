@@ -1,9 +1,5 @@
 <?php
 return [
-    '404' => [
-        'title' => 'Not Found!',
-        'description' => 'The page was not found on the server!',
-    ],
     'index' => [
         'title' => 'Home',
         'description' => 'Application home page',
@@ -51,9 +47,5 @@ return [
     'remove' => [
         'title' => 'Remove a Todo',
         'description' => 'Are you sure you want to remove this todo?',
-    ],
-    'admin' => [
-        'title' => 'Admin Page',
-        'description' => 'Application admin page',
     ],
 ];
