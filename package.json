@@ -1,14 +1,11 @@
 {
     "scripts": {
-        "dev": "pnpm \"/dev:.*/\"",
-        "dev:css": "pnpm tailwindcss -i \"./src/styles/global.css\" -o \"./assets/global.css\" -w",
-        "dev:minify": "sleep 2.75 && node esbuild.config.js",
+        "dev": "node run.js",
         "format": "pnpm \"/format:.*/\"",
         "format:prettier": "prettier --write .",
         "format:sort": "tailwind-sorter sort -i \"./src/**/*.php\"",
         "htpasswd": "docker exec -it nginx \"./htpasswd.sh\" && docker cp \"nginx:/etc/nginx/.htpasswd\" \"./.htpasswd\"",
-        "postinstall": "shx cp \"./.env.example\" \"./.env\"",
-        "start": "docker compose up"
+        "start": "node env.js && docker compose up"
     },
     "type": "module",
     "devDependencies": {
@@ -17,8 +14,8 @@
         "@types/node": "^24.3.0",
         "array-iter": "^1.0.0",
         "esbuild": "^0.25.9",
+        "is-docker": "^4.0.0",
         "prettier": "^3.6.2",
-        "shx": "^0.4.0",
         "tailwind-sorter": "^1.0.1",
         "tailwindcss": "^4.1.12",
         "tinyglobby": "^0.2.14"

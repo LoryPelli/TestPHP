@@ -21,6 +21,7 @@ services:
             - ./pnpm-lock.yaml:/app/pnpm-lock.yaml:ro
             - ./.env.example:/app/.env.example:ro
             - ./esbuild.config.js:/app/esbuild.config.js:ro
+            - ./run.js:/app/run.js:ro
             - ./src:/app/src:ro
             - ./assets:/app/assets
             - ./public:/app/public
