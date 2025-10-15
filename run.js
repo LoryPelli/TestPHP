@@ -3,6 +3,7 @@ import { execSync } from 'node:child_process';
 
 if (!isDocker()) {
     console.log('You need to run this script from docker!');
+    console.log('Use start package.json script!');
     process.exit(1);
 }
 
