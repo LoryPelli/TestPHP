@@ -11,5 +11,5 @@ Promise.all([
     exec(
         'pnpm tailwindcss -i ./src/styles/global.css -o ./assets/global.css -w',
     ),
-    exec('node esbuild.config.js'),
+    exec('sleep 2.75 && node esbuild.config.js'),
 ]);
