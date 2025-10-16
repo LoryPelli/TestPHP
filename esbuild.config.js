@@ -10,6 +10,8 @@ const files = await glob('assets/*.{js,css}', {
 
 const other = await glob('assets/*', { ignore: files });
 
+await mkdir('public', { recursive: true });
+
 const ctx = await context({
     entryPoints: files,
     outdir: 'public',
@@ -21,7 +23,5 @@ const ctx = await context({
     allowOverwrite: true,
 });
 await ctx.watch();
-
-await mkdir('public', { recursive: true });
 
 other.iter(async (o) => await copyFile(o, `public/${basename(o)}`));
