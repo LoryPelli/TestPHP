@@ -3,8 +3,7 @@
         "dev": "node run.js",
         "format": "pnpm \"/format:.*/\"",
         "format:prettier": "prettier --write .",
-        "format:sort": "tailwind-sorter sort -i \"./src/**/*.php\"",
-        "htpasswd": "docker exec -it nginx \"./htpasswd.sh\" && docker cp \"nginx:/etc/nginx/.htpasswd\" \"./.htpasswd\""
+        "format:sort": "tailwind-sorter sort -i \"./src/**/*.php\""
     },
     "type": "module",
     "devDependencies": {
