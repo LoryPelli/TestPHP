@@ -1,3 +1,4 @@
+.PHONY: all docker htpasswd
 all: docker htpasswd
 docker:
 	@python env.py && docker compose up -d
