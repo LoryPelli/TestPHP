@@ -15,7 +15,8 @@ $error = $_SESSION['error'] ?? '';
     <span>Repeat New Password:</span>
     <div data-pwd class="relative flex flex-row-reverse">
         <?php include sprintf('%s/src/components/CapsLock.php', $root); ?>
-        <input name="repeat_password" autocomplete="off" type="password" required class="px-8 py-1 border-2 rounded-md w-60" />
+        <input name="repeat_password" autocomplete="off" type="password" required
+            class="px-8 py-1 border-2 rounded-md w-60" />
         <?php include sprintf('%s/src/components/Toggle.php', $root); ?>
     </div>
     <button type="submit" class="p-1 border-2 rounded-md cursor-pointer">Continue!</button>

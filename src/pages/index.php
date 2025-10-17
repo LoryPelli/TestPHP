@@ -41,7 +41,8 @@ $user_id = $email ? $users->get_id($email) : '';
         <button class="p-1 border-2 rounded-md cursor-pointer" onclick="openDialog()">Add!</button>
     </div>
     <dialog>
-        <div data-dialog class="fixed inset-0 flex flex-col justify-center items-center h-screen data-open:animate-both not-data-open:animate-both-reverse">
+        <div data-dialog
+            class="fixed inset-0 flex flex-col justify-center items-center h-screen data-open:animate-both not-data-open:animate-both-reverse">
             <div data-draggable class="flex flex-col items-center shadow-2xl p-5 rounded-md cursor-move">
                 <button class="p-1 border-2 rounded-md cursor-pointer" onclick="closeDialog()">
                     <?php include_once sprintf('%s/svg/close.php', $root); ?>
@@ -51,10 +52,11 @@ $user_id = $email ? $users->get_id($email) : '';
                     <input name="is_done" type="checkbox"
                         class="after:flex after:justify-center bg-red-600 checked:bg-blue-600 border-2 rounded-md focus:outline-none size-7 after:text-white after:content-['✕'] checked:after:content-['✓'] appearance-none cursor-pointer" />
                     <span>Name:</span>
-                    <input data-not-draggable name="name" autocomplete="off" maxlength="<?= Constants::MAX_NAME_LENGTH ?>" required
-                        class="p-1 border-2 rounded-md w-60" />
+                    <input data-not-draggable name="name" autocomplete="off" maxlength="<?= Constants::MAX_NAME_LENGTH ?>"
+                        required class="p-1 border-2 rounded-md w-60" />
                     <span>Description:</span>
-                    <textarea data-not-draggable name="description" autocomplete="off" maxlength="<?= Constants::MAX_DESCRIPTION_LENGTH ?>"
+                    <textarea data-not-draggable name="description" autocomplete="off"
+                        maxlength="<?= Constants::MAX_DESCRIPTION_LENGTH ?>"
                         class="p-1 border-2 rounded-md w-60 resize-none"></textarea>
                     <button type="submit" class="p-1 border-2 rounded-md cursor-pointer">Continue!</button>
                 </form>

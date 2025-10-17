@@ -20,7 +20,8 @@ $error = $_SESSION['error'] ?? '';
         <?php include_once sprintf('%s/src/components/Toggle.php', $root); ?>
     </div>
     <button type="submit" class="p-1 border-2 rounded-md cursor-pointer">Delete!</button>
-    <span>Forgot password? No problem, you can <a href="/reset" class="text-blue-600 hover:underline">reset here</a>!</span>
+    <span>Forgot password? No problem, you can <a href="/reset" class="text-blue-600 hover:underline">reset
+            here</a>!</span>
 </form>
 <?php include sprintf('%s/src/components/Icons.php', $root); ?>
 <script src="/toggle.min.js" defer></script>
