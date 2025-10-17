@@ -1,5 +1,5 @@
 <?php
-final class Constants
+abstract class Constants
 {
     public const int MAX_EMAIL_LENGTH = 255;
     public const int MAX_PASSWORD_LENGTH = 60;

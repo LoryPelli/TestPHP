@@ -2,7 +2,7 @@
 abstract class BaseConnection
 {
     protected PDO $conn;
-    public function __construct()
+    protected function __construct()
     {
         $this->conn = new PDO(
             sprintf(
