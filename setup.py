@@ -1,9 +1,9 @@
-from os.path import exists
-from shutil import copyfile
 from pathlib import Path
 
-
-if not(exists('.env')):
-    copyfile('.env.example', '.env')
-
 Path('.htpasswd').touch()
+
+src = Path('.env.example')
+dest = Path('.env')
+
+if not(dest.exists()):
+    dest.write_text(src.read_text())
