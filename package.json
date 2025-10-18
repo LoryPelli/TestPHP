@@ -9,12 +9,12 @@
     "devDependencies": {
         "@prettier/plugin-php": "^0.24.0",
         "@tailwindcss/cli": "^4.1.14",
-        "@types/node": "^24.7.2",
+        "@types/node": "^24.8.1",
         "array-iter": "^1.0.0",
         "esbuild": "^0.25.11",
         "is-docker": "^4.0.0",
         "prettier": "^3.6.2",
-        "tailwind-sorter": "^1.0.1",
+        "tailwind-sorter": "^1.0.2",
         "tailwindcss": "^4.1.14",
         "tinyglobby": "^0.2.15"
     }
