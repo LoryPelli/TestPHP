@@ -2,7 +2,6 @@ const dialog = document.querySelector('dialog');
 const form = dialog.querySelector('form');
 const div = document.querySelector('div[data-dialog]');
 const todo_id = document.createElement('input');
-
 dialog.addEventListener('keydown', (e) => {
     if (e.key == 'Escape') {
         e.preventDefault();
