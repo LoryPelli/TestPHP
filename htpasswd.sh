@@ -7,6 +7,13 @@ handle_sigint() {
 
 trap handle_sigint SIGINT
 
+FILE_PATH="/etc/nginx/.htpasswd"
+
+if [ -s "$FILE_PATH" ]; then
+    echo "Please remove the .htpasswd file before running this script!"
+    exit 1
+fi
+
 echo -n "Provide Username: "
 read username
 echo -n "Provide Password: "
@@ -25,8 +32,6 @@ if [[ "$password" != "$verification_password" ]]; then
     echo "Passwords do not match!"
     exit 1
 fi
-
-FILE_PATH="/etc/nginx/.htpasswd"
 
 touch "$FILE_PATH"
 
