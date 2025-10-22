@@ -11,9 +11,11 @@
         "@tailwindcss/cli": "^4.1.14",
         "@types/node": "^24.8.1",
         "array-iter": "^1.0.0",
+        "dotenv": "^17.2.3",
         "esbuild": "^0.25.11",
         "is-docker": "^4.0.0",
         "prettier": "^3.6.2",
+        "prettier-plugin-organize-imports": "^4.3.0",
         "tailwind-sorter": "^1.0.2",
         "tailwindcss": "^4.1.14",
         "tinyglobby": "^0.2.15"

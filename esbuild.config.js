@@ -1,8 +1,8 @@
+import 'array-iter';
 import { context } from 'esbuild';
 import { copyFile, mkdir } from 'node:fs/promises';
 import { basename } from 'node:path';
 import { glob } from 'tinyglobby';
-import 'array-iter';
 
 const files = await glob('assets/*.{js,css}', {
     ignore: 'assets/*.min.{js,css}',

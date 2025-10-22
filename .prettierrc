@@ -2,7 +2,7 @@
     "tabWidth": 4,
     "semi": true,
     "singleQuote": true,
-    "plugins": ["@prettier/plugin-php"],
+    "plugins": ["@prettier/plugin-php", "prettier-plugin-organize-imports"],
     "overrides": [
         {
             "files": "*.php",
