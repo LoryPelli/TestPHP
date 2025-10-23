@@ -12,6 +12,7 @@ enum UserError: string
     case INVALID_URL = 'The URL is not valid';
     case INVALID_IMAGE = 'The image you provided is not valid';
     case USERNAME_TOO_LONG = 'The username is too long';
+    case CF_ERROR = 'Cloudflare verification error';
 }
 
 return array_combine(

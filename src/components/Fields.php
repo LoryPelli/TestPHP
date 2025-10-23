@@ -23,4 +23,5 @@ $is_login = $type == Type::Login;
         class="p-1 border-2 rounded-md w-60" />
 <?php endif; ?>
 <?php include sprintf('%s/src/components/Icons.php', $root); ?>
+<?php include_once sprintf('%s/src/components/Turnstile.php', $root); ?>
 <script src="/toggle.min.js" defer></script>

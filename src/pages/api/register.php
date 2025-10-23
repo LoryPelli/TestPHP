@@ -1,4 +1,7 @@
 <?php
+require_once sprintf('%s/src/utils/send_email.php', $root);
+require_once sprintf('%s/src/utils/turnstile.php', $root);
+turnstile('register');
 $email = $_POST['email'];
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     $_SESSION['error'] = 'invalid_email';
@@ -30,16 +33,5 @@ $_SESSION['password'] = $hash;
 $_SESSION['username'] = $username;
 $_SESSION['code'] = $code;
 $_SESSION['type'] = 'register';
-try {
-    $resend->emails->send([
-        'from' => $_ENV['EMAIL'],
-        'to' => $email,
-        'subject' => 'Verification Code',
-        'text' => sprintf('Your verification code is: %s', $code),
-    ]);
-} catch (Exception) {
-    $_SESSION['error'] = 'invalid_email';
-    redirect('/register');
-    exit(1);
-}
+send_email($email, $code, 'register');
 redirect('/verify', 307);

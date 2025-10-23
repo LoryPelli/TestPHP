@@ -1,4 +1,5 @@
 <?php
+require_once sprintf('%s/src/utils/send_email.php', $root);
 $is_confirm = isset($_GET['confirm']);
 $session_email = !$is_confirm ? $_SESSION['email'] : $_SESSION['old_email'];
 if (!filter_var($session_email, FILTER_VALIDATE_EMAIL)) {
@@ -24,18 +25,7 @@ if (!$is_confirm) {
     $_SESSION['email'] = $email;
     $_SESSION['code'] = $code;
     $_SESSION['type'] = 'change_confirm';
-    try {
-        $resend->emails->send([
-            'from' => $_ENV['EMAIL'],
-            'to' => $email,
-            'subject' => 'Verification Code',
-            'text' => sprintf('Your verification code is: %s', $code),
-        ]);
-    } catch (Exception) {
-        $_SESSION['error'] = 'invalid_email';
-        redirect('/new/email');
-        exit(1);
-    }
+    send_email($email, $code, 'new/email');
     redirect('/verify', 307);
     exit(0);
 }

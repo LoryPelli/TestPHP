@@ -1,7 +1,8 @@
 <?php
+require_once sprintf('%s/src/utils/send_email.php', $root);
 function update_user(string $action): void
 {
-    global $users, $resend;
+    global $users;
     $email = $_POST['email'];
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $_SESSION['error'] = 'invalid_email';
@@ -17,17 +18,6 @@ function update_user(string $action): void
     $_SESSION['email'] = $email;
     $_SESSION['code'] = $code;
     $_SESSION['type'] = $action;
-    try {
-        $resend->emails->send([
-            'from' => $_ENV['EMAIL'],
-            'to' => $email,
-            'subject' => 'Verification Code',
-            'text' => sprintf('Your verification code is: %s', $code),
-        ]);
-    } catch (Exception) {
-        $_SESSION['error'] = 'invalid_email';
-        redirect(sprintf('/%s', $action));
-        exit(1);
-    }
+    send_email($email, $code, $action);
     redirect('/verify', 307);
 }

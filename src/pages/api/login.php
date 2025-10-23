@@ -1,4 +1,6 @@
 <?php
+require_once sprintf('%s/src/utils/turnstile.php', $root);
+turnstile('login');
 $email = $_POST['email'];
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     $_SESSION['error'] = 'invalid_email';
