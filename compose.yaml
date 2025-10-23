@@ -19,7 +19,7 @@ services:
         volumes:
             - ./package.json:/app/package.json:ro
             - ./pnpm-lock.yaml:/app/pnpm-lock.yaml:ro
-            - ./.env.example:/app/.env.example:ro
+            - ./.env:/app/.env:ro
             - ./esbuild.config.js:/app/esbuild.config.js:ro
             - ./run.js:/app/run.js:ro
             - ./src:/app/src:ro
