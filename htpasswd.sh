@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 handle_sigint() {
     printf "\n"
