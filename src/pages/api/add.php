@@ -1,18 +1,18 @@
 <?php
 $name = $_POST['name'];
 if ($todos->check_name($name)) {
-    $_SESSION['error'] = 'already_exists';
+    $_SESSION['error'] = 'todo_already_exists';
     redirect('/');
     exit(1);
 }
 if (strlen($name) > Constants::MAX_NAME_LENGTH) {
-    $_SESSION['error'] = 'name_too_long';
+    $_SESSION['error'] = 'todo_name_too_long';
     redirect('/');
     exit(1);
 }
 $description = $_POST['description'] ?? '';
 if (strlen($description) > Constants::MAX_DESCRIPTION_LENGTH) {
-    $_SESSION['error'] = 'description_too_long';
+    $_SESSION['error'] = 'todo_description_too_long';
     redirect('/');
     exit(1);
 }

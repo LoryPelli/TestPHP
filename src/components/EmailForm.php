@@ -1,5 +1,5 @@
 <?php
-$messages = require_once sprintf('%s/src/enums/UserError.php', $root);
+$messages = require_once sprintf('%s/src/enums/AppError.php', $root);
 $is_reset = $type == Type::Reset;
 $error = $_SESSION['error'] ?? '';
 ?>

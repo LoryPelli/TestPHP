@@ -1,5 +1,5 @@
 <?php
-enum UserError: string
+enum AppError: string
 {
     case ALREADY_EXISTS = 'This email already exists in the database';
     case NOT_FOUND = 'User not found';
@@ -13,9 +13,12 @@ enum UserError: string
     case INVALID_IMAGE = 'The image you provided is not valid';
     case USERNAME_TOO_LONG = 'The username is too long';
     case CF_ERROR = 'Cloudflare verification error';
+    case TODO_ALREADY_EXISTS = 'A todo with that name already exists in your account';
+    case TODO_NAME_TOO_LONG = 'The todo name is too long';
+    case TODO_DESCRIPTION_TOO_LONG = 'The todo description is too long';
 }
 
 return array_combine(
-    array_map(fn(UserError $c) => strtolower($c->name), UserError::cases()),
-    array_map(fn(UserError $c) => $c->value, UserError::cases()),
+    array_map(fn(AppError $c) => strtolower($c->name), AppError::cases()),
+    array_map(fn(AppError $c) => $c->value, AppError::cases()),
 );

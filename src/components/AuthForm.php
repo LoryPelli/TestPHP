@@ -1,6 +1,6 @@
 <?php
 require_once sprintf('%s/src/enums/Type.php', $root);
-$messages = require_once sprintf('%s/src/enums/UserError.php', $root);
+$messages = require_once sprintf('%s/src/enums/AppError.php', $root);
 $is_login = $type == Type::Login;
 $error = $_SESSION['error'] ?? '';
 ?>

@@ -1,5 +1,5 @@
 <?php
-$messages = require_once sprintf('%s/src/enums/UserError.php', $root);
+$messages = require_once sprintf('%s/src/enums/AppError.php', $root);
 $error = $_SESSION['error'] ?? '';
 ?>
 <form method="POST" class="flex flex-col justify-center items-center gap-y-1 h-screen" action="/api/new/email">

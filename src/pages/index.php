@@ -1,5 +1,5 @@
 <?php
-$messages = require_once sprintf('%s/src/enums/TodoError.php', $root);
+$messages = require_once sprintf('%s/src/enums/AppError.php', $root);
 $error = $_SESSION['error'] ?? '';
 $user_id = $email ? $users->get_id($email) : '';
 ?>
