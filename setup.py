@@ -8,6 +8,6 @@ htpasswdsh = Path('htpasswd.sh')
 if not(dest.exists()):
     dest.write_text(src.read_text())
 
-htpasswd.touch()
+htpasswd.touch(0o644)
 
 htpasswdsh.chmod(0o755)
