@@ -10,4 +10,7 @@ if not(dest.exists()):
 
 htpasswd.touch(0o644)
 
+src.chmod(0o644)
+dest.chmod(0o644)
+
 htpasswdsh.chmod(0o755)
