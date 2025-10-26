@@ -1,4 +1,3 @@
-import 'array-iter';
 import { context } from 'esbuild';
 import { copyFile, mkdir } from 'node:fs/promises';
 import { basename } from 'node:path';
@@ -24,4 +23,6 @@ const ctx = await context({
 });
 await ctx.watch();
 
-other.iter(async (o) => await copyFile(o, `public/${basename(o)}`));
+await Promise.all(
+    other.map(async (o) => await copyFile(o, `public/${basename(o)}`)),
+);

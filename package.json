@@ -10,7 +10,6 @@
         "@prettier/plugin-php": "^0.24.0",
         "@tailwindcss/cli": "^4.1.14",
         "@types/node": "^24.8.1",
-        "array-iter": "^1.0.0",
         "dotenv": "^17.2.3",
         "esbuild": "^0.25.11",
         "is-docker": "^4.0.0",

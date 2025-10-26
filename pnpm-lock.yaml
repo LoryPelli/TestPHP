@@ -17,9 +17,6 @@ importers:
       '@types/node':
         specifier: ^24.8.1
         version: 24.8.1
-      array-iter:
-        specifier: ^1.0.0
-        version: 1.0.0
       dotenv:
         specifier: ^17.2.3
         version: 17.2.3
@@ -424,9 +421,6 @@ packages:
 
   argparse@2.0.1:
     resolution: {integrity: sha512-8+9WqebbFzpX9OR+Wa6O29asIogeRMzcGtAINdpMHHyAg10f05aSFVBbcEqGf/PXw1EjAZ+q2/bEBg3DvurK3Q==}
-
-  array-iter@1.0.0:
-    resolution: {integrity: sha512-i5A4GCYwimCS7nZnS/Wz192DnYHpoNcK9EjfZR2KMdk7gG1Yhz1URIEsKL3oULgjjoTK0tisrYh8tIIRYKIO6w==}
 
   braces@3.0.3:
     resolution: {integrity: sha512-yQbXgO/OSZVD2IsiLlro+7Hf6Q18EJrKSEsdoMzKePKXct3gvD8oLcOQdIzGupr5Fj+EDe8gO/lxc1BzfMpxvA==}
@@ -1001,8 +995,6 @@ snapshots:
       undici-types: 7.14.0
 
   argparse@2.0.1: {}
-
-  array-iter@1.0.0: {}
 
   braces@3.0.3:
     dependencies:
