@@ -18,16 +18,10 @@ if (Object.values(env).some((v) => v.length == 0)) {
     process.exit(1);
 }
 
-const fn1 = () =>
-    exec(
-        'pnpm tailwindcss -i ./src/styles/global.css -o ./assets/global.css -w',
-    );
+exec('pnpm tailwindcss -i ./src/styles/global.css -o ./assets/global.css -w');
 
-const fn2 = async () => {
-    while (!existsSync('./assets/global.css')) {
-        await setTimeout(125);
-    }
-    return exec('node esbuild.config.js');
-};
+while (!existsSync('./assets/global.css')) {
+    await setTimeout(125);
+}
 
-Promise.all([fn1(), await fn2()]);
+exec('node esbuild.config.js');
