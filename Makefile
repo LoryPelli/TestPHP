@@ -1,6 +1,10 @@
-.PHONY: all docker htpasswd
-all: docker htpasswd
-docker:
-	@python3 setup.py && docker compose up -d
+.PHONY: all down setup up htpasswd
+all: down setup up htpasswd
+down:
+	@docker compose down
+setup:
+	@python3 setup.py
+up:
+	@docker compose up -d
 htpasswd:
 	@docker exec -it nginx "./htpasswd.sh" && docker cp "nginx:/etc/nginx/.htpasswd" "./.htpasswd"
