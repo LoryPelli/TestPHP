@@ -1,11 +1,11 @@
 <?php
-$username = $_POST['username'];
+$username = $_POST['username'] ?? '';
 if (strlen($username) > Constants::MAX_NAME_LENGTH) {
     $_SESSION['error'] = 'username_too_long';
     redirect('/settings');
     exit(1);
 }
-$avatar = $_POST['avatar'];
+$avatar = $_POST['avatar'] ?? '';
 if ($avatar) {
     if (!filter_var($avatar, FILTER_VALIDATE_URL)) {
         $_SESSION['error'] = 'invalid_url';

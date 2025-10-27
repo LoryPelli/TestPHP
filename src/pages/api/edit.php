@@ -1,6 +1,6 @@
 <?php
-$id = $_POST['id'];
-$name = $_POST['name'];
+$id = $_POST['id'] ?? '';
+$name = $_POST['name'] ?? '';
 if (strlen($name) > Constants::MAX_NAME_LENGTH) {
     $_SESSION['error'] = 'name_too_long';
     redirect('/');

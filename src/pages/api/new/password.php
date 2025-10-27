@@ -5,8 +5,8 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     redirect('/new/password', 307);
     exit(1);
 }
-$password = $_POST['password'];
-$repeat_password = $_POST['repeat_password'];
+$password = $_POST['password'] ?? '';
+$repeat_password = $_POST['repeat_password'] ?? '';
 if ($password != $repeat_password) {
     $_SESSION['error'] = 'passwords_not_match';
     redirect('/new/password', 307);

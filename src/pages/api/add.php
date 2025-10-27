@@ -1,5 +1,5 @@
 <?php
-$name = $_POST['name'];
+$name = $_POST['name'] ?? '';
 if ($todos->check_name($name)) {
     $_SESSION['error'] = 'todo_already_exists';
     redirect('/');

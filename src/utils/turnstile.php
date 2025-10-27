@@ -8,7 +8,7 @@ function turnstile(string $action): void
             [
                 'form_params' => [
                     'secret' => $_ENV['PRIVATEKEY'],
-                    'response' => $_POST['cf-turnstile-response'],
+                    'response' => $_POST['cf-turnstile-response'] ?? '',
                 ],
             ],
         );

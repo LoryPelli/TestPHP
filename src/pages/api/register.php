@@ -2,7 +2,7 @@
 require_once sprintf('%s/src/utils/send_email.php', $root);
 require_once sprintf('%s/src/utils/turnstile.php', $root);
 turnstile('register');
-$email = $_POST['email'];
+$email = $_POST['email'] ?? '';
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     $_SESSION['error'] = 'invalid_email';
     redirect('/register');
@@ -13,15 +13,15 @@ if ($users->check_email($email)) {
     redirect('/register');
     exit(1);
 }
-$password = $_POST['password'];
-$repeat_password = $_POST['repeat_password'];
+$password = $_POST['password'] ?? '';
+$repeat_password = $_POST['repeat_password'] ?? '';
 if ($password != $repeat_password) {
     $_SESSION['error'] = 'passwords_not_match';
     redirect('/register');
     exit(1);
 }
 $hash = password_hash($_POST['password'], PASSWORD_BCRYPT);
-$username = $_POST['username'];
+$username = $_POST['username'] ?? '';
 if (strlen($username) > Constants::MAX_NAME_LENGTH) {
     $_SESSION['error'] = 'username_too_long';
     redirect('/register');

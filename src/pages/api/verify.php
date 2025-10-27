@@ -10,7 +10,7 @@ if (!$email || ($type == 'register' && (!$password || !$username))) {
     redirect('/verify', 307);
     exit(1);
 }
-$code = $_POST['digit'];
+$code = $_POST['digit'] ?? [];
 $user_code = implode('', $code);
 $server_code = $_SESSION['code'] ?? '';
 if ($user_code != $server_code) {

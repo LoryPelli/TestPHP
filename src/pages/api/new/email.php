@@ -7,7 +7,7 @@ if (!filter_var($session_email, FILTER_VALIDATE_EMAIL)) {
     redirect('/new/email', 307);
     exit(1);
 }
-$email = $_POST['email'] ?? $_SESSION['email'];
+$email = $_POST['email'] ?? $_SESSION['email'] ?? '';
 $repeat_email = $_POST['repeat_email'] ?? '';
 if (!$is_confirm && $email != $repeat_email) {
     $_SESSION['error'] = 'emails_not_match';
