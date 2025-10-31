@@ -10,7 +10,7 @@ trap handle_sigint SIGINT
 FILE_PATH="/etc/nginx/.htpasswd"
 
 if [ -s "$FILE_PATH" ]; then
-    echo "Please remove the .htpasswd file before running this script!"
+    echo "[WARN] Please remove the .htpasswd file before running this script!"
     exit 1
 fi
 
