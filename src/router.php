@@ -5,7 +5,6 @@ require_once sprintf('%s/vendor/autoload.php', $root);
 require_once sprintf('%s/src/utils/redirect.php', $root);
 require_once sprintf('%s/src/classes/UserTable.php', $root);
 require_once sprintf('%s/src/classes/TodoTable.php', $root);
-require_once sprintf('%s/src/classes/Constants.php', $root);
 $cookies = require_once sprintf('%s/src/cookies/index.php', $root);
 Dotenv\Dotenv::createImmutable($root)->load();
 $resend = Resend::client($_ENV['APIKEY']);
@@ -71,10 +70,7 @@ ob_start(buffer(...));
                         <button class="p-1 border-2 rounded-md cursor-pointer">Register!</button>
                     </a>
                 <?php else: ?>
-                    <img src="<?= htmlspecialchars(
-                        $users->get_avatar($email),
-                    ) ?:
-                        '/user.png' ?>" loading="lazy" decoding="async" class="rounded-full size-10" />
+                    <img src="/avatar" loading="lazy" decoding="async" class="rounded-full size-10" />
                     <span><?= htmlspecialchars(
                         $users->get_username($email),
                     ) ?></span>

@@ -1,5 +1,6 @@
 <?php
 require_once sprintf('%s/src/classes/BaseConnection.php', $root);
+require_once sprintf('%s/src/classes/Constants.php', $root);
 require_once sprintf('%s/src/classes/Todo.php', $root);
 final class TodoTable extends BaseConnection
 {

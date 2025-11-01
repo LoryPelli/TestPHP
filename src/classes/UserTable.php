@@ -1,5 +1,6 @@
 <?php
 require_once sprintf('%s/src/classes/BaseConnection.php', $root);
+require_once sprintf('%s/src/classes/Constants.php', $root);
 require_once sprintf('%s/src/classes/User.php', $root);
 final class UserTable extends BaseConnection
 {
