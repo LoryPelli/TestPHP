@@ -2,6 +2,7 @@
 function get_fallback_avatar(): void
 {
     echo file_get_contents('./fallback.png');
+    exit(0);
 }
 $root = $_SERVER['DOCUMENT_ROOT'];
 require_once sprintf('%s/vendor/autoload.php', $root);
@@ -14,7 +15,6 @@ $email = $cookies->get('email') ?? '';
 $avatar = $users->get_avatar($email);
 if (!$avatar) {
     get_fallback_avatar();
-    exit(1);
 }
 $c = new GuzzleHttp\Client();
 try {
@@ -23,5 +23,4 @@ try {
     echo $body->getContents();
 } catch (Exception) {
     get_fallback_avatar();
-    exit(1);
 }
