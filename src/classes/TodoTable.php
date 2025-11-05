@@ -65,8 +65,8 @@ final class TodoTable extends BaseConnection
         $res->bindParam(1, $user_id);
         $res->bindParam(2, $name);
         $res->execute();
-        $row = $res->fetch(PDO::FETCH_ASSOC);
-        return $row ? $row['id'] : '';
+        $row = $res->fetch();
+        return $row ? $row->id : '';
     }
     /**
      * @return Todo[]
@@ -80,10 +80,10 @@ final class TodoTable extends BaseConnection
          * @var Todo[]
          */
         $arr = [];
-        $row = $res->fetchAll(PDO::FETCH_ASSOC);
+        $row = $res->fetchAll();
         if ($row) {
             foreach ($row as $r) {
-                $arr[] = new Todo($r['name'], $r['description'], $r['is_done']);
+                $arr[] = new Todo($r->name, $r->description, $r->is_done);
             }
         }
         return $arr;

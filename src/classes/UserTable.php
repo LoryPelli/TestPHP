@@ -39,8 +39,8 @@ final class UserTable extends BaseConnection
         );
         $res->bindParam(1, $email);
         $res->execute();
-        $row = $res->fetch(PDO::FETCH_ASSOC);
-        return $row && password_verify($password, $row['password']);
+        $row = $res->fetch();
+        return $row && password_verify($password, $row->password);
     }
     public function check_email(string $email): bool
     {
@@ -59,9 +59,9 @@ final class UserTable extends BaseConnection
         );
         $res->bindParam(1, $email);
         $res->execute();
-        $row = $res->fetch(PDO::FETCH_ASSOC);
-        if ($row && password_verify($password, $row['password'])) {
-            return new User($row['email'], $row['password']);
+        $row = $res->fetch();
+        if ($row && password_verify($password, $row->password)) {
+            return new User($row->email, $row->password);
         }
         return null;
     }
@@ -70,8 +70,8 @@ final class UserTable extends BaseConnection
         $res = $this->conn->prepare('SELECT id FROM users WHERE email = ?');
         $res->bindParam(1, $email);
         $res->execute();
-        $row = $res->fetch(PDO::FETCH_ASSOC);
-        return $row ? $row['id'] : '';
+        $row = $res->fetch();
+        return $row ? $row->id : '';
     }
     public function get_username(string $email): string
     {
@@ -80,16 +80,16 @@ final class UserTable extends BaseConnection
         );
         $res->bindParam(1, $email);
         $res->execute();
-        $row = $res->fetch(PDO::FETCH_ASSOC);
-        return $row ? $row['username'] : '';
+        $row = $res->fetch();
+        return $row ? $row->username : '';
     }
     public function get_avatar(string $email): string
     {
         $res = $this->conn->prepare('SELECT avatar FROM users WHERE email = ?');
         $res->bindParam(1, $email);
         $res->execute();
-        $row = $res->fetch(PDO::FETCH_ASSOC);
-        return $row ? $row['avatar'] : '';
+        $row = $res->fetch();
+        return $row ? $row->avatar : '';
     }
     public function set_username(string $email, string $username): void
     {

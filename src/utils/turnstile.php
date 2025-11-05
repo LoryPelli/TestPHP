@@ -12,8 +12,8 @@ function turnstile(string $action): void
                 ],
             ],
         );
-        $body = json_decode($res->getBody(), true);
-        if (!$body['success']) {
+        $body = json_decode($res->getBody());
+        if (!$body->success) {
             $_SESSION['error'] = 'cf_error';
             redirect(sprintf('/%s', $action));
             exit(1);

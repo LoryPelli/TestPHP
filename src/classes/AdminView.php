@@ -25,13 +25,13 @@ final class AdminView extends BaseConnection
          * @var Admin[]
          */
         $arr = [];
-        $row = $res->fetchAll(PDO::FETCH_ASSOC);
+        $row = $res->fetchAll();
         if ($row) {
             foreach ($row as $r) {
                 $arr[] = new Admin(
-                    $r['email'],
-                    $r['username'],
-                    new Todo($r['name'], $r['description'], $r['is_done']),
+                    $r->email,
+                    $r->username,
+                    new Todo($r->name, $r->description, $r->is_done),
                 );
             }
         }
