@@ -12,10 +12,7 @@ Dotenv\Dotenv::createImmutable($root)->load();
 header('Content-Type: image/gif');
 $users = new UserTable();
 $email = $cookies->get('email') ?? '';
-$avatar = $users->get_avatar($email);
-if (!$avatar) {
-    get_fallback_avatar();
-}
+$avatar = $users->get_avatar($email) ?? get_fallback_avatar();
 $c = new GuzzleHttp\Client();
 try {
     $res = $c->get($avatar);
