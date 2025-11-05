@@ -80,7 +80,6 @@ ob_start(buffer(...));
                     <a href="/logout">
                         <button class="p-1 border-2 rounded-md cursor-pointer">Logout!</button>
                     </a>
-                    <script src="/error.min.js" defer></script>
                 <?php endif; ?>
             </div>
         </nav>
