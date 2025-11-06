@@ -43,7 +43,7 @@ $user_id = $email ? $users->get_id($email) : '';
     <dialog>
         <div data-dialog
             class="fixed inset-0 flex flex-col justify-center items-center h-screen data-open:animate-both not-data-open:animate-both-reverse">
-            <div data-draggable class="flex flex-col items-center shadow-2xl p-5 rounded-md cursor-move">
+            <div data-draggable class="flex flex-col items-center shadow-2xl p-5 rounded-md touch-none cursor-move">
                 <button class="p-1 border-2 rounded-md cursor-pointer" onclick="closeDialog()">
                     <?php include_once sprintf('%s/svg/close.php', $root); ?>
                 </button>
@@ -64,8 +64,7 @@ $user_id = $email ? $users->get_id($email) : '';
         </div>
     </dialog>
     <script src="/dialog.min.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/@neodrag/vanilla@2.3.0" defer></script>
-    <script>document.addEventListener('DOMContentLoaded', () => new NeoDrag.Draggable(document.querySelector('div[data-draggable]'), { bounds: 'parent', cancel: [...document.querySelectorAll('[data-not-draggable]')], }));</script>
+    <script src="/drag.min.js" defer></script>
     <?php if ($is_valid_todo): ?>
         <script>document.addEventListener('DOMContentLoaded', () => openDialog('<?= $todo_id ?>'));</script>
     <?php endif; ?>
