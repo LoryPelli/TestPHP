@@ -1,12 +1,18 @@
 <?php
 $messages = require_once sprintf('%s/src/enums/AppError.php', $root);
 $error = $_SESSION['error'] ?? '';
+$email = $_SESSION['email'] ?? '';
+if (!$email) {
+    redirect('/');
+}
 ?>
 <form method="POST" class="flex flex-col justify-center items-center gap-y-1 h-screen" action="/api/verify">
     <?php if (isset($messages[$error])): ?>
         <?php include_once sprintf('%s/src/components/Error.php', $root); ?>
     <?php endif; ?>
-    <span class="font-bold text-xl">A verification code has been sent to your email!</span>
+    <span class="font-bold text-xl">A verification code has been sent to <?= htmlspecialchars(
+        $email,
+    ) ?>!</span>
     <div class="flex gap-x-1">
         <?php foreach (range(0, 5) as $i): ?>
             <input name="digit[]" autocomplete="off" type="number" min="0" max="9" <?= $i ==
