@@ -28,7 +28,10 @@ inputs.forEach((input, i) => {
     });
     input.addEventListener('paste', (e) => {
         e.preventDefault();
-        const data = e.clipboardData?.getData('text') || '';
+        const data = (e.clipboardData?.getData('text') || '').replaceAll(
+            /[^0-9]/,
+            '',
+        );
         const chars = data.trim().split('');
         for (let j = 0; j < chars.length; j++) {
             if (i + j < inputs.length) {
