@@ -26,7 +26,8 @@ ob_start(buffer(...));
                 <?php $t = $a->get_todo(); ?>
                 <tr class="text-center">
                     <td>
-                        <img src="/admin/avatar" loading="lazy" decoding="async" class="rounded-full size-10" />
+                        <img src="/admin/avatar?email=<?= $a->get_email() ?>" loading="lazy" decoding="async"
+                            class="rounded-full size-10" />
                     </td>
                     <td>
                         <input autocomplete="off" readonly value="<?= $a->get_email() ?>"
