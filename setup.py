@@ -6,7 +6,7 @@ htpasswd = Path('.htpasswd')
 htpasswdsh = Path('htpasswd.sh')
 
 if not(src.exists()) or not(htpasswdsh.exists()):
-    print('Missing required files!')
+    print('\x1b[1;31m[ERROR]\x1b[0m Missing required files!')
     raise SystemExit(1)
 
 if not(dest.exists()):
@@ -18,3 +18,5 @@ src.chmod(0o644)
 dest.chmod(0o644)
 
 htpasswdsh.chmod(0o755)
+
+print('\x1b[1;32m[SUCCESS]\x1b[0m Setup completed!')

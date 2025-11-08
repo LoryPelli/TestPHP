@@ -14,7 +14,7 @@ if (!isDocker()) {
 const env = parse(await readFile('.env'));
 
 if (Object.values(env).some((v) => v.length == 0)) {
-    console.log('Env values cannot be empty!');
+    console.log('\x1b[1;31m[ERROR]\x1b[0m Env values cannot be empty!');
     process.exit(1);
 }
 
@@ -25,3 +25,5 @@ while (!existsSync('./assets/global.css')) {
 }
 
 exec('node esbuild.config.js');
+
+console.log('\x1b[1;32m[SUCCESS]\x1b[0m Running...!');
