@@ -14,12 +14,12 @@ if [ -s "$FILE_PATH" ]; then
     exit 1
 fi
 
-echo -n "Provide Username: "
+echo -ne "\x1b[1;34m[INFO]\x1b[0m Provide Username: "
 read username
-echo -n "Provide Password: "
+echo -ne "\x1b[1;34m[INFO]\x1b[0m Provide Password: "
 read -s password
 printf "\n"
-echo -n "Provide Password: (again) "
+echo -ne "\x1b[1;34m[INFO]\x1b[0m Provide Password: (again) "
 read -s verification_password
 printf "\n"
 
