@@ -35,7 +35,7 @@
     }
 
     handle /admin {
-        redir * /admin/ 302
+        redir * /admin/index 302
     }
 
     handle /avatar {
@@ -47,13 +47,7 @@
     }
 
     handle /admin/* {
-        handle /admin/ {
-            rewrite * /src/admin/index.php
-        }
-
-        handle /admin/avatar {
-            rewrite * /src/admin/avatar.php
-        }
+        rewrite * /src/admin/{path}.php
     }
 
     handle @not_found {
