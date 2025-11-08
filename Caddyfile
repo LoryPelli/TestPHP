@@ -47,7 +47,7 @@
     }
 
     handle /admin/* {
-        rewrite * /src/admin/{path}.php
+        rewrite * /src/{path}.php
     }
 
     handle @not_found {
