@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d448708585666f7a311a0c53410d360e",
+    "content-hash": "5fd9d1a19844e2df8e4b32509b7c5372",
     "packages": [
         {
             "name": "brick/math",
@@ -952,16 +952,16 @@
         },
         {
             "name": "resend/resend-php",
-            "version": "v0.20.0",
+            "version": "v1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/resend/resend-php.git",
-                "reference": "25391cb93382601e3b2678c4c57d34d3a84210e8"
+                "reference": "ec5b67751a557f4de2b8319449c745bfe58d1bc3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/resend/resend-php/zipball/25391cb93382601e3b2678c4c57d34d3a84210e8",
-                "reference": "25391cb93382601e3b2678c4c57d34d3a84210e8",
+                "url": "https://api.github.com/repos/resend/resend-php/zipball/ec5b67751a557f4de2b8319449c745bfe58d1bc3",
+                "reference": "ec5b67751a557f4de2b8319449c745bfe58d1bc3",
                 "shasum": ""
             },
             "require": {
@@ -1003,22 +1003,22 @@
             ],
             "support": {
                 "issues": "https://github.com/resend/resend-php/issues",
-                "source": "https://github.com/resend/resend-php/tree/v0.20.0"
+                "source": "https://github.com/resend/resend-php/tree/v1.0.0"
             },
-            "time": "2025-09-18T05:31:42+00:00"
+            "time": "2025-11-01T00:14:24+00:00"
         },
         {
             "name": "symfony/css-selector",
-            "version": "v7.3.0",
+            "version": "v7.3.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/css-selector.git",
-                "reference": "601a5ce9aaad7bf10797e3663faefce9e26c24e2"
+                "reference": "84321188c4754e64273b46b406081ad9b18e8614"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/css-selector/zipball/601a5ce9aaad7bf10797e3663faefce9e26c24e2",
-                "reference": "601a5ce9aaad7bf10797e3663faefce9e26c24e2",
+                "url": "https://api.github.com/repos/symfony/css-selector/zipball/84321188c4754e64273b46b406081ad9b18e8614",
+                "reference": "84321188c4754e64273b46b406081ad9b18e8614",
                 "shasum": ""
             },
             "require": {
@@ -1054,7 +1054,7 @@
             "description": "Converts CSS selectors to XPath expressions",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/css-selector/tree/v7.3.0"
+                "source": "https://github.com/symfony/css-selector/tree/v7.3.6"
             },
             "funding": [
                 {
@@ -1066,11 +1066,15 @@
                     "type": "github"
                 },
                 {
+                    "url": "https://github.com/nicolas-grekas",
+                    "type": "github"
+                },
+                {
                     "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-09-25T14:21:43+00:00"
+            "time": "2025-10-29T17:24:25+00:00"
         },
         {
             "name": "symfony/deprecation-contracts",
@@ -1634,5 +1638,8 @@
         "php": "8.4.5"
     },
     "platform-dev": {},
+    "platform-overrides": {
+        "php": "8.4.5"
+    },
     "plugin-api-version": "2.6.0"
 }

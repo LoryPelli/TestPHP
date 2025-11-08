@@ -24,15 +24,17 @@ read -s verification_password
 printf "\n"
 
 if [[ -z "$username" || -z "$password" || -z "$verification_password" ]]; then
-    echo "Values cannot be empty!"
+    echo -e "\033[1;31m[ERROR]\033[0m Values cannot be empty!"
     exit 1
 fi
 
 if [[ "$password" != "$verification_password" ]]; then
-    echo "Passwords do not match!"
+    echo -e "\033[1;31m[ERROR]\033[0m Passwords do not match!"
     exit 1
 fi
 
 touch "$FILE_PATH"
 
-htpasswd -b "$FILE_PATH" "$username" "$password"
+htpasswd -b "$FILE_PATH" "$username" "$password" &> /dev/null
+
+echo -e "\033[1;32m[SUCCESS]\033[0m Added password for user $username"
