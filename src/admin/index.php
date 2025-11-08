@@ -14,6 +14,7 @@ ob_start(buffer(...));
 <body class="flex flex-col p-2">
     <table class="border-2 rounded-md border-separate">
         <thead>
+            <th>Avatar</th>
             <th>Email</th>
             <th>Username</th>
             <th>Todo Name</th>
@@ -24,6 +25,9 @@ ob_start(buffer(...));
             <?php foreach ($admin->get_all() as $a): ?>
                 <?php $t = $a->get_todo(); ?>
                 <tr class="text-center">
+                    <td>
+                        <img src="/admin/avatar" loading="lazy" decoding="async" class="rounded-full size-10" />
+                    </td>
                     <td>
                         <input autocomplete="off" readonly value="<?= $a->get_email() ?>"
                             class="focus:outline-none w-[20vw] text-center cursor-not-allowed" />

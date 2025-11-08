@@ -22,7 +22,7 @@
     }
 
     @not_admin {
-        path /admin
+        path /admin/*
         not header X-Auth 1
     }
 
@@ -34,6 +34,10 @@
         try_files /public/{path} /src/errors/index.php?code=404
     }
 
+    handle /admin {
+        redir * /admin/ 302
+    }
+
     handle /avatar {
         rewrite * /src/avatar/index.php
     }
@@ -42,8 +46,14 @@
         reverse_proxy nginx
     }
 
-    handle /admin {
-        rewrite * /src/admin/index.php
+    handle /admin/* {
+        handle /admin/ {
+            rewrite * /src/admin/index.php
+        }
+
+        handle /admin/avatar {
+            rewrite * /src/admin/avatar.php
+        }
     }
 
     handle @not_found {

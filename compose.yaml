@@ -45,6 +45,7 @@ services:
         working_dir: /app
         volumes:
             - ./public:/app/public:ro
+            - ./avatar:/app/avatar:ro
             - ./src:/app/src:ro
             - ./svg:/app/svg:ro
             - ./vendor:/app/vendor:ro
