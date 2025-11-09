@@ -1,51 +1,22 @@
 <?php
+require_once sprintf('%s/src/classes/Page.php', $root);
 return [
-    'index' => [
-        'title' => 'Home',
-        'description' => 'Application home page',
-    ],
-    'login' => [
-        'title' => 'Login',
-        'description' => 'Login with username and password',
-    ],
-    'register' => [
-        'title' => 'Register',
-        'description' => 'Create an account',
-    ],
-    'verify' => [
-        'title' => 'Verify',
-        'description' => 'Verify your email',
-    ],
-    'logout' => [
-        'title' => 'Logout',
-        'description' => 'Are you sure you want to logout?',
-    ],
-    'settings' => [
-        'title' => 'Settings',
-        'description' => 'Manage your account settings',
-    ],
-    'reset' => [
-        'title' => 'Reset Password',
-        'description' => 'Reset your password',
-    ],
-    'change' => [
-        'title' => 'Change Email',
-        'description' => 'Change your email',
-    ],
-    'new/email' => [
-        'title' => 'New Email',
-        'description' => 'Choose your new your email',
-    ],
-    'new/password' => [
-        'title' => 'New Password',
-        'description' => 'Choose your new your password',
-    ],
-    'delete' => [
-        'title' => 'Delete your Account',
-        'description' => 'Are you sure you want to delete your account?',
-    ],
-    'remove' => [
-        'title' => 'Remove a Todo',
-        'description' => 'Are you sure you want to remove this todo?',
-    ],
+    'index' => new Page('Home', 'Application home page'),
+    'login' => new Page('Login', 'Login with username and password'),
+    'register' => new Page('Register', 'Create an account'),
+    'verify' => new Page('Verify', 'Verify your email'),
+    'logout' => new Page('Logout', 'Are you sure you want to logout?'),
+    'settings' => new Page('Settings', 'Manage your account settings'),
+    'reset' => new Page('Reset Password', 'Reset your password'),
+    'change' => new Page('Change Email', 'Change your email'),
+    'new/email' => new Page('New Email', 'Choose your new your email'),
+    'new/password' => new Page('New Password', 'Choose your new your password'),
+    'delete' => new Page(
+        'Delete your Account',
+        'Are you sure you want to delete your account?',
+    ),
+    'remove' => new Page(
+        'Remove a Todo',
+        'Are you sure you want to remove this todo?',
+    ),
 ];

@@ -42,8 +42,8 @@ $is_api = str_starts_with($file, 'api/');
 if (!$is_api) {
     $config = require_once sprintf('%s/src/config/index.php', $root);
     $page = $config[$file];
-    $title = $page['title'];
-    $description = $page['description'];
+    $title = $page->get_title();
+    $description = $page->get_description();
 } else {
     require_once sprintf('%s/%s', $root, $path);
     exit(0);

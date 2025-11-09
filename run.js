@@ -6,7 +6,9 @@ import { readFile } from 'node:fs/promises';
 import { setTimeout } from 'node:timers/promises';
 
 if (!isDocker()) {
-    console.log('\x1b[1;31m[ERROR]\x1b[0m You need to run this script from docker!');
+    console.log(
+        '\x1b[1;31m[ERROR]\x1b[0m You need to run this script from docker!',
+    );
     console.log('\x1b[1;34m[INFO]\x1b[0m Use start package.json script!');
     process.exit(1);
 }
