@@ -34,11 +34,11 @@
         try_files /public/{path} /src/errors/index.php?code=404
     }
 
-    handle /admin {
+    handle_path /admin {
         redir * /admin/index 302
     }
 
-    handle /avatar {
+    handle_path /avatar {
         rewrite * /src/avatar/index.php
     }
 
@@ -46,8 +46,8 @@
         reverse_proxy nginx
     }
 
-    handle /admin/* {
-        rewrite * /src/{path}.php
+    handle_path /admin/* {
+        try_files /src/admin/{path}.php /src/errors/index.php?code=404
     }
 
     handle @not_found {
