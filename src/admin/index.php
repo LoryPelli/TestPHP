@@ -9,6 +9,7 @@ ob_start(buffer(...));
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <?php include_once sprintf('%s/src/components/Header.php', $root); ?>
 
 <body class="flex flex-col p-2">

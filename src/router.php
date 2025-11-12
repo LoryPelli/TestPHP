@@ -54,6 +54,7 @@ ob_start(buffer(...));
 <?php if (!$is_api): ?>
     <!DOCTYPE html>
     <html lang="en">
+
     <?php include_once sprintf('%s/src/components/Header.php', $root); ?>
 
     <body class="flex flex-col h-screen">
