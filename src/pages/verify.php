@@ -1,8 +1,10 @@
 <?php
+require_once sprintf('%s/src/utils/is_api_key_valid.php', $root);
 $messages = require_once sprintf('%s/src/enums/AppError.php', $root);
 $error = $_SESSION['error'] ?? '';
 $email = $_SESSION['email'] ?? '';
-if (!$email) {
+$code = $_SESSION['code'] ?? '';
+if (!$email || !$code) {
     redirect('/');
 }
 ?>
@@ -10,9 +12,19 @@ if (!$email) {
     <?php if (isset($messages[$error])): ?>
         <?php include_once sprintf('%s/src/components/Error.php', $root); ?>
     <?php endif; ?>
-    <span class="font-bold text-xl">A verification code has been sent to <?= htmlspecialchars(
+    <span data-code class="font-bold text-xl">A verification code has been sent to <?= htmlspecialchars(
         $email,
     ) ?>!</span>
+    <?php if (!is_api_key_valid()): ?>
+        <style>
+            [data-code] {
+                text-decoration: line-through;
+            }
+        </style>
+        <span class="font-bold">The verification code is: <?= htmlspecialchars(
+            $code,
+        ) ?></span>
+    <?php endif; ?>
     <div class="flex gap-x-1">
         <?php foreach (range(0, 5) as $i): ?>
             <input name="digit[]" autocomplete="off" type="number" min="0" max="9" <?= $i ==
