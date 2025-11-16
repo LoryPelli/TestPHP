@@ -87,6 +87,7 @@ services:
         environment:
             GF_AUTH_PROXY_ENABLED: ${AUTHPROXYENABLED}
             GF_AUTH_PROXY_HEADER_NAME: ${AUTHPROXYHEADER}
+            GF_USERS_AUTO_ASSIGN_ORG_ROLE: ${ORGROLE}
             GF_SERVER_ROOT_URL: ${ROOTURL}
 volumes:
     postgres:
