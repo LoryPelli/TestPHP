@@ -78,6 +78,16 @@ services:
             - ./default.vcl:/etc/varnish/default.vcl:ro
         depends_on:
             - php
+    grafana:
+        container_name: grafana
+        image: grafana/grafana:11.3.5
+        restart: always
+        depends_on:
+            - nginx
+        environment:
+            GF_AUTH_PROXY_ENABLED: ${AUTHPROXYENABLED}
+            GF_AUTH_PROXY_HEADER_NAME: ${AUTHPROXYHEADER}
+            GF_SERVER_ROOT_URL: ${ROOTURL}
 volumes:
     postgres:
         name: postgres
