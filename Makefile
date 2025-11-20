@@ -1,5 +1,7 @@
-.PHONY: all down setup up htpasswd
-all: down setup up htpasswd
+.PHONY: all start down setup up htpasswd
+all: start down setup up htpasswd
+start:
+	@docker desktop start
 down:
 	@docker compose down
 setup:
