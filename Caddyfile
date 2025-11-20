@@ -40,11 +40,11 @@
     }
 
     handle_path /admin {
-        redir * /admin/index 302
+        redir * /admin/index
     }
 
     handle_path /admin/grafana {
-        redir * /admin/grafana/ 302
+        redir * /admin/grafana/
     }
 
     handle @not_admin {
@@ -54,7 +54,7 @@
     handle_path /admin/* {
         handle_path /grafana/* {
             handle_path /avatar/* {
-                redir * /favicon.ico 302
+                redir * /favicon.ico
             }
 
             handle {
