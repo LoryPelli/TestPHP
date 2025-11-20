@@ -90,6 +90,8 @@ services:
         container_name: grafana
         image: grafana/grafana:11.3.5
         restart: always
+        volumes:
+            - ./provisioning.yaml:/etc/grafana/provisioning/datasources/datasources.yaml
         depends_on:
             - nginx
             - prometheus
