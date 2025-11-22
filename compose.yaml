@@ -50,8 +50,8 @@ services:
             - ./svg:/app/svg:ro
             - ./vendor:/app/vendor:ro
             - ./.env:/app/.env:ro
-            - ./php.ini:/app/php.ini:ro
-            - ./Caddyfile:/etc/caddy/Caddyfile:ro
+            - ./php/php.ini:/app/php.ini:ro
+            - ./caddy/Caddyfile:/etc/caddy/Caddyfile:ro
         depends_on:
             - postgres
             - pnpm
@@ -63,9 +63,9 @@ services:
             context: .
             dockerfile: nginx/Dockerfile
         volumes:
-            - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
-            - ./htpasswd.sh:/htpasswd.sh:ro
-            - ./.htpasswd:/etc/nginx/.htpasswd
+            - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+            - ./htpasswd/htpasswd.sh:/htpasswd.sh:ro
+            - ./htpasswd/.htpasswd:/etc/nginx/.htpasswd
         depends_on:
             - php
     varnish:
@@ -75,7 +75,7 @@ services:
         ports:
             - 63342:80
         volumes:
-            - ./default.vcl:/etc/varnish/default.vcl:ro
+            - ./varnish/default.vcl:/etc/varnish/default.vcl:ro
         depends_on:
             - php
     prometheus:
@@ -83,7 +83,7 @@ services:
         image: prom/prometheus:v3.4.0
         restart: always
         volumes:
-            - ./prometheus.yaml:/etc/prometheus/prometheus.yml:ro
+            - ./prometheus/prometheus.yaml:/etc/prometheus/prometheus.yml:ro
         depends_on:
             - php
     grafana:
@@ -91,7 +91,7 @@ services:
         image: grafana/grafana:11.3.5
         restart: always
         volumes:
-            - ./provisioning.yaml:/etc/grafana/provisioning/datasources/datasources.yaml
+            - ./grafana/provisioning.yaml:/etc/grafana/provisioning/datasources/datasources.yaml
         depends_on:
             - nginx
             - prometheus

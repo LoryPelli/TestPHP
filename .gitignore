@@ -1,6 +1,6 @@
 node_modules
 vendor
 .env
-assets/global.css
-.htpasswd
+assets/global.min.css
+htpasswd/.htpasswd
 public
