@@ -23,5 +23,5 @@ $error = $_SESSION['error'] ?? '';
     <span>Forgot password? No problem, you can <a href="/reset" class="text-blue-600 hover:underline">reset
             here</a>!</span>
 </form>
-<?php include sprintf('%s/src/components/Icons.php', $root); ?>
+<?php include_once sprintf('%s/src/components/Icons.php', $root); ?>
 <script src="/toggle.min.js" defer></script>

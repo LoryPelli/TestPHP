@@ -21,5 +21,5 @@ $error = $_SESSION['error'] ?? '';
     </div>
     <button type="submit" class="p-1 border-2 rounded-md cursor-pointer">Continue!</button>
 </form>
-<?php include sprintf('%s/src/components/Icons.php', $root); ?>
+<?php include_once sprintf('%s/src/components/Icons.php', $root); ?>
 <script src="/toggle.min.js" defer></script>
