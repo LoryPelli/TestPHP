@@ -8,7 +8,7 @@
 
     @static_files {
         not path /admin/grafana/*
-        path_regexp \.(css|js|png|ico)$
+        path *.css *.js *.png *.ico
     }
 
     @not_found {
@@ -39,27 +39,19 @@
         rewrite * /src/avatar/index.php
     }
 
-    handle_path /admin {
-        redir * /admin/index
-    }
-
-    handle_path /admin/grafana {
-        redir * /admin/grafana/
-    }
-
     handle @not_admin {
         reverse_proxy nginx
     }
 
+    rewrite /admin /admin/index
+
+    rewrite /admin/grafana /admin/grafana/
+
+    rewrite /admin/grafana/avatar/* /favicon.ico
+
     handle_path /admin/* {
         handle_path /grafana/* {
-            handle_path /avatar/* {
-                redir * /favicon.ico
-            }
-
-            handle {
-                reverse_proxy grafana:3000
-            }
+            reverse_proxy grafana:3000
         }
         
         handle {
