@@ -5,6 +5,13 @@ handle_sigint() {
     exit 1
 }
 
+start_spinner() {
+    while true; do
+        echo -n "."
+        sleep 1
+    done
+}
+
 trap handle_sigint SIGINT
 
 FILE_PATH="/etc/nginx/.htpasswd"
@@ -14,12 +21,12 @@ if [ -s "$FILE_PATH" ]; then
     exit 1
 fi
 
-echo -ne "\x1b[1;34m[INFO]\x1b[0m Provide Username: "
+echo -en "\x1b[1;34m[INFO]\x1b[0m Provide Username: "
 read username
-echo -ne "\x1b[1;34m[INFO]\x1b[0m Provide Password: "
+echo -en "\x1b[1;34m[INFO]\x1b[0m Provide Password: "
 read -s password
 printf "\n"
-echo -ne "\x1b[1;34m[INFO]\x1b[0m Provide Password: (again) "
+echo -en "\x1b[1;34m[INFO]\x1b[0m Provide Password: (again) "
 read -s verification_password
 printf "\n"
 
@@ -35,6 +42,22 @@ fi
 
 touch "$FILE_PATH"
 
-htpasswd -b "$FILE_PATH" "$username" "$password" &> /dev/null
+start_spinner &
 
-echo -e "\x1b[1;32m[SUCCESS]\x1b[0m Added password for user $username!"
+PID=$!
+
+htpasswd -bBC 16 "$FILE_PATH" "$username" "$password" &> /dev/null
+
+EXIT=$?
+
+kill "$PID"
+wait "$PID"
+
+printf "\n"
+
+if [[ "$EXIT" -ne 0 ]]; then
+    echo -e "\x1b[1;31m[ERROR]\x1b[0m Failed adding password for user $username!"
+    exit 1
+else
+    echo -e "\x1b[1;32m[SUCCESS]\x1b[0m Added password for user $username!"
+fi
