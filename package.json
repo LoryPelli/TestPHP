@@ -15,7 +15,7 @@
         "is-docker": "^4.0.0",
         "prettier": "^3.7.4",
         "prettier-plugin-organize-imports": "^4.3.0",
-        "tailwind-sorter": "^1.0.2",
+        "tailwind-sorter": "^1.0.3",
         "tailwindcss": "^4.1.17",
         "tinyglobby": "^0.2.15"
     },
