@@ -22,12 +22,12 @@ if [ -s "$FILE_PATH" ]; then
 fi
 
 echo -en "\x1b[1;34m[INFO]\x1b[0m Provide Username: "
-read username
+read -r username
 echo -en "\x1b[1;34m[INFO]\x1b[0m Provide Password: "
-read -s password
+read -rs password
 printf "\n"
 echo -en "\x1b[1;34m[INFO]\x1b[0m Provide Password: (again) "
-read -s verification_password
+read -rs verification_password
 printf "\n"
 
 if [[ -z "$username" || -z "$password" || -z "$verification_password" ]]; then
