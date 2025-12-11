@@ -20,3 +20,4 @@ dest.chmod(0o644)
 htpasswdsh.chmod(0o755)
 
 print('\x1b[1;32m[SUCCESS]\x1b[0m Setup completed!')
+print('\x1b[1;33m[WARN]\x1b[0m Make sure env values are not empty!')

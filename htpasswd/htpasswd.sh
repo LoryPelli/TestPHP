@@ -17,7 +17,7 @@ trap handle_sigint SIGINT
 FILE_PATH="/etc/nginx/.htpasswd"
 
 if [ -s "$FILE_PATH" ]; then
-    echo -e "\x1b[1;33m[WARN]\x1b[0m Please remove the .htpasswd file before running this script!"
+    echo -e "\x1b[1;31m[ERROR]\x1b[0m Please remove the .htpasswd file before running this script!"
     exit 1
 fi
 
