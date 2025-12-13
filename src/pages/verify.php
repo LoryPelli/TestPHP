@@ -12,7 +12,7 @@ if (!$email || !$code) {
     <?php if (isset($messages[$error])): ?>
         <?php include_once sprintf('%s/src/components/Error.php', $root); ?>
     <?php endif; ?>
-    <span data-code class="font-bold text-xl">A verification code has been sent to <?= htmlspecialchars(
+    <span data-code class="font-bold text-xl text-center">A verification code has been sent to <?= htmlspecialchars(
         $email,
     ) ?>!</span>
     <?php if (!is_api_key_valid()): ?>
