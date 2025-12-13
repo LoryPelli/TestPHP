@@ -15,7 +15,7 @@ if (!$email || !$code) {
     <span data-code class="font-bold text-xl text-center">A verification code has been sent to <?= htmlspecialchars(
         $email,
     ) ?>!</span>
-    <?php if (!is_api_key_valid()): ?>
+    <?php if (!$is_valid_email): ?>
         <style>
             [data-code] {
                 text-decoration: line-through;
@@ -37,3 +37,4 @@ if (!$email || !$code) {
     <button type="submit" class="p-1 border-2 rounded-md cursor-pointer">Verify!</button>
     <script src="/input.min.js" defer></script>
 </form>
+<?php $is_valid_email = true; ?>

@@ -13,6 +13,7 @@ $file = trim($url_path, '/') ?: 'index';
 $users = new UserTable();
 $todos = new TodoTable();
 $is_valid_todo = $todos->check($file);
+$is_valid_email = true;
 if ($is_valid_todo) {
     $todo_id = $file;
     $file = 'index';
