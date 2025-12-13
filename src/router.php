@@ -12,7 +12,7 @@ $url_path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 $file = trim($url_path, '/') ?: 'index';
 $users = new UserTable();
 $todos = new TodoTable();
-$is_valid_todo = Ramsey\Uuid\Uuid::isValid($file) && $todos->has($file);
+$is_valid_todo = $todos->check($file);
 if ($is_valid_todo) {
     $todo_id = $file;
     $file = 'index';

@@ -37,8 +37,12 @@ final class TodoTable extends BaseConnection
         $res->bindParam(4, $user_id);
         $res->execute();
     }
-    public function has(string $id): bool
+    public function check(string $id): bool
     {
+        $is_valid = Ramsey\Uuid\Uuid::isValid($id);
+        if (!$is_valid) {
+            return false;
+        }
         $res = $this->conn->prepare(
             'SELECT EXISTS(SELECT 1 FROM todos WHERE id = ?)',
         );
