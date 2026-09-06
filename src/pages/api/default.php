@@ -1,3 +1,3 @@
 <?php
-$users->set_avatar($email, '');
+$users->set_avatar($email, null);
 redirect('/settings');

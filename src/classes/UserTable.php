@@ -13,10 +13,10 @@ final class UserTable extends BaseConnection
                     email VARCHAR(%d) UNIQUE NOT NULL,
                     password CHAR(%d) NOT NULL,
                     username VARCHAR(%d) NOT NULL,
-                    avatar TEXT NOT NULL DEFAULT \'\',
+                    avatar TEXT DEFAULT NULL,
                     created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
                     verified_at TIMESTAMPTZ DEFAULT NULL,
-                    verification_code CHAR(%d) NOT NULL DEFAULT \'\'
+                    verification_code CHAR(%d) DEFAULT NULL
                 )',
                 Constants::MAX_EMAIL_LENGTH,
                 Constants::MAX_PASSWORD_LENGTH,
@@ -83,15 +83,15 @@ final class UserTable extends BaseConnection
         $row = $res->fetch();
         return $row ? $row->username : '';
     }
-    public function get_avatar(string $email): string
+    public function get_avatar(string $email): ?string
     {
         $res = $this->conn->prepare('SELECT avatar FROM users WHERE email = ?');
         $res->bindParam(1, $email);
         $res->execute();
         $row = $res->fetch();
-        return $row ? $row->avatar : '';
+        return $row?->avatar;
     }
-    public function get_verification_code(string $email): string
+    public function get_verification_code(string $email): ?string
     {
         $res = $this->conn->prepare(
             'SELECT verification_code FROM users WHERE email = ?',
@@ -99,7 +99,7 @@ final class UserTable extends BaseConnection
         $res->bindParam(1, $email);
         $res->execute();
         $row = $res->fetch();
-        return $row ? $row->verification_code : '';
+        return $row?->verification_code;
     }
     public function get_created_at(string $email): ?DateTimeImmutable
     {
@@ -136,7 +136,7 @@ final class UserTable extends BaseConnection
         $res->bindParam(2, $email);
         $res->execute();
     }
-    public function set_avatar(string $email, string $avatar): void
+    public function set_avatar(string $email, ?string $avatar): void
     {
         $res = $this->conn->prepare(
             'UPDATE users SET avatar = ? WHERE email = ?',
@@ -154,7 +154,7 @@ final class UserTable extends BaseConnection
         $res->bindParam(2, $email);
         $res->execute();
     }
-    public function set_verification_code(string $email, string $code): void
+    public function set_verification_code(string $email, ?string $code): void
     {
         $res = $this->conn->prepare(
             'UPDATE users SET verification_code = ? WHERE email = ?',
@@ -175,7 +175,7 @@ final class UserTable extends BaseConnection
     public function verify(string $email): void
     {
         $this->set_verified_at($email, 'NOW()');
-        $this->set_verification_code($email, '');
+        $this->set_verification_code($email, null);
     }
     public function delete(string $email): void
     {
