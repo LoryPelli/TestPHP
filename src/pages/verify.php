@@ -3,21 +3,24 @@ require_once sprintf('%s/src/utils/send_email.php', $root);
 $messages = require_once sprintf('%s/src/enums/AppError.php', $root);
 $is_post = isset($_POST['id']);
 $error = $_SESSION['error'] ?? '';
+$type = $_SESSION['type'] ?? 'register';
 $email = $_POST['email'] ?? ($_SESSION['email'] ?? '');
 $is_email = filter_var($email, FILTER_VALIDATE_EMAIL);
 if (!$is_email || !$users->check_email($email)) {
     redirect('/');
     exit(1);
-} elseif ($users->get_verified_at($email)) {
+} elseif ($type == 'register' && $users->get_verified_at($email)) {
     redirect('/login');
     exit(0);
 }
 if (!$is_post) {
     $code = $_SESSION['code'] ?? '';
-    send_email($email, $code, 'register');
+    if ($type == 'register') {
+        send_email($email, $code, 'register');
+    }
 } else {
     $id = $_POST['id'];
-    if ($id != $users->get_id($email)) {
+    if (!hash_equals($users->get_id($email), $id)) {
         redirect('/');
         exit(1);
     }
@@ -33,7 +36,7 @@ if (!$is_post) {
     <?php if (isset($messages[$error])): ?>
         <?php include_once sprintf('%s/src/components/Error.php', $root); ?>
     <?php endif; ?>
-    <span data-sent class="text-center text-xl font-bold">A verification code has been sent to <?= htmlspecialchars(
+    <span data-sent class="text-xl font-bold">A verification code has been sent to <?= htmlspecialchars(
         $email,
     ) ?>!</span>
     <?php if (!$is_valid_email): ?>

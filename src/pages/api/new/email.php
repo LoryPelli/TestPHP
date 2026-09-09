@@ -26,7 +26,7 @@ if (!$is_confirm) {
     $_SESSION['email'] = $email;
     $_SESSION['code'] = $code;
     $_SESSION['type'] = 'change_confirm';
-    send_email($email, $code, 'new/email');
+    send_email($email, $code, 'new/email', true);
     redirect('/verify', 307);
     exit(0);
 }

@@ -5,8 +5,8 @@ $error = $_SESSION['error'] ?? '';
 $user_id = $users->get_id($email);
 ?>
 <?php if (!$is_logged): ?>
-    <div class="flex h-screen flex-col justify-center text-center">
-        <span class="text-6xl font-bold italic">Login to see the rest of the page!</span>
+    <div class="flex h-screen flex-col justify-center">
+        <span class="text-center text-6xl font-bold italic">Login to see the rest of the page!</span>
     </div>
 <?php else: ?>
     <div class="grid gap-y-1 p-1 text-center">

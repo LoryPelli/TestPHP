@@ -4,7 +4,7 @@
         "format": "pnpm \"/format:.*/\"",
         "format:golang": "go fmt ./golang/src",
         "format:prettier": "prettier --write .",
-        "format:sort": "tailwind-sort-php \"./src/**/*.php\" --stylesheet \"./src/styles/global.css\"",
+        "format:sort": "tailwind-sort-php \"./src/**/*.php\" --stylesheet \"./src/styles/globals.css\"",
         "go": "go run ./golang/src"
     },
     "type": "module",

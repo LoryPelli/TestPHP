@@ -1,6 +1,10 @@
 <?php
-function send_email(string $email, string $code, string $action): void
-{
+function send_email(
+    string $email,
+    string $code,
+    string $action,
+    bool $preserve_method = false,
+): void {
     global $resend, $users;
     if (!is_api_key_valid(true)) {
         return;
@@ -30,7 +34,7 @@ function send_email(string $email, string $code, string $action): void
         ]);
     } catch (Exception) {
         $_SESSION['error'] = 'invalid_email';
-        redirect(sprintf('/%s', $action));
+        redirect(sprintf('/%s', $action), !$preserve_method ? 302 : 307);
         exit(1);
     }
 }

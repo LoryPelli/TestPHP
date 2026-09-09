@@ -31,6 +31,10 @@
         not method POST
     }
 
+    @not_timestamp {
+        not query t={time.now.unix}
+    }
+
     php_server {
         root /app
     }
@@ -48,6 +52,7 @@
     }
 
     handle @static_files {
+        redir @not_timestamp ?t={time.now.unix} 302
         try_files /public/{path} /src/errors/index.php?code=404
     }
 

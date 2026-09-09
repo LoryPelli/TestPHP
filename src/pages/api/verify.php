@@ -37,4 +37,5 @@ match ($type) {
     'reset' => redirect('/new/password', 307),
     'change' => redirect('/new/email', 307),
     'change_confirm' => redirect('/api/new/email?confirm', 307),
+    'delete_confirm' => redirect('/api/delete?confirm', 307),
 };

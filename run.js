@@ -12,7 +12,7 @@ if (!(await inContainer())) {
 spawn('node esbuild.config.js', { shell: true, stdio: 'inherit' });
 
 spawn(
-    'pnpm tailwindcss -i ./src/styles/global.css -o ./assets/global.min.css -m -w always --poll',
+    'pnpm tailwindcss -i ./src/styles/globals.css -o ./assets/globals.min.css -m -w always --poll',
     { shell: true, stdio: 'inherit' },
 );
 
